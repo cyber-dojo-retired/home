@@ -3,13 +3,15 @@ require_relative 'silently'
 require 'sinatra/base'
 silently { require 'sinatra/contrib' } # N x "warning: method redefined"
 require_relative 'http_json_hash/service'
+require_relative 'probe'
 require 'json'
 require 'sprockets'
 require 'uglifier'
 
 class AppBase < Sinatra::Base
 
-  def initialize
+  def initialize(externals)
+    @externals = externals
     super(nil)
   end
 
@@ -45,7 +47,7 @@ class AppBase < Sinatra::Base
     end
   end
 
-  # - - - - - - - - - - - - - - - - - - - - - -
+  private
 
   def self.get_probe(name)
     get "/#{name}", provides:[:json] do
@@ -56,13 +58,23 @@ class AppBase < Sinatra::Base
     end
   end
 
+  def probe
+    Probe.new(@externals)
+  end
+
+  public
+  
+  get_probe(:alive?) # curl/k8s
+  get_probe(:ready?) # curl/k8s
+  get_probe(:sha)    # identity
+
   # - - - - - - - - - - - - - - - - - - - - - -
 
   def json_args
     symbolized(json_payload)
   end
 
-  private
+  # - - - - - - - - - - - - - - - - - - - - - -
 
   def symbolized(h)
     # named-args require symbolization
