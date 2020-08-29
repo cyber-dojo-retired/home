@@ -8,7 +8,7 @@ services:
       context: source/nginx_stub
     container_name: test-home-nginx
     depends_on:
-      - home-server
+      - home-client
     image: cyberdojo/nginx_custom_stub
     ports: [ "${CYBER_DOJO_NGINX_PORT}:${CYBER_DOJO_NGINX_PORT}" ]
     user: root
@@ -38,6 +38,11 @@ services:
     depends_on:
       - avatars
       - saver
+      - puller
+      - creator
+      - custom-start-points
+      - exercises-start-points
+      - languages-start-points
     environment: [ NO_PROMETHEUS ]
     ports: [ "${CYBER_DOJO_HOME_PORT}:${CYBER_DOJO_HOME_PORT}" ]
     read_only: true

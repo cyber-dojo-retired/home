@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require_relative 'Home'
+require_relative 'home'
 require_relative 'app_base'
 
 class App < AppBase

@@ -126,6 +126,17 @@ container_up_ready_and_clean()
   local -r service_name="${2}"
   local -r container_name="test-${service_name}"
   container_up "${service_name}"
+  wait_briefly_until_ready_and_clean "${1}" "${2}"
+  #wait_briefly_until_ready "${container_name}" "${port}"
+  #exit_if_unclean "${container_name}"
+}
+
+# - - - - - - - - - - - - - - - - - - -
+wait_briefly_until_ready_and_clean()
+{
+  local -r port="${1}"
+  local -r service_name="${2}"
+  local -r container_name="test-${service_name}"
   wait_briefly_until_ready "${container_name}" "${port}"
   exit_if_unclean "${container_name}"
 }
@@ -144,18 +155,10 @@ container_up()
 # - - - - - - - - - - - - - - - - - - -
 containers_up()
 {
-  if [ "${1:-}" == 'api-demo' ]; then
-    container_up nginx
-    container_up_ready_and_clean "${CYBER_DOJO_HOME_PORT}"        home-server
-  else
-    export NO_PROMETHEUS=true
-    if [ "${1:-}" == 'server' ]; then
-      container_up_ready_and_clean "${CYBER_DOJO_HOME_PORT}"        home-server
-    else
-      container_up_ready_and_clean "${CYBER_DOJO_HOME_PORT}"        home-server
-      container_up_ready_and_clean "${CYBER_DOJO_HOME_CLIENT_PORT}" home-client
-    fi
-  fi
+  export NO_PROMETHEUS=true
+  container_up nginx
+  wait_briefly_until_ready_and_clean "${CYBER_DOJO_HOME_PORT}"          home-server
+  wait_briefly_until_ready_and_clean "${CYBER_DOJO_HOME_CLIENT_PORT}"   home-client
   copy_in_saver_test_data
 }
 
