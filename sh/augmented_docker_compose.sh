@@ -8,6 +8,7 @@ augmented_docker_compose()
 {
   cd "${ROOT_DIR}" && cat "./docker-compose.yml" \
     | docker run --rm --interactive cyberdojo/service-yaml \
+                         avatars \
                          creator \
                          puller \
                          custom-start-points \
