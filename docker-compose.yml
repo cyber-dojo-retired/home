@@ -1,0 +1,56 @@
+
+version: '3.7'
+
+services:
+
+  nginx:
+    build:
+      context: source/nginx_stub
+    container_name: test-home-nginx
+    depends_on:
+      - home-server
+    image: cyberdojo/nginx_custom_stub
+    ports: [ "${CYBER_DOJO_NGINX_PORT}:${CYBER_DOJO_NGINX_PORT}" ]
+    user: root
+
+  home-client:
+    image: ${CYBER_DOJO_HOME_CLIENT_IMAGE}:${CYBER_DOJO_HOME_TAG}
+    user: ${CYBER_DOJO_HOME_CLIENT_USER}
+    build:
+      args: [ COMMIT_SHA, CYBER_DOJO_HOME_CLIENT_PORT ]
+      context: source/client
+    container_name: test-home-client
+    depends_on:
+      - home-server
+    ports: [ "${CYBER_DOJO_HOME_CLIENT_PORT}:${CYBER_DOJO_HOME_CLIENT_PORT}" ]
+    read_only: true
+    restart: "no"
+    tmpfs: /tmp
+    volumes: [ "./test:/test:ro" ]
+
+  home-server:
+    image: ${CYBER_DOJO_HOME_IMAGE}:${CYBER_DOJO_HOME_TAG}
+    user: ${CYBER_DOJO_HOME_SERVER_USER}
+    build:
+      args: [ COMMIT_SHA, CYBER_DOJO_HOME_PORT ]
+      context: source/server
+    container_name: test-home-server
+    depends_on:
+      - avatars
+      - saver
+    environment: [ NO_PROMETHEUS ]
+    ports: [ "${CYBER_DOJO_HOME_PORT}:${CYBER_DOJO_HOME_PORT}" ]
+    read_only: true
+    restart: "no"
+    tmpfs: /tmp
+    volumes: [ "./test:/test:ro" ]
+
+  avatars:
+    image: ${CYBER_DOJO_AVATARS_IMAGE}:${CYBER_DOJO_AVATARS_TAG}
+    user: nobody
+    environment: [ NO_PROMETHEUS=true ]
+    container_name: test-home-avatars
+    read_only: true
+    ports: [ "${CYBER_DOJO_AVATARS_PORT}:${CYBER_DOJO_AVATARS_PORT}" ]
+    restart: 'no'
+    tmpfs: /tmp
