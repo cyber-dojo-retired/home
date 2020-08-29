@@ -5,14 +5,13 @@
 @import "edged-panel";
 @import "button";
 @import "body";
-@import "center";
+@import "centered";
 
 #home-page
 {
-  .center-content { @include center-align(); }
-
-  #heading
+  .heading
   {
+    @include centered();
          width: 100%;
         height: 280px;
       position: fixed;
@@ -21,20 +20,24 @@
        z-index: 999;
        padding: { top: 0px; bottom: 0px; }
 
-    #logo img
+    .logo
     {
-        width: 75px;
-       height: 75px;
-      padding: { top: 16px; left: 5px; right: 8px; }
-    }
-    #cyber-dojo
-    {
-      @include non-code-font();
-      font-size: 7.40em;
-          color: $text-color;
+      @include centered();
+      img
+      {
+          width: 75px;
+         height: 75px;
+        padding: { top: 16px; left: 5px; right: 8px; }
+      }
+      .cyber-dojo
+      {
+        @include non-code-font();
+        font-size: 7.40em;
+            color: $text-color;
+      }
     }
 
-    #the-place-to-practise-programming
+    .the-place-to-practise-programming
     {
       @include non-code-font();
       font-size: 2.75em;
@@ -46,18 +49,19 @@
 
   //------------------------------------------
 
-  #license, #pies, #sponsors, #money, #foundation, #technology
+  .license, .pies, .sponsors, .money, .foundation, .technology
   {
+    @include centered();
     @include plaintext-font();
     font-size: 1.2em;
-      margin: { top: 25px; bottom: 25px; }
+    margin: { top: 25px; bottom: 25px; }
   }
 
   //------------------------------------------
 
-  #license
+  .license
   {
-    max-width:569px;
+    max-width: 569px;
     background: lighten($darker-color, 6%);
     margin: { top:280px; bottom:15px; }
     padding: { top:25px; bottom:25px; }
@@ -65,7 +69,7 @@
 
   //------------------------------------------
 
-  #pies
+  .pies
   {
     img
     {
@@ -78,9 +82,9 @@
 
   //------------------------------------------
 
-  #foundation
+  .foundation
   {
-    max-width:569px;
+    max-width: 569px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img.trustee
@@ -99,11 +103,12 @@
           text-align: center;
              padding: { left: 5px; right: 5px; }
     }
+    div, table { @include centered(); }
   }
 
   //------------------------------------------
 
-  #technology
+  .technology
   {
     margin: { bottom: 25px; }
     img
@@ -116,6 +121,7 @@
       filter: grayscale(100%);
     }
     .name { font-size: 12px; }
+    div, table { @include centered(); }
   }
 
   //------------------------------------------
