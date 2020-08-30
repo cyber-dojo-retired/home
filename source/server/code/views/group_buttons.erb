@@ -1,0 +1,25 @@
+<script>
+'use strict';
+$(() => {
+
+  const $group = $('.group');
+
+  $('.regular.button', $group).click(() => create('group_exercise_choose'));
+  $('.custom.button',  $group).click(() => create('group_custom_choose'));
+
+  const create = (url) => window.location = `/creator/${url}`;
+
+});
+</script>
+
+<div class="group">
+  <div class="blurb">
+    we're&nbsp;in&nbsp;a&nbsp;group
+  </div>
+  <div class="regular button">
+    create&nbsp;our&nbsp;new&nbsp;exercise
+  </div>
+  <div class="custom button">
+    create&nbsp;our&nbsp;new&nbsp;custom&nbsp;exercise
+  </div>
+</div>

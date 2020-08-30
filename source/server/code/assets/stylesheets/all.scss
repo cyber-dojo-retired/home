@@ -7,19 +7,36 @@
 @import "body";
 @import "centered";
 
+$heading-height: 195px;
+$controls-height: 140px;
+$top-window-height: 350px;
+
 #home-page
 {
-  .heading
+  .heading, .controls
   {
     @include centered();
-         width: 100%;
-        height: 280px;
-      position: fixed;
-           top: 0px;
+    width: 100%;
+    position: fixed;
     background: $darker-color;
-       z-index: 999;
-       padding: { top: 0px; bottom: 0px; }
+    z-index: 999;
+    padding: { top: 0px; bottom: 0px; }
+  }
 
+  .heading
+  {
+    top: 0px;
+    height: $heading-height;
+  }
+
+  .controls
+  {
+    top: $heading-height;
+    height: $controls-height;
+  }
+
+  .heading
+  {
     .logo
     {
       @include centered();
@@ -49,6 +66,29 @@
 
   //------------------------------------------
 
+  .individual, .group, .id-input
+  {
+    @include centered();
+    @include edged-panel();
+    .blurb
+    {
+      @include non-code-font();
+      font-size: 18px;
+      margin-left: 9px;
+      padding-right: 5px;
+      text-align: left;
+    }
+  }
+
+  .id-input
+  {
+    vertical-align: top;
+    height: 122px;
+    margin: { left:5px; right:5px; }
+  }
+
+  //------------------------------------------
+
   .license, .pies, .sponsors, .money, .foundation, .technology
   {
     @include centered();
@@ -61,9 +101,12 @@
 
   .license
   {
+    @include rounded-corner(5px);
+    border: 1px solid darken(gray,20%);
+
     max-width: 569px;
     background: lighten($darker-color, 6%);
-    margin: { top:280px; bottom:15px; }
+    margin: { top:$top-window-height; bottom:15px; }
     padding: { top:25px; bottom:25px; }
   }
 
@@ -74,8 +117,8 @@
     img
     {
       @include rounded-corner();
-       width: 560px;
-      height: 330px;
+       width: 570px;
+      height: 333px;
       filter: grayscale(100%);
     }
   }
@@ -84,6 +127,9 @@
 
   .foundation
   {
+    @include rounded-corner(5px);
+    border: 1px solid darken(gray,20%);
+
     max-width: 569px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
@@ -126,9 +172,9 @@
 
   //------------------------------------------
 
-  button
+  .button
   {
-    &#individual, &#group, &#donate
+    &.regular, &.custom, &.donate
     {
       @include non-code-font();
            color: $darker-color;
@@ -138,13 +184,16 @@
           margin: 7px;
     }
 
-    &#individual, &#group
-    {
-      font-size: 2.75em;
-        padding: { left: 15px; right: 15px; }
-    }
+    &.regular, &.custom { padding: { left: 15px; right: 15px; } }
+    &.regular { font-size: 16px; }
+    &.custom { font-size: 12px; }
 
-    &#donate { font-size: 1.4em; }
+    &.donate
+    {
+      @include centered();
+      font-size: 20px;
+      width: 125px;
+    }
   }
 
 }

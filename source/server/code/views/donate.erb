@@ -2,7 +2,7 @@
 'use strict';
 $(() => {
 
-  $('button#donate').click(event => {
+  $('.donate.button').click(event => {
     event.preventDefault();
     cd.dialog_donate().dialog('open');
   })
@@ -10,4 +10,4 @@ $(() => {
 });
 </script>
 
-<button id="donate">please&nbsp;donate</button>
+<div class="donate button">please&nbsp;donate</div>
