@@ -7,12 +7,13 @@
 @import "body";
 @import "centered";
 
-$heading-height: 195px;
-$controls-height: 140px;
-$top-window-height: 350px;
+$heading-height: 230px;
+$controls-height: 150px;
 
 #home-page
 {
+  @include non-code-font();
+
   .heading, .controls
   {
     @include centered();
@@ -20,7 +21,6 @@ $top-window-height: 350px;
     position: fixed;
     background: $darker-color;
     z-index: 999;
-    padding: { top: 0px; bottom: 0px; }
   }
 
   .heading
@@ -28,11 +28,14 @@ $top-window-height: 350px;
     top: 0px;
     height: $heading-height;
   }
-
   .controls
   {
     top: $heading-height;
     height: $controls-height;
+  }
+  .info
+  {
+    margin-top: $heading-height+$controls-height;
   }
 
   .heading
@@ -42,22 +45,20 @@ $top-window-height: 350px;
       @include centered();
       img
       {
-          width: 75px;
-         height: 75px;
+          width: 90px;
+         height: 90px;
         padding: { top: 16px; left: 5px; right: 8px; }
       }
       .cyber-dojo
       {
-        @include non-code-font();
-        font-size: 7.40em;
+        font-size: 127px;
             color: $text-color;
       }
     }
 
-    .the-place-to-practise-programming
+    .a-place-to-practise-programming
     {
-      @include non-code-font();
-      font-size: 2.75em;
+      font-size: 50px;
           color: lighten($text-color, 5%);
        position: relative;
             top: -9px;
@@ -66,25 +67,45 @@ $top-window-height: 350px;
 
   //------------------------------------------
 
-  .individual, .group, .id-input
+  .individual, .group, .enter-id
   {
     @include centered();
     @include edged-panel();
+  }
+
+  .enter-id
+  {
+    vertical-align: top;
+    width: 215px;
+    height: 122px;
+    margin: { left:5px; right:5px; }
+    input
+    {
+      @include centered();
+      @include non-code-font();
+      @include rounded-corner(6px);
+      background: lighten($green, 20%);
+      color: $darker-color;
+      width: 184px;
+      font-size: 35px;
+      margin: { top: 11px; bottom:4px; }
+      padding-left: 5px;
+      text-align: left;
+      &.invalid { color: darken($red, 10%); }
+    }
     .blurb
     {
-      @include non-code-font();
-      font-size: 18px;
-      margin-left: 9px;
-      padding-right: 5px;
-      text-align: left;
+      font-size: 14px;
+      text-align: center;
+      margin: { left:11px; right:11px; top:5px; }
     }
   }
 
-  .id-input
+  .blurb
   {
-    vertical-align: top;
-    height: 122px;
-    margin: { left:5px; right:5px; }
+    @include plaintext-font();
+    margin: { left:9px; top:5px; }
+    text-align: left;
   }
 
   //------------------------------------------
@@ -104,9 +125,8 @@ $top-window-height: 350px;
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
 
-    max-width: 569px;
+    max-width: 665px;
     background: lighten($darker-color, 6%);
-    margin: { top:$top-window-height; bottom:15px; }
     padding: { top:25px; bottom:25px; }
   }
 
@@ -117,7 +137,7 @@ $top-window-height: 350px;
     img
     {
       @include rounded-corner();
-       width: 570px;
+       width: 665px;
       height: 333px;
       filter: grayscale(100%);
     }
@@ -130,7 +150,7 @@ $top-window-height: 350px;
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
 
-    max-width: 569px;
+    max-width: 665px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img.trustee
@@ -176,7 +196,6 @@ $top-window-height: 350px;
   {
     &.regular, &.custom, &.donate
     {
-      @include non-code-font();
            color: $darker-color;
       text-align: right;
      line-height: 95%;
@@ -191,6 +210,7 @@ $top-window-height: 350px;
     &.donate
     {
       @include centered();
+      @include non-code-font();
       font-size: 20px;
       width: 125px;
     }
