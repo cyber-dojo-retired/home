@@ -127,8 +127,6 @@ container_up_ready_and_clean()
   local -r container_name="test-${service_name}"
   container_up "${service_name}"
   wait_briefly_until_ready_and_clean "${1}" "${2}"
-  #wait_briefly_until_ready "${container_name}" "${port}"
-  #exit_if_unclean "${container_name}"
 }
 
 # - - - - - - - - - - - - - - - - - - -
