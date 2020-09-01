@@ -110,7 +110,7 @@ $controls-height: 150px;
 
   //------------------------------------------
 
-  .license, .pies, .sponsors, .money, .foundation, .technology
+  .license, .foundation, .technology
   {
     @include centered();
     @include plaintext-font();
@@ -124,23 +124,11 @@ $controls-height: 150px;
   {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
+    padding: 40px;
 
-    max-width: 665px;
+    max-width: 580px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
-  }
-
-  //------------------------------------------
-
-  .pies
-  {
-    img
-    {
-      @include rounded-corner();
-       width: 665px;
-      height: 333px;
-      filter: grayscale(100%);
-    }
   }
 
   //------------------------------------------
@@ -150,7 +138,7 @@ $controls-height: 150px;
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
 
-    max-width: 665px;
+    max-width: 660px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img.trustee
@@ -178,7 +166,7 @@ $controls-height: 150px;
   {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
-    max-width: 665px;
+    max-width: 660px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img
