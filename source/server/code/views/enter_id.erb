@@ -6,13 +6,15 @@ $(() => {
 </script>
 
 <div class="enter-id">
-  <input type="text"
-         id="id"
-         value="">
-  </input>
+
   <div class="blurb">
     to access any group or individual exercise
     enter its six character ID
   </div>
+
+  <input type="text"
+         id="id"
+         value="<%= @id %>">
+  </input>
 
 </div>
