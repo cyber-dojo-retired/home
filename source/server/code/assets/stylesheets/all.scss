@@ -110,11 +110,11 @@ $controls-height: 150px;
 
   //------------------------------------------
 
-  .license, .foundation, .technology
+  .license, .technology
   {
     @include centered();
     @include plaintext-font();
-    font-size: 1.2em;
+    font-size: 14px;
     margin: { top: 25px; bottom: 25px; }
   }
 
@@ -126,38 +126,9 @@ $controls-height: 150px;
     border: 1px solid darken(gray,20%);
     padding: 40px;
 
-    max-width: 580px;
+    max-width: 581px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
-  }
-
-  //------------------------------------------
-
-  .foundation
-  {
-    @include rounded-corner(5px);
-    border: 1px solid darken(gray,20%);
-
-    max-width: 660px;
-    background: lighten($darker-color, 6%);
-    padding: { top:25px; bottom:25px; }
-    img.trustee
-    {
-      @include rounded-corner(10px);
-        width: 100px;
-       height: 100px;
-       margin: { top: 15px; left: 2px; right: 2px; }
-       filter: grayscale(100%);
-    }
-    .bio
-    {
-      vertical-align: top;
-               width: 120px;
-           font-size: 12px;
-          text-align: center;
-             padding: { left: 5px; right: 5px; }
-    }
-    div, table { @include centered(); }
   }
 
   //------------------------------------------
@@ -166,7 +137,7 @@ $controls-height: 150px;
   {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
-    max-width: 660px;
+    max-width: 661px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img
