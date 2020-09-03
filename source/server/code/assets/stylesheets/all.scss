@@ -76,8 +76,8 @@ $controls-height: 150px;
   .enter-id
   {
     vertical-align: top;
-    width: 215px;
-    height: 122px;
+    width: 187px;
+    height: 124px;
     margin: { left:5px; right:5px; }
     input
     {
@@ -86,8 +86,8 @@ $controls-height: 150px;
       @include rounded-corner(6px);
       background: lighten($green, 20%);
       color: $darker-color;
-      width: 184px;
-      font-size: 35px;
+      width: 151px;
+      font-size: 30px;
       margin: { top: 11px; bottom:4px; }
       padding-left: 5px;
       text-align: left;
@@ -126,7 +126,7 @@ $controls-height: 150px;
     border: 1px solid darken(gray,20%);
     padding: 40px;
 
-    max-width: 581px;
+    max-width: 593px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
   }
@@ -137,7 +137,7 @@ $controls-height: 150px;
   {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
-    max-width: 661px;
+    max-width: 672px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img
@@ -162,15 +162,15 @@ $controls-height: 150px;
     &.regular, &.custom, &.donate
     {
            color: $darker-color;
-      text-align: right;
+      text-align: left;
      line-height: 95%;
          padding: 12px;
           margin: 7px;
     }
 
     &.regular, &.custom { padding: { left: 15px; right: 15px; } }
-    &.regular { font-size: 16px; }
-    &.custom { font-size: 12px; }
+    &.regular { font-size: 18px; }
+    &.custom { font-size: 13px; }
 
     &.donate
     {
