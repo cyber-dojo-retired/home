@@ -28,4 +28,10 @@ versioner_env_vars()
 
   echo CYBER_DOJO_HOME_SHA="$(image_sha)"
   echo CYBER_DOJO_HOME_TAG="$(image_tag)"
+
+  echo CYBER_DOJO_MODEL_IMAGE=cyberdojo/model
+  echo CYBER_DOJO_MODEL_PORT=4528
+  echo CYBER_DOJO_MODEL_SHA=462de5d2b66ca9b9cd86fc97220b7e1640ccdc3f
+  echo CYBER_DOJO_MODEL_TAG=462de5d
+  echo CYBER_DOJO_MODEL_SERVER_USER=nobody
 }
