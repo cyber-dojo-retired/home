@@ -10,7 +10,8 @@ augmented_docker_compose()
     | docker run --rm --interactive cyberdojo/service-yaml \
                          avatars \
                          creator \
-                         puller \
+                         model \
+                         runner \
                          custom-start-points \
                          exercises-start-points \
                          languages-start-points \

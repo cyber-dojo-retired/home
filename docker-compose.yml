@@ -37,13 +37,13 @@ services:
     container_name: test-home-server
     depends_on:
       - avatars
-      - saver
-      - puller
-      - creator
       - custom-start-points
       - exercises-start-points
       - languages-start-points
+      - creator
       - model
+      - runner
+      - saver
     environment: [ NO_PROMETHEUS ]
     ports: [ "${CYBER_DOJO_HOME_PORT}:${CYBER_DOJO_HOME_PORT}" ]
     read_only: true
