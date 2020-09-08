@@ -4,7 +4,9 @@ require_relative 'http_json_hash/service'
 class ExternalAvatars
 
   def initialize(http)
-    @http = HttpJsonHash::service(self.class.name, http, 'avatars', 5027)
+    service = 'avatars'
+    port = ENV['CYBER_DOJO_AVATARS_PORT'].to_i
+    @http = HttpJsonHash::service(self.class.name, http, service, port)
   end
 
   def ready?

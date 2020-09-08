@@ -4,7 +4,9 @@ require_relative 'http_json_hash/service'
 class ExternalHome
 
   def initialize(http)
-    @http = HttpJsonHash::service(self.class.name, http, 'home-server', 4527)
+    service = 'home-server'
+    port = ENV['CYBER_DOJO_HOME_PORT'].to_i
+    @http = HttpJsonHash::service(self.class.name, http, service, port)
   end
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - -

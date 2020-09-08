@@ -22,6 +22,8 @@ services:
     container_name: test-home-client
     depends_on:
       - home-server
+    env_file:
+      - .env
     ports: [ "${CYBER_DOJO_HOME_CLIENT_PORT}:${CYBER_DOJO_HOME_CLIENT_PORT}" ]
     read_only: true
     restart: "no"
@@ -44,7 +46,8 @@ services:
       - model
       - runner
       - saver
-    environment: [ NO_PROMETHEUS ]
+    env_file:
+      - .env
     ports: [ "${CYBER_DOJO_HOME_PORT}:${CYBER_DOJO_HOME_PORT}" ]
     read_only: true
     restart: "no"
@@ -57,7 +60,8 @@ services:
     depends_on:
       - custom-start-points
       - saver
-    environment: [ NO_PROMETHEUS ]
+    env_file:
+      - .env
     ports: [ "${CYBER_DOJO_MODEL_PORT}:${CYBER_DOJO_MODEL_PORT}" ]
     read_only: true
     restart: "no"
