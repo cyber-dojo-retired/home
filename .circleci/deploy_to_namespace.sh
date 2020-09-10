@@ -19,7 +19,7 @@ echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 
 helm_upgrade_probe_yes_prometheus_yes \
    "${NAMESPACE}" \
-   "differ" \
+   "home" \
    "${CYBER_DOJO_HOME_IMAGE}" \
    "${CYBER_DOJO_HOME_TAG}" \
    "${CYBER_DOJO_HOME_PORT}" \
