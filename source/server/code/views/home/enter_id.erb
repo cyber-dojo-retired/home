@@ -4,7 +4,6 @@ $(() => {
 
   const idInput = $('input#id');
   const waitSpinner = $('#wait-spinner');
-  const okButton = $('.ok.button');
 
   const idInputChange = () => {
     const id = idInput.val();
@@ -14,11 +13,10 @@ $(() => {
     }
     else if (id.length === 6) {
       idInput.prop('disabled', true);
-
       waitSpinner.fadeIn('slow', () => {
         $.getJSON(`/home/id_valid?id=${encodeURIComponent(id)}`, (response) => {
-          const idValid = response['id_valid?'];
-          okButton.prop('disabled', !idValid);
+           const idValid = response['id_valid?'];
+           window.location.href = `/home/individual?id=${id}`;
          })
          .always(() => {
             waitSpinner.fadeOut('slow');
@@ -27,10 +25,6 @@ $(() => {
       });
     }
   };
-
-  okButton.click(() => {
-    alert(`ok clicked disabled==${okButton.prop('disabled')}`);
-  });
 
   idInput.keyup(() => idInputChange())
          .focus();
@@ -49,7 +43,6 @@ $(() => {
          id="id"
          value="<%= @id %>">
   </input>
-  <div class="ok button">ok</div>
   <img src="/images/rotate-cyber-dojo.gif"
        id="wait-spinner"
        style="display:none;">
