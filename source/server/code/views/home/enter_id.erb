@@ -14,9 +14,12 @@ $(() => {
     else if (id.length === 6) {
       idInput.prop('disabled', true);
       waitSpinner.fadeIn('slow', () => {
-        $.getJSON(`/home/id_valid?id=${encodeURIComponent(id)}`, (response) => {
-           const idValid = response['id_valid?'];
-           window.location.href = `/home/individual?id=${id}`;
+        $.get(`/home/id_info?id=${encodeURIComponent(id)}`, (response) => {
+           if (response.id_info) {
+             window.location.href = response.id_info;
+           } else {
+             idInput.addClass('invalid');
+           }
          })
          .always(() => {
             waitSpinner.fadeOut('slow');

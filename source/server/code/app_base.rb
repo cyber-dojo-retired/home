@@ -48,7 +48,7 @@ class AppBase < Sinatra::Base
 
   # - - - - - - - - - - - - - - - - - - - - - -
 
-  def self.get_route(name, klass)
+  def self.get_delegate(name, klass)
     get "/#{name}", provides:[:json] do
       respond_to do |format|
         format.json {
