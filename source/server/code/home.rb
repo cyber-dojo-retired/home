@@ -6,8 +6,8 @@ class Home
     @externals = externals
   end
 
-  def id_change(params)
-    id = params['id']
+  def id_valid?(args)
+    id = args['id']
     model.group_exists?(id) || model.kata_exists?(id)
   end
 

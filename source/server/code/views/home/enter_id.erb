@@ -16,8 +16,9 @@ $(() => {
       idInput.prop('disabled', true);
 
       waitSpinner.fadeIn('slow', () => {
-        $.getJSON(`/home/id_change?id=${id}`, (idValid) => {
-            okButton.prop('disabled', !idValid);
+        $.getJSON(`/home/id_valid?id=${encodeURIComponent(id)}`, (response) => {
+          const idValid = response['id_valid?'];
+          okButton.prop('disabled', !idValid);
          })
          .always(() => {
             waitSpinner.fadeOut('slow');
@@ -31,29 +32,6 @@ $(() => {
     alert(`ok clicked disabled==${okButton.prop('disabled')}`);
   });
 
-  const onlyBase58 = (element) => {
-    // Only accept base58 input.
-    // Also accepts a Ctrl-V paste event which
-    // will allow any chars to be entered.
-    element.keypress((e) => {
-      const str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-      if (e.which == 0 || e.charCode == 0) { // special key
-        return true;
-      }
-      else if (str.match(/IOio/)) {
-        return false
-      }
-      else if (str.match(/[a-zA-Z0-9]/)) {
-        return true;
-      }
-      else {
-        e.preventDefault();
-        return false;
-      }
-    });
-  };
-
-  onlyBase58(idInput);
   idInput.keyup(() => idInputChange())
          .focus();
 

@@ -6,15 +6,15 @@ class Probe
     @externals = externals
   end
 
-  def alive?(_params)
+  def alive?(_args)
     true
   end
 
-  def ready?(_params)
+  def ready?(_args)
     [ @externals.model ].all?(&:ready?)
   end
 
-  def sha(_params)
+  def sha(_args)
     ENV['SHA']
   end
 

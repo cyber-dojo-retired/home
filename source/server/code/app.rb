@@ -27,8 +27,8 @@ class App < AppBase
     end
   end
 
-  get_route(:id_change, Home)
-  
+  get_route(:id_valid?, Home)
+
   # - - - - - - - - - - - - - - - - - - - - -
 
   get '/group', provides:[:html] do
