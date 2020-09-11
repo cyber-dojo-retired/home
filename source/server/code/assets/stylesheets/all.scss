@@ -160,7 +160,7 @@ $controls-height: 150px;
 
   .button
   {
-    &.regular, &.custom, &.donate
+    &.regular, &.custom, &.donate, &.ok
     {
            color: $darker-color;
       text-align: left;
@@ -169,7 +169,7 @@ $controls-height: 150px;
           margin: 7px;
     }
 
-    &.regular, &.custom { padding: { left: 15px; right: 15px; } }
+    &.regular, &.custom, &.ok { padding: { left: 15px; right: 15px; } }
     &.regular { font-size: 18px; }
     &.custom { font-size: 13px; }
 

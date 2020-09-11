@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-class Probe # k8s/curl probing + identity
+class Probe
 
   def initialize(externals)
     @externals = externals
   end
 
-  def alive?
+  def alive?(_params)
     true
   end
 
-  def ready?
-    [ @externals.saver ].all?(&:ready?)
+  def ready?(_params)
+    [ @externals.model ].all?(&:ready?)
   end
 
-  def sha
+  def sha(_params)
     ENV['SHA']
   end
 

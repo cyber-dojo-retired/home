@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'external_avatars'
 require_relative 'external_http'
-require_relative 'external_saver'
+require_relative 'external_model'
 
 class Externals
 
@@ -12,11 +12,11 @@ class Externals
     @avatars_http ||= ExternalHttp.new
   end
 
-  def saver
-    @saver ||= ExternalSaver.new(saver_http)
+  def model
+    @model ||= ExternalModel.new(model_http)
   end
-  def saver_http
-    @saver_http ||= ExternalHttp.new
+  def model_http
+    @model_http ||= ExternalHttp.new
   end
 
 end

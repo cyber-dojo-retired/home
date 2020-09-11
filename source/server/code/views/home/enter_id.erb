@@ -2,33 +2,36 @@
 'use strict';
 $(() => {
 
-  const inputId = $('input#id');
+  const idInput = $('input#id');
   const waitSpinner = $('#wait-spinner');
+  const okButton = $('.ok.button');
 
-  const inputIdHandler = () => {
-    const id = inputId.val();
-    inputId.removeClass('invalid');
+  const idInputChange = () => {
+    const id = idInput.val();
+    idInput.removeClass('invalid');
     if (id.length > 6) {
-      inputId.addClass('invalid');
+      idInput.addClass('invalid');
     }
     else if (id.length === 6) {
-      inputId.prop('disabled', true);
+      idInput.prop('disabled', true);
 
       waitSpinner.fadeIn('slow', () => {
-        //$.getJSON('/home/xxxx', { id:id }, idHandler)
-        // .always(() => {
-           waitSpinner.fadeOut('slow');
-           inputId.prop('disabled', false);
-         //});
+        $.getJSON(`/home/id_change?id=${id}`, (idValid) => {
+            okButton.prop('disabled', !idValid);
+         })
+         .always(() => {
+            waitSpinner.fadeOut('slow');
+            idInput.prop('disabled', false);
+          });
       });
     }
   };
 
-  const idHandler = (response) => {
-    //...
-  };
+  okButton.click(() => {
+    alert(`ok clicked disabled==${okButton.prop('disabled')}`);
+  });
 
-  cd.onlyBase58 = (element) => {
+  const onlyBase58 = (element) => {
     // Only accept base58 input.
     // Also accepts a Ctrl-V paste event which
     // will allow any chars to be entered.
@@ -50,11 +53,11 @@ $(() => {
     });
   };
 
-  cd.onlyBase58(inputId);
-  inputId.keyup(() => inputIdHandler())
+  onlyBase58(idInput);
+  idInput.keyup(() => idInputChange())
          .focus();
 
-  inputIdHandler();
+  idInputChange();
 
 });
 </script>
@@ -68,6 +71,7 @@ $(() => {
          id="id"
          value="<%= @id %>">
   </input>
+  <div class="ok button">ok</div>
   <img src="/images/rotate-cyber-dojo.gif"
        id="wait-spinner"
        style="display:none;">

@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 require_relative 'app_base'
 require_relative 'helpers/app_helpers'
+require_relative 'home'
+require_relative 'probe'
 
 class App < AppBase
 
   def initialize(externals)
     super(externals)
-    @externals = externals
   end
 
-  attr_reader :externals
+  # - - - - - - - - - - - - - - - - - - - - -
+
+  get_route(:alive?, Probe)
+  get_route(:ready?, Probe)
+  get_route(:sha,    Probe)
 
   # - - - - - - - - - - - - - - - - - - - - -
 
@@ -22,6 +27,8 @@ class App < AppBase
     end
   end
 
+  get_route(:id_change, Home)
+  
   # - - - - - - - - - - - - - - - - - - - - -
 
   get '/group', provides:[:html] do

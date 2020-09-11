@@ -3,7 +3,6 @@ require_relative 'silently'
 require 'sinatra/base'
 silently { require 'sinatra/contrib' } # N x "warning: method redefined"
 require_relative 'http_json_hash/service'
-require_relative 'probe'
 require 'json'
 require 'sprockets'
 require 'uglifier'
@@ -47,55 +46,21 @@ class AppBase < Sinatra::Base
     end
   end
 
-  private
+  # - - - - - - - - - - - - - - - - - - - - - -
 
-  def self.get_probe(name)
+  def self.get_route(name, klass)
     get "/#{name}", provides:[:json] do
-      result = instance_exec {
-        probe.public_send(name)
-      }
-      json({ name => result })
+      respond_to do |format|
+        format.json {
+          target = klass.new(@externals)
+          result = target.public_send(name, params)
+          json({ name => result })
+        }
+      end
     end
   end
 
-  def probe
-    Probe.new(@externals)
-  end
-
-  public
-  
-  get_probe(:alive?) # curl/k8s
-  get_probe(:ready?) # curl/k8s
-  get_probe(:sha)    # identity
-
-  # - - - - - - - - - - - - - - - - - - - - - -
-
-  def json_args
-    symbolized(json_payload)
-  end
-
-  # - - - - - - - - - - - - - - - - - - - - - -
-
-  def symbolized(h)
-    # named-args require symbolization
-    Hash[h.map{ |key,value| [key.to_sym, value] }]
-  end
-
-  def json_payload
-    json_hash_parse(request.body.read)
-  end
-
-  def json_hash_parse(body)
-    json = (body === '') ? {} : JSON.parse!(body)
-    unless json.instance_of?(Hash)
-      fail 'body is not JSON Hash'
-    end
-    json
-  rescue JSON::ParserError
-    fail 'body is not JSON'
-  end
-
-  # - - - - - - - - - - - - - - - - - - - - - -
+  private
 
   set :show_exceptions, false
 
