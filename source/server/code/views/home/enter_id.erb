@@ -14,7 +14,8 @@ $(() => {
     else if (id.length === 6) {
       idInput.prop('disabled', true);
       waitSpinner.fadeIn('slow', () => {
-        $.get(`/home/id_info?id=${encodeURIComponent(id)}`, (response) => {
+        const route = `/home/id_info?id=${encodeURIComponent(id)}`;
+        $.get(route, (response) => {
            if (response.id_info) {
              window.location.href = response.id_info;
            } else {

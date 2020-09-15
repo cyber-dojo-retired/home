@@ -95,10 +95,7 @@ exit_if_unclean()
 
   local -r line_count=$(echo -n "${server_log}" | grep --count '^')
   printf "Checking ${name} started cleanly..."
-  # 3 lines on Thin (Unicorn=6, Puma=6)
-  # Thin web server (v1.7.2 codename Bachmanity)
-  # Maximum connections set to 1024
-  # Listening on 0.0.0.0:4568, CTRL+C to stop
+  # Unicorn=6, Puma=6, Thin=3
   if [ "${line_count}" == '6' ]; then
     printf 'OK\n'
   else

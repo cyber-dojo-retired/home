@@ -1,4 +1,25 @@
+<script>
+'use strict';
+$(() => {
+
+  const groupId = "<%= @manifest['id'] %>";
+
+  $('.join.button').click(() => {
+    const json = JSON.stringify({"id":groupId});
+    $.post(`/home/join.json`, json, (response) => {
+      window.location = response.route;
+    });
+  });
+
+  $('.rejoin.button').click(() => {
+    window.location = `/home/rejoin?id=${encodeURIComponent(groupId)}`;
+  });
+
+});
+</script>
 
 <div id="group-page">
-Group <%= @manifest['id'] %>
+  Group <%= @manifest['id'] %>
+  <div class="join button">join</div>
+  <div class="rejoin button">rejoin</div>
 </div>

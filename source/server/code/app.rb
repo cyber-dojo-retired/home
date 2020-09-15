@@ -7,7 +7,7 @@ require_relative 'probe'
 class App < AppBase
 
   def initialize(externals)
-    super(@externals = externals)    
+    super(@externals = externals)
   end
 
   # - - - - - - - - - - - - - - - - - - - - -
@@ -34,18 +34,54 @@ class App < AppBase
   get '/group', provides:[:html] do
     respond_to do |format|
       format.html do
-        id = params['id']
-        @manifest = model.group_manifest(id)
+        group_id = params['id']
+        @manifest = model.group_manifest(group_id)
         erb :'group/show'
       end
     end
   end
 
+  post '/join.json', provides:[:json] do
+    respond_to do |format|
+      format.json do
+        group_id = json_body['id']
+        kata_id = model.group_join(group_id)
+        if kata_id.nil?
+          route = "/home/full?id=#{group_id}"
+        else
+          route = "/home/avatar?id=#{kata_id}"
+        end
+        json({"route":route})
+      end
+    end
+  end
+
+  get '/full', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        @group_id = params['id']
+        erb :'group/full'
+      end
+    end
+  end
+
+  get '/rejoin', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        group_id = params['id']
+        @avatars = model.group_avatars(group_id)
+        erb :'group/rejoin'
+      end
+    end
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - -
+
   get '/avatar', provides:[:html] do
     respond_to do |format|
       format.html do
-        id = params['id']
-        @manifest = model.kata_manifest(id)
+        kata_id = params['id']
+        @manifest = model.kata_manifest(kata_id)
         erb :'avatar/show'
       end
     end
@@ -54,8 +90,8 @@ class App < AppBase
   get '/individual', provides:[:html] do
     respond_to do |format|
       format.html do
-        id = params['id']
-        @manifest = model.kata_manifest(id)
+        kata_id = params['id']
+        @manifest = model.kata_manifest(kata_id)
         erb :'individual/show'
       end
     end
