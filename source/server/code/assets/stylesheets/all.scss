@@ -127,7 +127,7 @@ $controls-height: 150px;
     border: 1px solid darken(gray,20%);
     padding: 40px;
 
-    max-width: 593px;
+    max-width: 597px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
   }
@@ -138,7 +138,7 @@ $controls-height: 150px;
   {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
-    max-width: 672px;
+    max-width: 678px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
     img
@@ -162,6 +162,7 @@ $controls-height: 150px;
 .button
 {
   @include non-code-font();
+  display: table;
   &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.ok
   {
          color: $darker-color;
@@ -171,7 +172,11 @@ $controls-height: 150px;
         margin: 7px;
   }
 
-  &.regular, &.custom { padding: { left: 15px; right: 15px; } }
+  &.regular, &.custom
+  {
+    width: 178px;
+    padding: { left: 15px; right: 15px; }
+  }
   &.regular { font-size: 18px; }
   &.custom { font-size: 13px; }
 
