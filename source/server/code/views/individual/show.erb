@@ -1,4 +1,18 @@
+<script>
+'use strict';
+$(() => {
+
+  const kataId = "<%= @manifest['id'] %>";
+
+  $('.ok.button').click(() => {
+    window.open(`/kata/edit/${kataId}`);
+    window.location.href = '/home/index';
+  });
+
+});
+</script>
 
 <div id="individual-page">
 Individual <%= @manifest['id'] %>
+<div class="ok button">ok</div>
 </div>
