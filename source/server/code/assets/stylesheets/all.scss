@@ -155,31 +155,31 @@ $controls-height: 150px;
     div, table { @include centered(); }
     table { margin: { top:15px; bottom:15px; } }
   }
+}
 
-  //------------------------------------------
+//------------------------------------------
 
-  .button
+.button
+{
+  @include non-code-font();
+  &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.ok
   {
-    &.regular, &.custom, &.donate
-    {
-           color: $darker-color;
-      text-align: left;
-     line-height: 95%;
-         padding: 12px;
-          margin: 7px;
-    }
-
-    &.regular, &.custom { padding: { left: 15px; right: 15px; } }
-    &.regular { font-size: 18px; }
-    &.custom { font-size: 13px; }
-
-    &.donate
-    {
-      @include centered();
-      @include non-code-font();
-      font-size: 20px;
-      width: 125px;
-    }
+         color: $darker-color;
+    text-align: left;
+   line-height: 95%;
+       padding: 12px;
+        margin: 7px;
   }
 
+  &.regular, &.custom { padding: { left: 15px; right: 15px; } }
+  &.regular { font-size: 18px; }
+  &.custom { font-size: 13px; }
+
+  &.donate
+  {
+    @include centered();
+    @include non-code-font();
+    font-size: 20px;
+    width: 125px;
+  }
 }
