@@ -209,8 +209,8 @@ img.avatar
   &.small
   {
     @include rounded-corner(2px);
-      width: 37px;
-     height: 37px;
+      width: 45px;
+     height: 45px;
     display: block;
   }
   &.colour
