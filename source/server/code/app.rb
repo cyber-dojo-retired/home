@@ -85,6 +85,8 @@ class App < AppBase
       format.html do
         kata_id = params['id']
         @manifest = model.kata_manifest(kata_id)
+        @index = @manifest['group_index'].to_i
+        @name = avatars.names[@index]
         erb :'avatar/show'
       end
     end
