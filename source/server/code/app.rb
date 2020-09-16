@@ -59,7 +59,8 @@ class App < AppBase
   get '/full', provides:[:html] do
     respond_to do |format|
       format.html do
-        @group_id = params['id']
+        group_id = params['id']
+        @manifest = model.group_manifest(group_id)
         erb :'group/full'
       end
     end
@@ -69,6 +70,7 @@ class App < AppBase
     respond_to do |format|
       format.html do
         group_id = params['id']
+        @manifest = model.group_manifest(group_id)
         @avatars = model.group_avatars(group_id).to_h
         @avatars_names = avatars.names
         erb :'group/rejoin'
