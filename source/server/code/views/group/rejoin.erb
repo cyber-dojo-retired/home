@@ -1,3 +1,39 @@
+<script>
+'use strict';
+$(() => {
+
+  cd.rejoin = (kataId) => {
+    window.open(`/kata/edit/${kataId}`);
+    window.location = '/home/index';
+  };
+
+});
+</script>
 
 Rejoin
-<%= @avatars %>
+
+<div>
+  <table>
+    <% 8.times do |y| %>
+    <tr>
+      <% 8.times do |x| %>
+      <td>
+        <% index = y*8 + x %>
+        <% kata_id = @avatars[index] %>
+        <% avatar_name = @avatars_names[index] %>
+        <% if kata_id %>
+          <div data-tip="<%= avatar_name %>">
+            <img onclick='cd.rejoin("<%= kata_id %>");'
+                 src="/avatar/image/<%= index %>"
+                 class="small avatar colour"/>
+          </div>
+        <% else %>
+          <img src="/avatar/image/<%= index %>"
+               class="small grey avatar"/>
+        <% end %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>

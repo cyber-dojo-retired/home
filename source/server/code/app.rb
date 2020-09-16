@@ -69,7 +69,8 @@ class App < AppBase
     respond_to do |format|
       format.html do
         group_id = params['id']
-        @avatars = model.group_avatars(group_id)
+        @avatars = model.group_avatars(group_id).to_h
+        @avatars_names = avatars.names
         erb :'group/rejoin'
       end
     end
@@ -100,6 +101,10 @@ class App < AppBase
   helpers AppHelpers
 
   private
+
+  def avatars
+    @externals.avatars
+  end
 
   def model
     @externals.model
