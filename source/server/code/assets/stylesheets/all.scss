@@ -163,7 +163,7 @@ $controls-height: 150px;
 {
   @include non-code-font();
   display: table;
-  &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.ok
+  &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.dashboard, &.ok
   {
          color: $darker-color;
     text-align: left;
