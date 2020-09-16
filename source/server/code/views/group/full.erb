@@ -1,3 +1,23 @@
 
+<div id="group-full">
+
 Full!
 <%= @manifest['id'] %>
+
+<div>
+  <table>
+    <% 8.times do |y| %>
+    <tr>
+      <% 8.times do |x| %>
+      <td>
+        <% index = y*8 + x %>
+        <img src="/avatars/image/<%= index %>"
+             class="small avatar colour"/>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+</div>
