@@ -1,0 +1,149 @@
+
+$heading-height: 230px;
+$controls-height: 150px;
+
+#home-page
+{
+  @include non-code-font();
+
+  .heading, .controls
+  {
+    @include centered();
+    width: 100%;
+    position: fixed;
+    background: $darker-color;
+    z-index: 999;
+  }
+
+  .heading
+  {
+    top: 0px;
+    height: $heading-height;
+  }
+  .controls
+  {
+    top: $heading-height;
+    height: $controls-height;
+  }
+  .info
+  {
+    margin-top: $heading-height+$controls-height;
+  }
+
+  .heading
+  {
+    .logo
+    {
+      @include centered();
+      img
+      {
+          width: 90px;
+         height: 90px;
+        padding: { top: 16px; left: 5px; right: 8px; }
+      }
+      .cyber-dojo
+      {
+        font-size: 127px;
+            color: $text-color;
+      }
+    }
+
+    .a-place-to-practise-programming
+    {
+      font-size: 50px;
+          color: lighten($text-color, 5%);
+       position: relative;
+            top: -9px;
+    }
+  }
+
+  //------------------------------------------
+
+  .individual, .group, .enter-id
+  {
+    @include centered();
+    @include edged-panel();
+  }
+
+  .enter-id
+  {
+    vertical-align: top;
+    width: 187px;
+    height: 124px;
+    margin: { left:5px; right:5px; }
+    input
+    {
+      @include centered();
+      @include non-code-font();
+      @include rounded-corner(6px);
+      background: lighten($green, 20%);
+      color: $darker-color;
+      width: 151px;
+      font-size: 30px;
+      margin: { top: 11px; bottom:4px; }
+      padding-left: 5px;
+      text-align: left;
+      &.invalid { color: darken($red, 10%); }
+    }
+    .blurb
+    {
+      font-size: 14px;
+      text-align: center;
+      margin: { left:11px; right:11px; top:5px; }
+    }
+  }
+
+  .blurb
+  {
+    @include plaintext-font();
+    margin: { left:9px; top:5px; }
+    text-align: left;
+  }
+
+  //------------------------------------------
+
+  .license, .technology
+  {
+    @include centered();
+    @include plaintext-font();
+    font-size: 14px;
+    margin: { top: 25px; bottom: 25px; }
+  }
+
+  //------------------------------------------
+
+  .license
+  {
+    @include rounded-corner(5px);
+    border: 1px solid darken(gray,20%);
+    padding: 40px;
+
+    max-width: 597px;
+    background: lighten($darker-color, 6%);
+    padding: { top:25px; bottom:25px; }
+  }
+
+  //------------------------------------------
+
+  .technology
+  {
+    @include rounded-corner(5px);
+    border: 1px solid darken(gray,20%);
+    max-width: 678px;
+    background: lighten($darker-color, 6%);
+    padding: { top:25px; bottom:25px; }
+    img
+    {
+      background: lighten($darker-color, 10%);
+      @include rounded-corner(6px);
+       width: 74px;
+      height: 74px;
+      margin: { top:0px; bottom:0px; left:3px; right:3px; }
+      filter: grayscale(100%);
+    }
+    ul { list-style-type: none; }
+    .name { font-size:12px; }
+    div, table { @include centered(); }
+    table { margin: { top:15px; bottom:15px; } }
+  }
+}

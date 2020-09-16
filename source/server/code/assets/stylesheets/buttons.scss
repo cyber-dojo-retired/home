@@ -1,0 +1,30 @@
+
+.button
+{
+  @include non-code-font();
+  display: table;
+  &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.dashboard, &.ok
+  {
+         color: $darker-color;
+    text-align: left;
+   line-height: 95%;
+       padding: 12px;
+        margin: 7px;
+  }
+
+  &.regular, &.custom
+  {
+    width: 178px;
+    padding: { left: 15px; right: 15px; }
+  }
+  &.regular { font-size: 18px; }
+  &.custom { font-size: 13px; }
+
+  &.donate
+  {
+    @include centered();
+    @include non-code-font();
+    font-size: 20px;
+    width: 125px;
+  }
+}
