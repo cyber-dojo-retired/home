@@ -25,7 +25,7 @@ Rejoin
         <% kata_id = @avatars[index] %>
         <% avatar_name = @avatars_names[index] %>
         <% if kata_id %>
-          <div data-tip="<%= avatar_name %>">
+          <div data-tip="<%= avatar_name + ' : ' + kata_id %>">
             <img onclick='cd.rejoin("<%= kata_id %>");'
                  src="/avatars/image/<%= index %>"
                  class="small avatar colour"/>
