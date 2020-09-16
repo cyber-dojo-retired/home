@@ -2,6 +2,8 @@
 'use strict';
 $(() => {
 
+  cd.setupHoverTips($('[data-tip]'));
+
   cd.rejoin = (kataId) => {
     window.open(`/kata/edit/${kataId}`);
     window.location = '/home/index';
