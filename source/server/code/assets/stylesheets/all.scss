@@ -1,13 +1,13 @@
 
-@import "colour";
-@import "fonts";
-@import "rounded-corner";
-@import "edged-panel";
-@import "button";
-@import "body";
-@import "centered";
-@import "wait-spinner";
-@import "hover-tip";
+@import "lib/colour";
+@import "lib/fonts";
+@import "lib/rounded-corner";
+@import "lib/edged-panel";
+@import "lib/button";
+@import "lib/body";
+@import "lib/centered";
+@import "lib/wait-spinner";
+@import "lib/hover-tip";
 
 $heading-height: 230px;
 $controls-height: 150px;
