@@ -39,21 +39,21 @@ $controls-height: 165px;
       {
           width: 90px;
          height: 90px;
-        padding: { top: 16px; left: 5px; right: 8px; }
+        padding: { top: 16px; left: 0px; right: 8px; }
       }
       .cyber-dojo
       {
-        font-size: 116px;
+        font-size: 121px;
             color: $text-color;
       }
     }
 
     .a-place-to-practise-programming
     {
-      font-size: 46px;
+      font-size: 47px;
           color: lighten($text-color, 5%);
        position: relative;
-            top: -9px;
+            top: -12px;
     }
   }
 
