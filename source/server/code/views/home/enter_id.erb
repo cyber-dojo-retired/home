@@ -2,36 +2,53 @@
 'use strict';
 $(() => {
 
-  const idInput = $('input#id');
-  const waitSpinner = $('#wait-spinner');
+  const $idInput = $('input#id');
+  const $waitSpinner = $('#wait-spinner');
+  const $okButton = $('.ok.button');
+  let idType = 'nil';
+
+  $idInput.disable = () => $idInput.attr('disabled',  true);
+  $idInput.enable  = () => $idInput.attr('disabled', false);
+
+  $okButton.disable = () => $okButton.attr('disabled',  true);
+  $okButton.enable  = () => $okButton.attr('disabled', false);
 
   const idInputChange = () => {
-    const id = idInput.val();
-    idInput.removeClass('invalid');
-    if (id.length > 6) {
-      idInput.addClass('invalid');
+    const id = $idInput.val();
+    if (id.length < 6) {
+      $idInput.removeClass('invalid');
+      $okButton.disable();
+    }
+    else if (id.length > 6) {
+      $idInput.addClass('invalid');
+      $okButton.disable();
     }
     else if (id.length === 6) {
-      idInput.prop('disabled', true);
-      waitSpinner.fadeIn('slow', () => {
-        const route = `/home/id_info?id=${encodeURIComponent(id)}`;
+      $idInput.disable();
+      $waitSpinner.fadeIn('slow', () => {
+        const route = `/home/id_type?id=${encodeURIComponent(id)}`;
         $.get(route, (response) => {
-           if (response.id_info) {
-             window.location.href = response.id_info;
-           } else {
-             idInput.addClass('invalid');
-           }
-         })
-         .always(() => {
-            waitSpinner.fadeOut('slow');
-            idInput.prop('disabled', false);
-          });
+          idType = response.id_type;
+          $waitSpinner.fadeOut('slow');
+          if (idType) {
+            $idInput.removeClass('invalid');
+            $okButton.enable();
+          } else {
+            $idInput.addClass('invalid');
+            $okButton.disable();
+          }
+          $idInput.enable();
+        });
       });
     }
   };
 
-  idInput.keyup(() => idInputChange())
-         .focus();
+  $idInput.keyup(() => idInputChange()).focus();
+
+  $okButton.click(() => {
+    const id = $idInput.val();
+    window.location.href = `/home/${idType}?id=${encodeURIComponent(id)}`;
+  });
 
   idInputChange();
 
@@ -47,6 +64,9 @@ $(() => {
          id="id"
          value="<%= @id %>">
   </input>
+  <div class="ok button">
+    ok
+  </div>
   <img src="/images/rotate-cyber-dojo.gif"
        id="wait-spinner"
        style="display:none;">

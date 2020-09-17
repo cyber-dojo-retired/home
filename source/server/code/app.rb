@@ -27,7 +27,7 @@ class App < AppBase
     end
   end
 
-  get_delegate(:id_info, Home)
+  get_delegate(:id_type, Home)
 
   # - - - - - - - - - - - - - - - - - - - - -
 

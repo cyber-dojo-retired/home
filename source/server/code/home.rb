@@ -6,19 +6,19 @@ class Home
     @externals = externals
   end
 
-  def id_info(args)
+  def id_type(args)
     id = args['id']
     if model.group_exists?(id)
-      "/home/group?id=#{id}"
+      'group'
     elsif model.kata_exists?(id)
       manifest = model.kata_manifest(id)
       if manifest.has_key?('group_id')
-        "/home/avatar?id=#{id}"
+        'avatar'
       else
-        "/home/individual?id=#{id}"
+        'individual'
       end
     else
-      false
+      nil
     end
   end
 
