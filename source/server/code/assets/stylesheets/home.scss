@@ -111,6 +111,30 @@ $controls-height: 165px;
 
   //------------------------------------------
 
+  .question
+  {
+    text-align: left;
+    &::before { content: "Q: "; font-weight: bold; }
+    margin: { top:0px; bottom:10px; }
+  }
+
+  .answer
+  {
+    text-align: left;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    margin: { top:0px; bottom:0px; }
+  }
+
+  .divider
+  {
+    margin: { top:0px; bottom:20px; }
+    width:600px;
+    border-bottom: 1px dashed $darker-color;
+  }
+
+  //------------------------------------------
+
   .license, .technology
   {
     @include centered();
