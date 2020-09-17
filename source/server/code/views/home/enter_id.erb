@@ -60,13 +60,23 @@ $(() => {
     to access any group or individual exercise
     enter its six character ID
   </div>
-  <input type="text"
-         id="id"
-         value="<%= @id %>">
-  </input>
-  <div class="ok button">
-    ok
-  </div>
+
+  <table>
+    <tr>
+      <td>
+        <input type="text"
+               id="id"
+               value="<%= @id %>">
+        </input>
+      </td>
+      <td>
+        <div class="ok button">
+          ok
+        </div>
+      </td>
+    </tr>
+  </table>
+
   <img src="/images/rotate-cyber-dojo.gif"
        id="wait-spinner"
        style="display:none;">

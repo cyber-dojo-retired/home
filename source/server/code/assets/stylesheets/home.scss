@@ -1,6 +1,6 @@
 
-$heading-height: 230px;
-$controls-height: 150px;
+$heading-height: 220px;
+$controls-height: 165px;
 
 #home-page
 {
@@ -43,14 +43,14 @@ $controls-height: 150px;
       }
       .cyber-dojo
       {
-        font-size: 127px;
+        font-size: 116px;
             color: $text-color;
       }
     }
 
     .a-place-to-practise-programming
     {
-      font-size: 50px;
+      font-size: 46px;
           color: lighten($text-color, 5%);
        position: relative;
             top: -9px;
@@ -63,13 +63,21 @@ $controls-height: 150px;
   {
     @include centered();
     @include edged-panel();
+    padding: 10px;
+    margin: 0px;
+  }
+  .create { padding: { top: 7px; right: 7px; } }
+  .create label
+  {
+    @include plaintext-font();
+    font-size: 18px;
   }
 
   .enter-id
   {
     vertical-align: top;
-    width: 187px;
-    height: 124px;
+    width: 260px;
+    height: 131px;
     margin: { left:5px; right:5px; }
     input
     {
@@ -78,18 +86,19 @@ $controls-height: 150px;
       @include rounded-corner(6px);
       background: lighten($green, 20%);
       color: $darker-color;
-      width: 151px;
-      font-size: 30px;
-      margin: { top: 11px; bottom:4px; }
+      width: 185px;
+      font-size: 36px;
+      margin: { left: 3px; top: 0px; bottom:4px; }
       padding-left: 5px;
       text-align: left;
+      position: relative; top: 10px;
       &.invalid { color: darken($red, 10%); }
     }
     .blurb
     {
-      font-size: 14px;
+      font-size: 18px;
       text-align: center;
-      margin: { left:11px; right:11px; top:5px; }
+      margin: { left:11px; right:11px; top:-3px; }
     }
   }
 
@@ -118,9 +127,12 @@ $controls-height: 150px;
     border: 1px solid darken(gray,20%);
     padding: 40px;
 
-    max-width: 597px;
+    max-width: 560px;
+    position: relative;
+    left: -2px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
+    margin: { bottom:0px; }
   }
 
   //------------------------------------------
@@ -129,9 +141,12 @@ $controls-height: 150px;
   {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
-    max-width: 678px;
+    max-width: 640px;
+    position: relative;
+    left: -2px;
     background: lighten($darker-color, 6%);
     padding: { top:25px; bottom:25px; }
+    margin: { top:13px; }
     img
     {
       background: lighten($darker-color, 10%);
