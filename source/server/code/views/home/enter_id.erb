@@ -7,11 +7,13 @@ $(() => {
   const $okButton = $('.ok.button');
   let idType = undefined;
 
-  $idInput.disable = () => $idInput.attr('disabled',  true);
-  $idInput.enable  = () => $idInput.attr('disabled', false);
+  const addEnableDisable = ($element) => {
+    $element.disable = () => $element.attr('disabled',  true);
+    $element.enable  = () => $element.attr('disabled', false);
+  };
 
-  $okButton.disable = () => $okButton.attr('disabled',  true);
-  $okButton.enable  = () => $okButton.attr('disabled', false);
+  addEnableDisable($idInput);
+  addEnableDisable($okButton);
 
   const idInputChange = () => {
     const id = $idInput.val();
@@ -58,26 +60,14 @@ $(() => {
 
 <div class="enter-id">
   <div class="blurb">
-    to access any group or individual exercise
-    enter its six character ID
+    to access any group or individual exercise enter its six character ID
   </div>
-
   <table>
     <tr>
-      <td>
-        <input type="text"
-               id="id"
-               value="<%= @id %>">
-        </input>
-      </td>
-      <td>
-        <div class="ok button">
-          ok
-        </div>
-      </td>
+      <td><input type="text" id="id" value="<%= @id %>"></input></td>
+      <td><div class="ok button">ok</div></td>
     </tr>
   </table>
-
   <img src="/images/rotate-cyber-dojo.gif"
        id="wait-spinner"
        style="display:none;">
