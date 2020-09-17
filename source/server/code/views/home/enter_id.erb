@@ -25,11 +25,11 @@ $(() => {
     }
     else if (id.length === 6) {
       $idInput.disable();
-      $waitSpinner.fadeIn('slow', () => {
+      $waitSpinner.fadeIn('fast', () => {
         const route = `/home/id_type?id=${encodeURIComponent(id)}`;
         $.get(route, (response) => {
           idType = response.id_type;
-          $waitSpinner.fadeOut('slow');
+          $waitSpinner.fadeOut('fast');
           if (idType) {
             $idInput.removeClass('invalid');
             $okButton.enable();
