@@ -115,38 +115,21 @@ $controls-height: 165px;
   {
     @include centered();
     @include plaintext-font();
-    font-size: 14px;
-    margin: { top: 25px; bottom: 25px; }
-  }
-
-  //------------------------------------------
-
-  .license
-  {
     @include rounded-corner(5px);
     border: 1px solid darken(gray,20%);
-    padding: 40px;
-
-    max-width: 560px;
+    font-size: 15px;
     position: relative;
     left: -2px;
     background: lighten($darker-color, 6%);
-    padding: { top:25px; bottom:25px; }
-    margin: { bottom:0px; }
+    padding: 20px;
+    max-width: 600px;
   }
 
-  //------------------------------------------
+  .license { margin-bottom: 0px; }
 
   .technology
   {
-    @include rounded-corner(5px);
-    border: 1px solid darken(gray,20%);
-    max-width: 640px;
-    position: relative;
-    left: -2px;
-    background: lighten($darker-color, 6%);
-    padding: { top:25px; bottom:25px; }
-    margin: { top:13px; }
+    margin-top: 13px;
     img
     {
       background: lighten($darker-color, 10%);
