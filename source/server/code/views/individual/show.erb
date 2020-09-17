@@ -13,6 +13,12 @@ $(() => {
 </script>
 
 <div id="individual-page">
-Individual <%= @manifest['id'] %><br/>
+Individual-Id <%= @manifest['id'] %><br/>
+Name <%= @name %><br/>
+Display-Name <%= @manifest['display_name'] %><br/>
+<% if @manifest.has_key?('exercise') %>
+Exercise <%= @manifest['exercise'] %><br/>
+<% end %>
+Image <%= @manifest['image_name'] %><br/>
 <div class="ok button">ok</div>
 </div>

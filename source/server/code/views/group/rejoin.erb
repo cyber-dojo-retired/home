@@ -4,10 +4,7 @@ $(() => {
 
   cd.setupHoverTips($('[data-tip]'));
 
-  cd.rejoin = (kataId) => {
-    window.open(`/kata/edit/${kataId}`);
-    window.location = '/home/index';
-  };
+  cd.rejoin = (kataId) => window.location = `/home/avatar?id=${kataId}`;
 
 });
 </script>

@@ -23,8 +23,15 @@ $(() => {
 </script>
 
 <div id="group-page">
+
   <img src="/avatars/image/all" class="avatars"/><br/>
+
   Group <%= @manifest['id'] %><br/>
+  Display-Name <%= @manifest['display_name'] %><br/>  
+  <% if @manifest.has_key?('exercise') %>
+    Exercise <%= @manifest['exercise'] %><br/>
+  <% end %>
+
   <div class="join button">join</div>
   <div class="rejoin button">rejoin</div>
   <div class="dashboard button">dashboard</div>
