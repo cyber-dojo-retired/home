@@ -59,7 +59,7 @@ $controls-height: 150px;
 
   //------------------------------------------
 
-  .individual, .group, .enter-id
+  .create, .enter-id
   {
     @include centered();
     @include edged-panel();

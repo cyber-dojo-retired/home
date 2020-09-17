@@ -1,0 +1,37 @@
+<script>
+'use strict';
+$(() => {
+
+  const $create = $('.create');
+
+  const groupChecked = () => $('#group').is(':checked');
+
+  $('.regular.button', $create).click(() => {
+    const path = groupChecked ? 'group_exercise_choose' : 'kata_exercise_choose';
+    window.location = `/creator/${path}`;
+  });
+
+  $('.custom.button',  $create).click(() => {
+    const path = groupChecked ? 'group_custom_choose' : 'kata_custom_choose';
+    window.location = `/creator/${path}`;
+  });
+
+  $('input#group', $create).prop('checked', true);
+
+});
+</script>
+
+<div class="create">
+
+  <input type="radio" id="group" name="count" value="group">
+  <label for="group">we're in a group</label><br/>
+  <input type="radio" id="individual" name="count" value="individual">
+  <label for="individual">i'm on my own</label>
+
+  <div class="regular button">
+    create&nbsp;a&nbsp;new&nbsp;exercise
+  </div>
+  <div class="custom button">
+    create&nbsp;a&nbsp;new&nbsp;custom&nbsp;exercise
+  </div>
+</div>
