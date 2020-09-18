@@ -13,14 +13,26 @@ $(() => {
 </script>
 
 <div id="avatar-page">
+
 <img src="/avatars/image/<%= @index %>" class="large avatar"/><br/>
-Group-Id <%= @manifest['group_id'] %><br/>
-Individual-Id <%= @manifest['id'] %><br/>
-Avatar <%= @name %><br/>
-Display-Name <%= @manifest['display_name'] %><br/>
-<% if @manifest.has_key?('exercise') %>
-  Exercise <%= @manifest['exercise'] %><br/>
-<% end %>
-Image <%= @manifest['image_name'] %><br/>
+
+Group-Id: <%= @manifest['group_id'] %><br/>
+
+Individual-Id: <%= @manifest['id'] %><br/>
+
+Avatar: <%= @name %><br/>
+
+Exercise:
+<%
+  exercise_name = @manifest['display_name']
+  if @manifest.has_key?('exercise')
+    exercise_name += ", " + @manifest['exercise']
+  end
+%>
+<%= exercise_name %><br/>
+
+Image: <%= @manifest['image_name'] %><br/>
+
 <div class="ok button">ok</div>
+
 </div>
