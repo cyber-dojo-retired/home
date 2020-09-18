@@ -133,6 +133,15 @@ $controls-height: 165px;
     border-bottom: 1px dashed $darker-color;
   }
 
+  form#donate
+  {
+    display:inline;
+    position:relative;
+    top:3px;
+    cursor:pointer;
+    input[type=image] { width:52px; height:15px; }
+  }
+
   //------------------------------------------
 
   .license, .technology
@@ -147,13 +156,11 @@ $controls-height: 165px;
     background: lighten($darker-color, 6%);
     padding: 20px;
     max-width: 600px;
+    margin: { top:7px; bottom: 12px; }
   }
-
-  .license { margin-bottom: 0px; }
 
   .technology
   {
-    margin-top: 13px;
     img
     {
       background: lighten($darker-color, 10%);
@@ -166,6 +173,6 @@ $controls-height: 165px;
     ul { list-style-type: none; }
     .name { font-size:12px; }
     div, table { @include centered(); }
-    table { margin: { top:15px; bottom:15px; } }
+    table { margin: { top:12px; bottom:12px; } }
   }
 }
