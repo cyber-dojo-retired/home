@@ -3,14 +3,11 @@
 {
   @include non-code-font();
   display: table;
-  &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.dashboard, &.ok
-  {
-         color:$darker-color;
-    text-align:left;
-   line-height:95%;
-       padding:9px;
-        margin:7px;
-  }
+  color:$darker-color;
+  text-align:left;
+  line-height:95%;
+  padding:9px;
+  margin:7px;
 
   &.regular, &.custom
   {
