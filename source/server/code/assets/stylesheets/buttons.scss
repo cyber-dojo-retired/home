@@ -5,34 +5,37 @@
   display: table;
   &.regular, &.custom, &.donate, &group, &.join, &.rejoin, &.dashboard, &.ok
   {
-         color: $darker-color;
-    text-align: left;
-   line-height: 95%;
-       padding: 9px;
-        margin: 7px;
+         color:$darker-color;
+    text-align:left;
+   line-height:95%;
+       padding:9px;
+        margin:7px;
   }
 
   &.regular, &.custom
   {
-    width: 288px;
-    padding: { left: 15px; right: 15px; }
+    width:288px;
+    padding: { left:15px; right:15px; }
   }
-  &.regular { font-size: 32px; }
-  &.custom { font-size: 23px; }
+  &.regular { font-size:32px; }
+  &.custom { font-size:23px; }
 
   &.donate
   {
     @include centered();
     @include non-code-font();
-    font-size: 20px;
-    width: 125px;
+    font-size:20px;
+    width:125px;
   }
+
+  &.join { font-size:32px; width:190px; }
+  &.rejoin, &.dashboard { font-size:23px; width:190px; }
 }
 
 .enter-id .ok.button
 {
-  font-size: 23px;
-  padding: 8px;
-  position: relative;
-  top: 9px;
+  font-size:23px;
+  padding:8px;
+  position:relative;
+  top:9px;
 }
