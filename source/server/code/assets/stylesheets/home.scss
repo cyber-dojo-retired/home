@@ -1,6 +1,6 @@
 
-$heading-height: 220px;
-$controls-height: 165px;
+$heading-height: 176px;
+$controls-height: 167px;
 
 #home-page
 {
@@ -37,23 +37,26 @@ $controls-height: 165px;
       @include centered();
       img
       {
-          width: 90px;
-         height: 90px;
+          width: 140px;
+         height: 140px;
         padding: { top: 16px; left: 0px; right: 8px; }
       }
       .cyber-dojo
       {
-        font-size: 121px;
-            color: $text-color;
+        font-size: 110px;
+        position: relative;
+        top: -17px;
+        color: $text-color;
       }
     }
 
     .a-place-to-practise-programming
     {
-      font-size: 47px;
-          color: lighten($text-color, 5%);
-       position: relative;
-            top: -12px;
+      font-size: 38px;
+      position: relative;
+      top: -48px;
+      left: 65px;
+      color: lighten($text-color, 5%);
     }
   }
 
@@ -66,7 +69,7 @@ $controls-height: 165px;
     padding: 10px;
     margin: 0px;
   }
-  .create { padding: { top: 7px; right: 7px; } }
+  .create { padding: { top: 13px; right: 7px; } }
   .create label
   {
     @include plaintext-font();
@@ -77,7 +80,7 @@ $controls-height: 165px;
   {
     vertical-align: top;
     width: 260px;
-    height: 131px;
+    height: 137px;
     margin: { left:5px; right:5px; }
     input
     {
@@ -88,7 +91,7 @@ $controls-height: 165px;
       color: $darker-color;
       width: 185px;
       font-size: 36px;
-      margin: { left: 3px; top: 0px; bottom:4px; }
+      margin: { left: 3px; bottom:4px; }
       padding-left: 5px;
       text-align: left;
       position: relative; top: 10px;
@@ -98,7 +101,7 @@ $controls-height: 165px;
     {
       font-size: 18px;
       text-align: center;
-      margin: { left:11px; right:11px; top:-3px; }
+      margin: { left:11px; right:11px; top:2px; }
     }
   }
 
@@ -111,28 +114,6 @@ $controls-height: 165px;
 
   //------------------------------------------
 
-  .question
-  {
-    text-align: left;
-    &::before { content: "Q: "; font-weight: bold; }
-    margin: { top:0px; bottom:10px; }
-  }
-
-  .answer
-  {
-    text-align: left;
-    margin-left: 20px;
-    padding-bottom: 20px;
-    margin: { top:0px; bottom:0px; }
-  }
-
-  .divider
-  {
-    margin: { top:0px; bottom:20px; }
-    width:600px;
-    border-bottom: 1px dashed $darker-color;
-  }
-
   form#donate
   {
     display:inline;
@@ -144,7 +125,7 @@ $controls-height: 165px;
 
   //------------------------------------------
 
-  .license, .technology
+  .questions
   {
     @include centered();
     @include plaintext-font();
@@ -152,15 +133,11 @@ $controls-height: 165px;
     border: 1px solid darken(gray,20%);
     font-size: 15px;
     position: relative;
-    left: -2px;
+    left: -3px;
     background: lighten($darker-color, 6%);
     padding: 20px;
     max-width: 600px;
     margin: { top:7px; bottom: 12px; }
-  }
-
-  .technology
-  {
     img
     {
       background: lighten($darker-color, 10%);
@@ -170,9 +147,33 @@ $controls-height: 165px;
       margin: { top:0px; bottom:0px; left:3px; right:3px; }
       filter: grayscale(100%);
     }
-    ul { list-style-type: none; }
-    .name { font-size:12px; }
-    div, table { @include centered(); }
+    .name { font-size:12px; text-align: center; }
     table { margin: { top:12px; bottom:12px; } }
   }
+  .question, .answer
+  {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .question
+  {
+    &::before { content: "Q: "; font-weight: bold; }
+    margin: { top:0px; bottom:8px; }
+  }
+
+  .answer
+  {
+    margin-left: 30px;
+    padding-bottom: 13px;
+    margin: { top:0px; bottom:0px; }
+  }
+
+  .divider
+  {
+    margin: { top:0px; bottom:13px; }
+    width:600px;
+    border-bottom: 1px dashed lighten($darker-color, 25%);
+  }
+
 }
