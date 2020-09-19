@@ -12,26 +12,30 @@ $(() => {
 });
 </script>
 
+<%
+  group_id = @manifest['group_id']
+  individual_id = @manifest['id']
+  exercise_name = @manifest['display_name']
+  if @manifest.has_key?('exercise')
+    exercise_name += ", " + @manifest['exercise']
+  end
+%>
+
 <div id="avatar-page">
 
   we're in a group
   <br/>
-  
+
   <img class="large avatar" src="/avatars/image/<%= @index %>"/>
   <br/>
 
-  <div class="individual-id"><%= @manifest['id'] %></div>
+  <div class="individual-id"><%= individual_id %></div>
 
-  <%
-    exercise_name = @manifest['display_name']
-    if @manifest.has_key?('exercise')
-      exercise_name += ", " + @manifest['exercise']
-    end
-  %>
+  <div class="phonetic-id"><%= phonetic(individual_id) %></div>
+
   <%= exercise_name %>
   <br/>
 
-  <% group_id = @manifest['group_id'] %>
   you are the <%= @name %> in group <a href="/home/group?id=<%= group_id %>"><%= group_id %></a>
   <br/>
 

@@ -22,6 +22,14 @@ $(() => {
 });
 </script>
 
+<%
+  group_id = @manifest['id']
+  exercise_name = @manifest['display_name']
+  if @manifest.has_key?('exercise')
+    exercise_name += ", " + @manifest['exercise']
+  end
+%>
+
 <div id="group-page">
 
   we're in a group
@@ -30,14 +38,10 @@ $(() => {
   <img src="/avatars/image/all" class="avatars"/>
   <br/>
 
-  <div class="group-id"><%= @manifest['id'] %></div>
+  <div class="group-id"><%= group_id %></div>
 
-  <%
-    exercise_name = @manifest['display_name']
-    if @manifest.has_key?('exercise')
-      exercise_name += ", " + @manifest['exercise']
-    end
-  %>
+  <div class="phonetic-id"><%= phonetic(group_id) %></div>
+
   <%= exercise_name %>
   <br/>
 

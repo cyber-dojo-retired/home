@@ -1,7 +1,10 @@
-#require_relative 'diff_avatar_image'
+# frozen_string_literal: true
+require_relative 'phonetic'
 
 module AppHelpers
 
-  #core, eg groups,kata
+  def phonetic(id)
+    Phonetic.spelling(id).join('-')
+  end
 
 end

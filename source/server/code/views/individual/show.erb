@@ -12,19 +12,23 @@ $(() => {
 });
 </script>
 
+<%
+  individual_id = @manifest['id']
+  exercise_name = @manifest['display_name']
+  if @manifest.has_key?('exercise')
+    exercise_name += ", " + @manifest['exercise']
+  end
+%>
+
 <div id="individual-page">
 
   i'm on my own
   <br/>
-  
-  <div class="individual-id"><%= @manifest['id'] %></div>
 
-  <%
-    exercise_name = @manifest['display_name']
-    if @manifest.has_key?('exercise')
-      exercise_name += ", " + @manifest['exercise']
-    end
-  %>
+  <div class="individual-id"><%= individual_id %></div>
+
+  <div class="phonetic-id"><%= phonetic(individual_id) %></div>
+
   <%= exercise_name %>
   <br/>
 
