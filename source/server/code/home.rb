@@ -11,12 +11,7 @@ class Home
     if model.group_exists?(id)
       'group'
     elsif model.kata_exists?(id)
-      manifest = model.kata_manifest(id)
-      if manifest.has_key?('group_id')
-        'avatar'
-      else
-        'individual'
-      end
+      'individual'
     else
       nil
     end

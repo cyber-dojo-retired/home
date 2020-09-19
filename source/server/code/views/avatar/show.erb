@@ -23,20 +23,27 @@ $(() => {
 
 <div id="avatar-page">
 
-  we're in a group
-  <br/>
+  <table>
+    <% 2.times do %>
+    <tr>
+      <% 2.times do %>
+      <td>
+        <img class="large avatar" src="/avatars/image/<%= @index %>"/>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
 
-  <img class="large avatar" src="/avatars/image/<%= @index %>"/>
-  <br/>
-
-  <div class="individual-id"><%= individual_id %></div>
-
-  <div class="phonetic-id"><%= phonetic(individual_id) %></div>
+  <div class="group-id"><%= group_id %></div>
 
   <%= exercise_name %>
   <br/>
 
-  you are the <%= @name %> in group <a href="/home/group?id=<%= group_id %>"><%= group_id %></a>
+  your individual id is <%= individual_id %>
+  <br/>
+
+  you are the <%= @name %>
   <br/>
 
   <div class="ok button">ok</div>

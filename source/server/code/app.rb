@@ -92,16 +92,6 @@ class App < AppBase
     end
   end
 
-  get '/individual', provides:[:html] do
-    respond_to do |format|
-      format.html do
-        kata_id = params['id']
-        @manifest = model.kata_manifest(kata_id)
-        erb :'individual/show'
-      end
-    end
-  end
-
   helpers AppHelpers
 
   private

@@ -48,9 +48,13 @@ $(() => {
   $idInput.keyup(() => idInputChange()).focus();
 
   $okButton.click(() => {
-    if (!idType) { return; }
-    const id = $idInput.val();
-    window.location.href = `/home/${idType}?id=${encodeURIComponent(id)}`;
+    const id = encodeURIComponent($idInput.val());
+    if (idType === 'group') {
+      window.location = `/home/group?id=${id}`;
+    } else if (idType === 'individual') {
+      window.location = '/home/index';
+      window.open(`/kata/edit/${id}`);
+    }
   });
 
   idInputChange();
