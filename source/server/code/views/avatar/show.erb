@@ -14,25 +14,27 @@ $(() => {
 
 <div id="avatar-page">
 
-<img src="/avatars/image/<%= @index %>" class="large avatar"/><br/>
+  we're in a group
+  <br/>
+  
+  <img class="large avatar" src="/avatars/image/<%= @index %>"/>
+  <br/>
 
-Group-Id: <%= @manifest['group_id'] %><br/>
+  <div class="individual-id"><%= @manifest['id'] %></div>
 
-Individual-Id: <%= @manifest['id'] %><br/>
+  <%
+    exercise_name = @manifest['display_name']
+    if @manifest.has_key?('exercise')
+      exercise_name += ", " + @manifest['exercise']
+    end
+  %>
+  <%= exercise_name %>
+  <br/>
 
-Avatar: <%= @name %><br/>
+  <% group_id = @manifest['group_id'] %>
+  you are the <%= @name %> in group <a href="/home/group?id=<%= group_id %>"><%= group_id %></a>
+  <br/>
 
-Exercise:
-<%
-  exercise_name = @manifest['display_name']
-  if @manifest.has_key?('exercise')
-    exercise_name += ", " + @manifest['exercise']
-  end
-%>
-<%= exercise_name %><br/>
-
-Image: <%= @manifest['image_name'] %><br/>
-
-<div class="ok button">ok</div>
+  <div class="ok button">ok</div>
 
 </div>

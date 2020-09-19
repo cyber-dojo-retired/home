@@ -1,34 +1,33 @@
 
-[data-cursor=pointer] { cursor: pointer; }
+[data-cursor=pointer] { cursor:pointer; }
 
-img.avatars { width: 300px; height: 300px; }
+img.avatars, img.avatar
+{
+  width:300px;
+  height:300px;
+}
 
 img.avatar
 {
   &.large
   {
     @include rounded-corner(6px);
-    display: inline-block;
-      width: 219px;
-     height: 219px;
-     margin: { right: 5px; }
+    display:inline-block;
+    margin:{ right:5px; }
   }
   &.small
   {
     @include rounded-corner(2px);
-      width: 45px;
-     height: 45px;
-    display: block;
-  }
-  &.colour
-  {
-    cursor: pointer;
+    width:45px;
+    height:45px;
+    display:block;
   }
   &.grey
   {
-    filter: grayscale(100%);
-    opacity: 0.15;
+    filter:grayscale(100%);
+    opacity:0.15;
   }
+  &.colour { cursor:pointer; }
 }
 
 #group-full .colour { cursor:default }

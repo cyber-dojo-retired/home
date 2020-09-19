@@ -24,20 +24,22 @@ $(() => {
 
 <div id="group-page">
 
+  we're in a group
+  <br/>
+
+  <img src="/avatars/image/all" class="avatars"/>
+  <br/>
+
   <div class="group-id"><%= @manifest['id'] %></div>
 
-  <img src="/avatars/image/all" class="avatars"/><br/>
-
-  Exercise:
   <%
     exercise_name = @manifest['display_name']
     if @manifest.has_key?('exercise')
       exercise_name += ", " + @manifest['exercise']
     end
   %>
-  <%= exercise_name %><br/>
-
-  Image: <%= @manifest['image_name'] %><br/>
+  <%= exercise_name %>
+  <br/>
 
   <div class="join button">join it</div>
   <div class="rejoin button">rejoin it</div>

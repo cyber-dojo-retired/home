@@ -150,6 +150,7 @@ $controls-height: 167px;
     .name { font-size:12px; text-align: center; }
     table { margin: { top:12px; bottom:12px; } }
   }
+
   .question, .answer
   {
     font-size: 14px;
@@ -175,11 +176,10 @@ $controls-height: 167px;
     width:600px;
     border-bottom: 1px dashed lighten($darker-color, 25%);
   }
-
 }
 
-.group-id
+.group-id, .individual-id
 {
-  @include non-code-font();  
-  font-size:40px;
+  @include non-code-font();
+  font-size:90px;
 }

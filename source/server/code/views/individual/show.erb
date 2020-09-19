@@ -14,21 +14,20 @@ $(() => {
 
 <div id="individual-page">
 
-Individual-Id: <%= @manifest['id'] %><br/>
+  i'm on my own
+  <br/>
+  
+  <div class="individual-id"><%= @manifest['id'] %></div>
 
-Name: <%= @name %><br/>
+  <%
+    exercise_name = @manifest['display_name']
+    if @manifest.has_key?('exercise')
+      exercise_name += ", " + @manifest['exercise']
+    end
+  %>
+  <%= exercise_name %>
+  <br/>
 
-Exercise:
-<%
-  exercise_name = @manifest['display_name']
-  if @manifest.has_key?('exercise')
-    exercise_name += ", " + @manifest['exercise']
-  end
-%>
-<%= exercise_name %><br/>
-
-Image: <%= @manifest['image_name'] %><br/>
-
-<div class="ok button">ok</div>
+  <div class="ok button">ok</div>
 
 </div>
