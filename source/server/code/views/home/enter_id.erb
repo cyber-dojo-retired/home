@@ -5,6 +5,7 @@ $(() => {
   const $idInput = $('input#id');
   const $waitSpinner = $('#wait-spinner');
   const $okButton = $('.ok.button');
+  let id = $idInput.val();
   let idType = undefined;
 
   const addEnableDisable = ($element) => {
@@ -15,23 +16,23 @@ $(() => {
   addEnableDisable($idInput);
   addEnableDisable($okButton);
 
-  const idInputChange = () => {
-    const id = $idInput.val();
+  const setupOkButton = () => {
+    id = $idInput.val();
     if (id.length < 6) {
       $idInput.removeClass('invalid');
       $okButton.disable();
+      return;
     }
     else if (id.length > 6) {
       $idInput.addClass('invalid');
       $okButton.disable();
+      return;
     }
-    else if (id.length === 6) {
-      $idInput.disable();
-      $waitSpinner.fadeIn('fast', () => {
-        const route = `/home/id_type?id=${encodeURIComponent(id)}`;
-        $.get(route, (response) => {
-          idType = response.id_type;
-          $waitSpinner.fadeOut('fast');
+    $waitSpinner.fadeIn('fast', () => {
+      const route = `/home/id_type?id=${encodeURIComponent(id)}`;
+      $.get(route, (response) => {
+        idType = response.id_type;
+        $waitSpinner.fadeOut('fast', () => {
           if (idType) {
             $idInput.removeClass('invalid');
             $okButton.enable();
@@ -39,25 +40,32 @@ $(() => {
             $idInput.addClass('invalid');
             $okButton.disable();
           }
-          $idInput.enable();
         });
       });
+    });
+  };
+
+  const idInputChange = () => {
+    if ($idInput.val() === id) {
+      return;
+    } else {
+      setupOkButton();
     }
   };
 
   $idInput.keyup(() => idInputChange()).focus();
 
   $okButton.click(() => {
-    const id = encodeURIComponent($idInput.val());
+    const urlId = encodeURIComponent(id);
     if (idType === 'group') {
-      window.location = `/home/group?id=${id}`;
+      window.location = `/home/group?id=${urlId}`;
     } else if (idType === 'individual') {
-      window.location = `/home/index?id=${id}`;
-      window.open(`/kata/edit/${id}`);
+      window.location = `/home/index?id=${urlId}`;
+      window.open(`/kata/edit/${urlId}`);
     }
   });
 
-  idInputChange();
+  setupOkButton();
 
 });
 </script>
