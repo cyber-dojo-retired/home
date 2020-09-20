@@ -27,9 +27,9 @@ img.avatar
   &.grey
   {
     filter:grayscale(100%);
-    opacity:1.0;
+    opacity:0.2;
   }
   &.colour { cursor:pointer; }
 }
 
-#group-full .colour { cursor:default }
+#full-page .colour { cursor:default }

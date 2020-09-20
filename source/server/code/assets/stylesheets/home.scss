@@ -10,8 +10,19 @@ table#background
   {
     width:640px;
     height:640px;
-    opacity:0.2;
+    opacity:0.1;
     filter: grayscale(100%);
+  }
+}
+
+#group-page .box, #rejoin-page .box, #avatar-page .box, #full-page .box
+{
+  margin-top:15px;
+  table
+  {
+    @include edged-panel();
+    background: lighten($darker-color, 10%);
+    padding:15px;
   }
 }
 

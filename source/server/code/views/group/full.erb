@@ -14,24 +14,13 @@
     <table>
       <tr>
         <td>
-          <table>
-            <% 8.times do |y| %>
-            <tr>
-              <% 8.times do |x| %>
-              <td>
-                <% index = y*8 + x %>
-                <img src="/avatars/image/<%= index %>"
-                     class="small avatar colour"/>
-              </td>
-              <% end %>
-            </tr>
-            <% end %>
-          </table>
+          <img src="/avatars/image/all" class="avatars"/>
         </td>
         <td>
           Sorry. Full!<br/>
           <div class="group-id"><%= group_id %></div>
-          <%= exercise_name %>
+          <%= exercise_name %><br/>
+          TODO: [OK] button (back to /home/index?id=group_id)
         </td>
       </tr>
     </table>
