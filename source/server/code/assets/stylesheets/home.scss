@@ -20,32 +20,34 @@
   .heading
   {
     height:170px;
+    width:635px;
+    position:relative; left:25px;
     display:block;
     .logo
     {
       @include centered();
       img
       {
-          width: 140px;
-         height: 140px;
-        padding: { top: 16px; left: 0px; right: 8px; }
+          width:140px;
+         height:140px;
+        padding: { top:10px; left:0px; right:8px; }
       }
       .cyber-dojo
       {
-        font-size: 110px;
-        position: relative;
-        top: -17px;
-        color: $text-color;
+        font-size:100px;
+        position:relative;
+        top:-17px;
+        color:$text-color;
       }
     }
 
     .a-place-to-practise-programming
     {
-      font-size: 38px;
-      position: relative;
-      top: -48px;
-      left: 65px;
-      color: lighten($text-color, 5%);
+      font-size:34px;
+      position:relative;
+      top:-48px;
+      left:65px;
+      color:lighten($text-color, 5%);
     }
   }
 
