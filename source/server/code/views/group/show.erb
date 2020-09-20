@@ -33,18 +33,26 @@ $(() => {
 <%= erb :'background' %>
 
 <div id="group-page">
+  <div class="box">
 
-  <img src="/avatars/image/all" class="avatars"/>
-  <br/>
+    <table>
+      <tr>
+        <td>
+          <img src="/avatars/image/all" class="avatars"/>
+        </td>
+        <td>
+          <div class="group-id"><%= group_id %></div>
 
-  <div class="group-id"><%= group_id %></div>
+          <div class="phonetic-id"><%= phonetic(group_id) %></div>
 
-  <div class="phonetic-id"><%= phonetic(group_id) %></div>
+          <%= exercise_name %><br/>
 
-  <%= exercise_name %>
-  <br/>
+          <div class="join button">join it</div>
+          <div class="rejoin button">rejoin it</div>
+          <div class="dashboard button">open it's dashboard</div>
+        </td>
+      </tr>
+    </table>
 
-  <div class="join button">join it</div>
-  <div class="rejoin button">rejoin it</div>
-  <div class="dashboard button">open it's dashboard</div>
+  </div>
 </div>

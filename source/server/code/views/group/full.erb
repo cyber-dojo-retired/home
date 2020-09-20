@@ -1,23 +1,40 @@
+<%
+  group_id = @manifest['id']
+  exercise_name = @manifest['display_name']
+  if @manifest.has_key?('exercise')
+    exercise_name += ", " + @manifest['exercise']
+  end
+%>
 
-<div id="group-full">
+<%= erb :'background' %>
 
-Full!
-<%= @manifest['id'] %>
+<div id="full-page">
+  <div class="box">
 
-<div>
-  <table>
-    <% 8.times do |y| %>
-    <tr>
-      <% 8.times do |x| %>
-      <td>
-        <% index = y*8 + x %>
-        <img src="/avatars/image/<%= index %>"
-             class="small avatar colour"/>
-      </td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
-</div>
+    <table>
+      <tr>
+        <td>
+          <table>
+            <% 8.times do |y| %>
+            <tr>
+              <% 8.times do |x| %>
+              <td>
+                <% index = y*8 + x %>
+                <img src="/avatars/image/<%= index %>"
+                     class="small avatar colour"/>
+              </td>
+              <% end %>
+            </tr>
+            <% end %>
+          </table>
+        </td>
+        <td>
+          Sorry. Full!<br/>
+          <div class="group-id"><%= group_id %></div>
+          <%= exercise_name %>
+        </td>
+      </tr>
+    </table>
 
+  </div>
 </div>

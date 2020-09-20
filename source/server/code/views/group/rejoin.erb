@@ -13,33 +13,40 @@ $(() => {
 });
 </script>
 
-<br/>
-rejoin <%= @manifest['id'] %>
-<br/>
-click your animal
+<%= erb :'background' %>
 
-<div>
-  <table cellspacing="0" cellpadding="2">
-    <% 8.times do |y| %>
-    <tr>
-      <% 8.times do |x| %>
-      <td>
-        <% index = y*8 + x %>
-        <% kata_id = @avatars[index] %>
-        <% avatar_name = @avatars_names[index] %>
-        <% if kata_id %>
-          <div data-tip="<%= avatar_name %>">
-            <img data-id="<%= kata_id %>"
-                 src="/avatars/image/<%= index %>"
-                 class="small colour rejoin avatar"/>
-          </div>
-        <% else %>
-          <img src="/avatars/image/<%= index %>"
-               class="small grey avatar"/>
+<div id="rejoin-page">
+  <div class="box">
+
+    rejoin <%= @manifest['id'] %>
+    <br/>
+    click your animal
+
+    <div>
+      <table cellspacing="0" cellpadding="2">
+        <% 8.times do |y| %>
+        <tr>
+          <% 8.times do |x| %>
+          <td>
+            <% index = y*8 + x %>
+            <% kata_id = @avatars[index] %>
+            <% avatar_name = @avatars_names[index] %>
+            <% if kata_id %>
+              <div data-tip="<%= avatar_name %>">
+                <img data-id="<%= kata_id %>"
+                     src="/avatars/image/<%= index %>"
+                     class="small colour rejoin avatar"/>
+              </div>
+            <% else %>
+              <img src="/avatars/image/<%= index %>"
+                   class="small grey avatar"/>
+            <% end %>
+          </td>
+          <% end %>
+        </tr>
         <% end %>
-      </td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
+      </table>
+    </div>
+
+  </div>
 </div>

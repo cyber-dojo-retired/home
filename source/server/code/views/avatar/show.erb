@@ -24,30 +24,32 @@ $(() => {
 <%= erb :'background' %>
 
 <div id="avatar-page">
+  <div class="box">
 
-  <table>
-    <% 2.times do %>
-    <tr>
-      <% 2.times do %>
-      <td>
-        <img class="large avatar" src="/avatars/image/<%= @index %>"/>
-      </td>
-      <% end %>
-    </tr>
-    <% end %>
-  </table>
+    <table>
+      <tr>
+        <td>
+          <table>
+            <% 2.times do %>
+            <tr>
+              <% 2.times do %>
+              <td>
+                <img class="large avatar" src="/avatars/image/<%= @index %>"/>
+              </td>
+              <% end %>
+            </tr>
+            <% end %>
+          </table>
+        </td>
+        <td>
+          <div class="group-id"><%= group_id %></div>
+          <%= exercise_name %><br/>
+          your individual id is <%= individual_id %><br/>
+          your avatar is the <%= @name %><br/>
+          <div class="ok button">ok</div>
+        </td>
+      </tr>
+    </table>
 
-  <div class="group-id"><%= group_id %></div>
-
-  <%= exercise_name %>
-  <br/>
-
-  your individual id is <%= individual_id %>
-  <br/>
-
-  your avatar is the <%= @name %>
-  <br/>
-
-  <div class="ok button">ok</div>
-
+  </div>
 </div>

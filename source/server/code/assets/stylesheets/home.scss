@@ -15,16 +15,20 @@ table#background
   }
 }
 
+//- - - - - - - - - - - - - - - - - - - -
+
+.box
+{
+  @include centered();
+  width: 700px;
+}
+
+//- - - - - - - - - - - - - - - - - - - -
+
 #home-page
 {
   margin-top: 0px;
   @include non-code-font();
-
-  .box
-  {
-    @include centered();
-    width: 700px;
-  }
 
   .heading, .create, .enter-id, .questions
   {
