@@ -4,7 +4,11 @@ $(() => {
 
   cd.setupHoverTips($('[data-tip]'));
 
-  cd.rejoin = (kataId) => window.location = `/kata/edit/${kataId}`;
+  $('.small.colour.rejoin.avatar').click((event) => {
+    const kataId = $(event.target).data('id');
+    window.open(`/kata/edit/${kataId}`);
+    window.location.href = '/home/index';
+  });
 
 });
 </script>
@@ -25,9 +29,9 @@ click your animal
         <% avatar_name = @avatars_names[index] %>
         <% if kata_id %>
           <div data-tip="<%= avatar_name %>">
-            <img onclick='cd.rejoin("<%= kata_id %>");'
+            <img data-id="<%= kata_id %>"
                  src="/avatars/image/<%= index %>"
-                 class="small colour avatar"/>
+                 class="small colour rejoin avatar"/>
           </div>
         <% else %>
           <img src="/avatars/image/<%= index %>"
