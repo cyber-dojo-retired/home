@@ -8,7 +8,8 @@ table#background
   z-index:-1;
   img
   {
-    width:720px;
+    width:630px;
+    height:630px;
     opacity:0.2;
     filter: grayscale(100%);
   }
@@ -28,7 +29,7 @@ table#background
   .heading, .create, .enter-id, .questions
   {
     @include edged-panel();
-    background: lighten($darker-color, 6%);
+    background: lighten($darker-color, 10%);
     margin: { top:5px; bottom:5px; }
   }
 
@@ -147,14 +148,15 @@ table#background
     margin: { top:7px; bottom: 12px; }
     img
     {
-      background: lighten($darker-color, 10%);
+      background: lighten($darker-color, 15%);
       @include rounded-corner(6px);
-       width: 74px;
-      height: 74px;
       margin: { top:0px; bottom:0px; left:3px; right:3px; }
       filter: grayscale(100%);
     }
-    .name { font-size:12px; text-align: center; }
+    img.technology { width:74px; height:74px; }
+    img.trustee { width:100px; height:100px; }
+    .name { font-size:10px; text-align:center; }
+    .bio { font-size:10px; width:100px; text-align:center; }
     table { margin: { top:12px; bottom:12px; } }
   }
 
