@@ -2,12 +2,14 @@
 'use strict';
 $(() => {
 
+  const groupId = "<%= @manifest['id'] %>";
+
   cd.setupHoverTips($('[data-tip]'));
 
   $('.small.colour.rejoin.avatar').click((event) => {
     const kataId = $(event.target).data('id');
     window.open(`/kata/edit/${kataId}`);
-    window.location.href = '/home/index';
+    window.location = `/home/index?id=${groupId}`;
   });
 
 });

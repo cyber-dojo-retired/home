@@ -52,7 +52,7 @@ $(() => {
     if (idType === 'group') {
       window.location = `/home/group?id=${id}`;
     } else if (idType === 'individual') {
-      window.location = '/home/index';
+      window.location = `/home/index?id=${id}`;
       window.open(`/kata/edit/${id}`);
     }
   });

@@ -2,11 +2,12 @@
 'use strict';
 $(() => {
 
+  const groupId = "<%= @manifest['group_id'] %>";
   const kataId = "<%= @manifest['id'] %>";
 
   $('.ok.button').click(() => {
     window.open(`/kata/edit/${kataId}`);
-    window.location.href = '/home/index';
+    window.location = `/home/index?id=${groupId}`;
   });
 
 });
