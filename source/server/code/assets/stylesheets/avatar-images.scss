@@ -3,8 +3,8 @@
 
 img.avatars
 {
-  width:300px;
-  height:300px;
+  width:380px;
+  height:380px;
 }
 
 img.avatar
@@ -14,14 +14,14 @@ img.avatar
     @include rounded-corner(6px);
     display:inline-block;
     margin:{ right:5px; }
-    width:180px;
-    height:180px;
+    width:183px;
+    height:183px;
   }
   &.small
   {
     @include rounded-corner(2px);
-    width:45px;
-    height:45px;
+    width:44px;
+    height:44px;
     display:block;
   }
   &.grey

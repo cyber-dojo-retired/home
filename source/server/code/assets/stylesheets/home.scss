@@ -15,23 +15,22 @@ table#background
   }
 }
 
-#group-page .box, #rejoin-page .box, #avatar-page .box, #full-page .box
-{
-  margin-top:15px;
-  table
-  {
-    @include edged-panel();
-    background: lighten($darker-color, 10%);
-    padding:15px;
-  }
-}
-
 //- - - - - - - - - - - - - - - - - - - -
 
 .box
 {
   @include centered();
   width: 700px;
+}
+
+//- - - - - - - - - - - - - - - - - - - -
+
+.panel
+{
+  @include edged-panel();
+  margin-top:15px;
+  background: lighten($darker-color, 10%);
+  padding:15px;
 }
 
 //- - - - - - - - - - - - - - - - - - - -
