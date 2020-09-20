@@ -1,37 +1,26 @@
 
-$heading-height: 176px;
-$controls-height: 167px;
-
 #home-page
 {
+  margin-top: 10px;
   @include non-code-font();
 
-  .heading, .controls
+  .box
   {
     @include centered();
-    width: 100%;
-    position: fixed;
-    background: $darker-color;
-    z-index: 999;
+    width: 700px;
+  }
+
+  .heading, .create, .enter-id, .questions
+  {
+    @include edged-panel();
+    background: lighten($darker-color, 6%);
+    margin: { top:5px; bottom:5px; }
   }
 
   .heading
   {
-    top: 0px;
-    height: $heading-height;
-  }
-  .controls
-  {
-    top: $heading-height;
-    height: $controls-height;
-  }
-  .info
-  {
-    margin-top: $heading-height+$controls-height;
-  }
-
-  .heading
-  {
+    height:170px;
+    display:block;
     .logo
     {
       @include centered();
@@ -62,14 +51,19 @@ $controls-height: 167px;
 
   //------------------------------------------
 
-  .create, .enter-id
+  .create, .enter-id { vertical-align:top; }
+
+  .create
   {
-    @include centered();
-    @include edged-panel();
-    padding: 10px;
-    margin: 0px;
+    margin: { left:0px; right:5px; }
+    padding: { top:13px; right:7px; bottom: 7px; left:7px; }
   }
-  .create { padding: { top: 13px; right: 7px; } }
+  .enter-id
+  {
+    margin: { left:5px; right:0px; }
+    padding: { left:10px; right:10px; }
+  }
+
   .create label
   {
     @include plaintext-font();
@@ -78,9 +72,8 @@ $controls-height: 167px;
 
   .enter-id
   {
-    vertical-align: top;
     width: 260px;
-    height: 137px;
+    height: 146px;
     margin: { left:5px; right:5px; }
     input
     {
@@ -101,7 +94,7 @@ $controls-height: 167px;
     {
       font-size: 18px;
       text-align: center;
-      margin: { left:11px; right:11px; top:2px; }
+      margin: { left:11px; right:11px; top:7px; }
     }
   }
 
@@ -129,14 +122,10 @@ $controls-height: 167px;
   {
     @include centered();
     @include plaintext-font();
-    @include rounded-corner(5px);
-    border: 1px solid darken(gray,20%);
+    width: 603px;
+    position: relative; left: -2px;
     font-size: 15px;
-    position: relative;
-    left: -3px;
-    background: lighten($darker-color, 6%);
     padding: 20px;
-    max-width: 600px;
     margin: { top:7px; bottom: 12px; }
     img
     {
