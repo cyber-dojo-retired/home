@@ -4,7 +4,7 @@ table#background
   th, td { padding:0; }
   padding:0px; margin:0px;
   border-collapse: collapse;
-  position:absolute;top:-15px;left:0px;
+  position:absolute; top:0px; left:0px;
   z-index:-1;
   img
   {
@@ -28,7 +28,7 @@ table#background
 .panel
 {
   @include edged-panel();
-  margin: { top:5px; bottom:5px; }
+  margin: { top:15px; bottom:5px; }
   background: lighten($darker-color, 6%);
   padding:15px;
 }
@@ -42,7 +42,8 @@ table#background
 
   .heading
   {
-    margin: { top:15px; bottom:7px; }
+    margin-bottom:7px;
+    padding: { top:5px; bottom:5px; }
     height:170px;
     width:613px;
     position:relative; left:25px;
@@ -77,7 +78,7 @@ table#background
 
   //------------------------------------------
 
-  .create, .enter-id { vertical-align:top; }
+  .create, .enter-id { margin-top:5px; vertical-align:top; }
 
   .create
   {
