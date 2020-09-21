@@ -43,7 +43,7 @@
   top:9px;
 }
 
-#avatar-page
+#avatar-page, #individual-page
 {
   .blurb { font-size:27px; }
   .avatar-name { font-size:60px;   @include non-code-font(); }
@@ -53,6 +53,7 @@
     font-size:40px;
   }
 }
+
 #full-page
 {
   .blurb { font-size:27px; }
@@ -60,6 +61,6 @@
   {
     @include centered();
     font-size:40px;
-  }  
+  }
 }
 #rejoin-page .blurb { font-size:27px; }
