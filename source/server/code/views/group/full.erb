@@ -1,10 +1,17 @@
-<%
-  group_id = @manifest['id']
-  exercise_name = @manifest['display_name']
-  if @manifest.has_key?('exercise')
-    exercise_name += ", " + @manifest['exercise']
-  end
-%>
+<script>
+'use strict';
+$(() => {
+
+  const groupId = "<%= @manifest['id'] %>";
+
+  $('.ok.button').click(() => {
+    window.location = `/home/index?id=${groupId}`;
+  });
+
+});
+</script>
+
+<% group_id = @manifest['id'] %>
 
 <%= erb :'background' %>
 
@@ -17,10 +24,9 @@
           <img src="/avatars/image/all" class="avatars"/>
         </td>
         <td>
-          Sorry. Full!<br/>
           <div class="group-id"><%= group_id %></div>
-          <%= exercise_name %><br/>
-          TODO: [OK] button (back to /home/index?id=group_id)
+          <div class="blurb">Sorry. It's full!</div>
+          <div class="ok button">ok</div>
         </td>
       </tr>
     </table>

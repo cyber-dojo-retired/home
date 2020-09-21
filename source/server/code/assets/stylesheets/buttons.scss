@@ -53,3 +53,13 @@
     font-size:40px;
   }
 }
+#full-page
+{
+  .blurb { font-size:27px; }
+  .ok.button
+  {
+    @include centered();
+    font-size:40px;
+  }  
+}
+#rejoin-page .blurb { font-size:27px; }
