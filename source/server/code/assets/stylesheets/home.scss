@@ -201,8 +201,11 @@ table#background
   }
 }
 
+.phonetic-id { font-size:20px; margin-bottom:10px; }
+
 .group-id, .individual-id
 {
   @include non-code-font();
+  margin-left:10px;
   font-size:90px;
 }

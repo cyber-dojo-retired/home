@@ -25,9 +25,14 @@
     width:125px;
   }
 
-  &.join { font-size:32px; width:190px; }
-  &.rejoin, &.dashboard { font-size:23px; width:190px; }
-  &.ok { font-size:23px; }
+  &.join, &.rejoin, &.dashboard
+  {
+    @include centered();
+    width:190px;
+  }
+  &.join { font-size:32px; }
+  &.rejoin, &.dashboard { font-size:19px;  }
+  &.ok { @include centered(); font-size:23px; }
 }
 
 .enter-id .ok.button

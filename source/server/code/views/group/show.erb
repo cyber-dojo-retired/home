@@ -22,13 +22,7 @@ $(() => {
 });
 </script>
 
-<%
-  group_id = @manifest['id']
-  exercise_name = @manifest['display_name']
-  if @manifest.has_key?('exercise')
-    exercise_name += ", " + @manifest['exercise']
-  end
-%>
+<% group_id = @manifest['id'] %>
 
 <%= erb :'background' %>
 
@@ -42,11 +36,7 @@ $(() => {
         </td>
         <td>
           <div class="group-id"><%= group_id %></div>
-
           <div class="phonetic-id"><%= phonetic(group_id) %></div>
-
-          <%= exercise_name %><br/>
-
           <div class="join button">join</div>
           <div class="rejoin button">rejoin</div>
           <div class="dashboard button">dashboard</div>

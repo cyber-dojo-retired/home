@@ -18,7 +18,7 @@ html_demo()
   if [ "${1:-}" == '--no-browser' ]; then
     containers_down
   else
-    open "http://$(ip_address):$(port)/dojo/index?id=chy6B"
+    open "http://$(ip_address):$(port)/dojo/index?id=chy6BJ"
   fi
 }
 
