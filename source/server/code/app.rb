@@ -92,9 +92,14 @@ class App < AppBase
     end
   end
 
-  helpers AppHelpers
 
   private
+
+  helpers AppHelpers
+
+  def json_body
+    JSON.parse!(request.body.read)
+  end
 
   def avatars
     @externals.avatars

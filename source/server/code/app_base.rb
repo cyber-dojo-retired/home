@@ -60,10 +60,6 @@ class AppBase < Sinatra::Base
     end
   end
 
-  def json_body
-    JSON.parse!(request.body.read)
-  end
-
   private
 
   set :show_exceptions, false
