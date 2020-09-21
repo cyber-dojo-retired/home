@@ -22,8 +22,6 @@ $(() => {
 });
 </script>
 
-<% group_id = @group_id %>
-
 <div id="group-page">
   <div class="box">
 
@@ -33,8 +31,8 @@ $(() => {
           <img src="/avatars/image/all" class="avatars"/>
         </td>
         <td>
-          <div class="group-id"><%= group_id %></div>
-          <div class="phonetic-id"><%= phonetic(group_id) %></div>
+          <div class="group-id"><%= @group_id %></div>
+          <div class="phonetic-id"><%= phonetic(@group_id) %></div>
           <div class="join button">join the exercise</div>
           <div class="dashboard button">open a dashboard</div>
           <div class="rejoin button">rejoin the exercise</div>
