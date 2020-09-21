@@ -1,0 +1,23 @@
+<script>
+'use strict';
+$(() => {
+
+  const kataId = "<%= @kata_id %>";
+
+  $('.ok.button').click(() => {
+    window.open(`/kata/edit/${kataId}`);
+    window.location = `/home/index?id=${kataId}`;
+  });
+
+});
+</script>
+
+<div id="individual-page">
+  <div class="box">
+
+    <div class="blurb">your individual exercise ID is</div>
+    <div class="kata-id"><%= @kata_id %></div>
+    <div class="ok button">ok</div>
+
+  </div>
+</div>

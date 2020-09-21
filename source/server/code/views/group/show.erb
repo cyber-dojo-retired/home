@@ -2,7 +2,7 @@
 'use strict';
 $(() => {
 
-  const groupId = "<%= @manifest['id'] %>";
+  const groupId = "<%= @group_id %>";
 
   $('.join.button').click(() => {
     const json = JSON.stringify({"id":groupId});
@@ -22,7 +22,7 @@ $(() => {
 });
 </script>
 
-<% group_id = @manifest['id'] %>
+<% group_id = @group_id %>
 
 <div id="group-page">
   <div class="box">

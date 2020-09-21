@@ -2,8 +2,8 @@
 'use strict';
 $(() => {
 
-  const groupId = "<%= @manifest['group_id'] %>";
-  const kataId = "<%= @manifest['id'] %>";
+  const groupId = "<%= @group_id %>";
+  const kataId = "<%= @kata_id %>";
 
   $('.ok.button').click(() => {
     window.open(`/kata/edit/${kataId}`);
@@ -12,8 +12,6 @@ $(() => {
 
 });
 </script>
-
-<% group_id = @manifest['group_id'] %>
 
 <div id="avatar-page">
   <div class="box">
@@ -34,9 +32,9 @@ $(() => {
           </table>
         </td>
         <td>
-          <div class="group-id"><%= group_id %></div>
+          <div class="group-id"><%= @group_id %></div>
           <div class="blurb">your avatar is the</div>
-          <div class="avatar-name"><%= @name %></div>
+          <div class="avatar-name"><%= @avatar_name %></div>
           <div class="ok button">ok</div>
         </td>
       </tr>

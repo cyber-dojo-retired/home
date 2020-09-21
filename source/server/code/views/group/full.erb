@@ -2,7 +2,7 @@
 'use strict';
 $(() => {
 
-  const groupId = "<%= @manifest['id'] %>";
+  const groupId = "<%= @group_id %>";
 
   $('.ok.button').click(() => {
     window.location = `/home/index?id=${groupId}`;
@@ -10,8 +10,6 @@ $(() => {
 
 });
 </script>
-
-<% group_id = @manifest['id'] %>
 
 <div id="full-page">
   <div class="box">
@@ -22,7 +20,7 @@ $(() => {
           <img src="/avatars/image/all" class="avatars"/>
         </td>
         <td>
-          <div class="group-id"><%= group_id %></div>
+          <div class="group-id"><%= @group_id %></div>
           <div class="blurb">Sorry. It's full!</div>
           <div class="ok button">ok</div>
         </td>

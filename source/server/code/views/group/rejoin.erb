@@ -2,7 +2,7 @@
 'use strict';
 $(() => {
 
-  const groupId = "<%= @manifest['id'] %>";
+  const groupId = "<%= @group_id %>";
 
   cd.setupHoverTips($('[data-tip]'));
 
@@ -14,8 +14,6 @@ $(() => {
 
 });
 </script>
-
-<% group_id = @manifest['id'] %>
 
 <div id="rejoin-page">
   <div class="box">
@@ -48,7 +46,7 @@ $(() => {
           </table>
         </td>
         <td>
-          <div class="group-id"><%= group_id %></div>
+          <div class="group-id"><%= @group_id %></div>
           <div class="blurb">to rejoin click your avatar</div>
         </td>
       </tr>

@@ -34,8 +34,7 @@ class App < AppBase
   get '/group', provides:[:html] do
     respond_to do |format|
       format.html do
-        group_id = params['id']
-        @manifest = model.group_manifest(group_id)
+        @group_id = params['id']
         erb :'group/show'
       end
     end
@@ -59,8 +58,7 @@ class App < AppBase
   get '/full', provides:[:html] do
     respond_to do |format|
       format.html do
-        group_id = params['id']
-        @manifest = model.group_manifest(group_id)
+        @group_id = params['id']
         erb :'group/full'
       end
     end
@@ -69,9 +67,8 @@ class App < AppBase
   get '/rejoin', provides:[:html] do
     respond_to do |format|
       format.html do
-        group_id = params['id']
-        @manifest = model.group_manifest(group_id)
-        @avatars = model.group_avatars(group_id).to_h
+        @group_id = params['id']
+        @avatars = model.group_avatars(@group_id).to_h
         @avatars_names = avatars.names
         erb :'group/rejoin'
       end
@@ -83,15 +80,26 @@ class App < AppBase
   get '/avatar', provides:[:html] do
     respond_to do |format|
       format.html do
-        kata_id = params['id']
-        @manifest = model.kata_manifest(kata_id)
-        @index = @manifest['group_index'].to_i
-        @name = avatars.names[@index]
+        @kata_id = params['id']
+        manifest = model.kata_manifest(@kata_id)
+        @group_id = manifest['group_id']
+        @index = manifest['group_index'].to_i
+        @avatar_name = avatars.names[@index]
         erb :'avatar/show'
       end
     end
   end
 
+  # - - - - - - - - - - - - - - - - - - - - -
+
+  get '/individual', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        @kata_id = params['id']
+        erb :'individual/show'
+      end
+    end
+  end
 
   private
 
