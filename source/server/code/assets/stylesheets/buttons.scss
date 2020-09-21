@@ -31,7 +31,7 @@
     width:190px;
   }
   &.join { font-size:32px; }
-  &.rejoin, &.dashboard { font-size:19px;  }
+  &.rejoin, &.dashboard { font-size:16px;  }
   &.ok { font-size:23px; }
 }
 
@@ -41,4 +41,15 @@
   padding:8px;
   position:relative;
   top:9px;
+}
+
+#avatar-page
+{
+  .blurb { font-size:27px; }
+  .avatar-name { font-size:60px;   @include non-code-font(); }
+  .ok.button
+  {
+    @include centered();
+    font-size:40px;
+  }
 }
