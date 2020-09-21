@@ -32,7 +32,7 @@
   }
   &.join { font-size:32px; }
   &.rejoin, &.dashboard { font-size:19px;  }
-  &.ok { @include centered(); font-size:23px; }
+  &.ok { font-size:23px; }
 }
 
 .enter-id .ok.button

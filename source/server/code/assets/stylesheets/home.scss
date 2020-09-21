@@ -28,8 +28,8 @@ table#background
 .panel
 {
   @include edged-panel();
-  margin-top:15px;
-  background: lighten($darker-color, 10%);
+  margin: { top:5px; bottom:5px; }
+  background: lighten($darker-color, 6%);
   padding:15px;
 }
 
@@ -40,18 +40,11 @@ table#background
   margin-top: 0px;
   @include non-code-font();
 
-  .heading, .create, .enter-id, .questions
-  {
-    @include edged-panel();
-    background: lighten($darker-color, 10%);
-    margin: { top:5px; bottom:5px; }
-  }
-
   .heading
   {
     margin: { top:15px; bottom:7px; }
     height:170px;
-    width:635px;
+    width:613px;
     position:relative; left:25px;
     display:block;
     .logo
@@ -91,6 +84,10 @@ table#background
     margin: { left:0px; right:5px; }
     padding: { top:13px; right:7px; bottom: 7px; left:7px; }
   }
+  .group-or-individual
+  {
+    margin: { top:10px; bottom:15px; }
+  }
   .enter-id
   {
     margin: { left:5px; right:0px; }
@@ -106,7 +103,7 @@ table#background
   .enter-id
   {
     width: 260px;
-    height: 146px;
+    height: 142px;
     margin: { left:5px; right:5px; }
     input
     {
