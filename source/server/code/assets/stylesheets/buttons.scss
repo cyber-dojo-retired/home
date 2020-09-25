@@ -43,12 +43,12 @@
   top:9px;
 }
 
-#avatar-page, #individual-page, #full-page, #rejoin-page
+#avatar-page, #full-page, #rejoin-page
 {
   @include non-code-font();
 }
 
-#avatar-page, #individual-page
+#avatar-page
 {
   .blurb { font-size:27px; }
   .avatar-name { font-size:60px; }
