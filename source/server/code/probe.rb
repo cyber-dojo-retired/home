@@ -11,11 +11,19 @@ class Probe
   end
 
   def ready?(_args)
-    [ @externals.model ].all?(&:ready?)
+    dependents.all?(&:ready?)
   end
 
   def sha(_args)
     ENV['SHA']
+  end
+
+  private
+
+  def dependents
+    [ @externals.model,
+      @externals.avatars
+    ]
   end
 
 end
