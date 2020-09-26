@@ -6,8 +6,9 @@ source ${SH_DIR}/augmented_docker_compose.sh
 build_tagged_images()
 {
   local -r dil=$(docker_image_ls)
-  remove_current_docker_image "${dil}" "${CYBER_DOJO_HOME_IMAGE}"
-  remove_current_docker_image "${dil}" "${CYBER_DOJO_HOME_CLIENT_IMAGE}"
+
+  remove_all_but_latest "${dil}" "${CYBER_DOJO_HOME_CLIENT_IMAGE}"
+  remove_all_but_latest "${dil}" "${CYBER_DOJO_HOME_IMAGE}"
 
   augmented_docker_compose \
     build \
@@ -29,28 +30,16 @@ docker_image_ls()
 }
 
 # - - - - - - - - - - - - - - - - - - - - - -
-remove_current_docker_image()
+remove_all_but_latest()
 {
   local -r docker_image_ls="${1}"
   local -r name="${2}"
-  if image_exists "${docker_image_ls}" "${name}" 'latest' ; then
-    local -r sha="$(docker run --rm -it ${name}:latest sh -c 'echo -n ${SHA}')"
-    local -r tag="${sha:0:7}"
-    if image_exists "{docker_image_ls}" "${name}" "${tag}" ; then
-      echo "Deleting current image ${name}:${tag}"
-      docker image rm "${name}:${tag}"
+  for image_name in `echo "${docker_image_ls}" | grep "${name}:"`
+  do
+    if [ "${image_name}" != "${name}:latest" ]; then
+      docker image rm "${image_name}"
     fi
-  fi
-}
-
-# - - - - - - - - - - - - - - - - - - - - - -
-image_exists()
-{
-  local -r docker_image_ls="${1}"
-  local -r name="${2}"
-  local -r tag="${3}"
-  local -r latest=$(echo "${docker_image_ls}" | grep "${name}:${tag}")
-  [ "${latest}" != '' ]
+  done
 }
 
 # - - - - - - - - - - - - - - - - - - - - - -
