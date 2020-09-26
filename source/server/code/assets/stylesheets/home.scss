@@ -7,16 +7,6 @@
 
 //- - - - - - - - - - - - - - - - - - - -
 
-.panel
-{
-  @include edged-panel();
-  margin: { top:15px; bottom:5px; }
-  background: lighten($darker-color, 4%);
-  padding:15px;
-}
-
-//- - - - - - - - - - - - - - - - - - - -
-
 #home-page
 {
   margin-top:0px;
@@ -127,7 +117,7 @@
   {
     @include centered();
     @include plaintext-font();
-    width:620px;
+    width:621px;
     position:relative; left:-3px;
     font-size:15px;
     padding:20px;
@@ -173,7 +163,7 @@
 .phonetic-id
 {
   @include non-code-font();
-  font-size:26px; 
+  font-size:26px;
   margin-bottom:10px;
 }
 
