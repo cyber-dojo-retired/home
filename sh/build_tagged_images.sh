@@ -5,8 +5,7 @@ source ${SH_DIR}/augmented_docker_compose.sh
 # - - - - - - - - - - - - - - - - - - - - - -
 build_tagged_images()
 {
-  local -r dil=$(docker_image_ls)
-
+  local -r dil=$(docker image ls --format "{{.Repository}}:{{.Tag}}")
   remove_all_but_latest "${dil}" "${CYBER_DOJO_HOME_CLIENT_IMAGE}"
   remove_all_but_latest "${dil}" "${CYBER_DOJO_HOME_IMAGE}"
 
@@ -21,12 +20,6 @@ build_tagged_images()
   echo
   echo "CYBER_DOJO_HOME_TAG=${CYBER_DOJO_HOME_TAG}"
   echo "CYBER_DOJO_HOME_SHA=${CYBER_DOJO_HOME_SHA}"
-}
-
-# - - - - - - - - - - - - - - - - - - - - - -
-docker_image_ls()
-{
-  docker image ls --format "{{.Repository}}:{{.Tag}}"
 }
 
 # - - - - - - - - - - - - - - - - - - - - - -
