@@ -6,7 +6,7 @@ $(() => {
 
   cd.setupHoverTips($('[data-tip]'));
 
-  $('.small.colour.rejoin.avatar').click((event) => {
+  $('.small.colour.reenter.avatar').click((event) => {
     const kataId = $(event.target).data('id');
     window.open(`/kata/edit/${kataId}`);
     window.location = `/home/index?id=${groupId}`;
@@ -15,7 +15,7 @@ $(() => {
 });
 </script>
 
-<div id="rejoin-page">
+<div id="reenter-page">
   <div class="box">
 
     <table class="edged-panel">
@@ -33,7 +33,7 @@ $(() => {
                   <div data-tip="<%= avatar_name %>">
                     <img data-id="<%= kata_id %>"
                          src="/avatars/image/<%= index %>"
-                         class="small colour rejoin avatar"/>
+                         class="small colour reenter avatar"/>
                   </div>
                 <% else %>
                   <img src="/avatars/image/<%= index %>"
@@ -47,7 +47,7 @@ $(() => {
         </td>
         <td>
           <div class="group-id"><%= @group_id %></div>
-          <div class="blurb">to rejoin click your avatar</div>
+          <div class="blurb">to re-enter click your avatar</div>
         </td>
       </tr>
     </table>

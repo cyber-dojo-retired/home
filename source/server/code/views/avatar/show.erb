@@ -14,31 +14,27 @@ $(() => {
 </script>
 
 <div id="avatar-page">
-  <div class="box">
-
-    <table class="edged-panel">
-      <tr>
-        <td>
-          <table>
+  <table class="edged-panel">
+    <tr>
+      <td>
+        <table>
+          <% 8.times do %>
+          <tr>
             <% 8.times do %>
-            <tr>
-              <% 8.times do %>
-              <td>
-                <img class="small colour avatar" src="/avatars/image/<%= @index %>"/>
-              </td>
-              <% end %>
-            </tr>
+            <td>
+              <img class="small colour avatar" src="/avatars/image/<%= @index %>"/>
+            </td>
             <% end %>
-          </table>
-        </td>
-        <td>
-          <div class="group-id"><%= @group_id %></div>
-          <div class="blurb">your avatar is the</div>
-          <div class="avatar-name"><%= @avatar_name %></div>
-          <div class="ok button">ok</div>
-        </td>
-      </tr>
-    </table>
-
-  </div>
+          </tr>
+          <% end %>
+        </table>
+      </td>
+      <td>
+        <div class="group-id"><%= @group_id %></div>
+        <div class="blurb">your avatar is the</div>
+        <div class="avatar-name"><%= @avatar_name %></div>
+        <div class="ok button">ok</div>
+      </td>
+    </tr>
+  </table>
 </div>

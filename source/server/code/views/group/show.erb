@@ -4,15 +4,15 @@ $(() => {
 
   const groupId = "<%= @group_id %>";
 
-  $('.join.button').click(() => {
+  $('.enter.button').click(() => {
     const json = JSON.stringify({"id":groupId});
-    $.post(`/home/join.json`, json, (response) => {
+    $.post(`/home/enter.json`, json, (response) => {
       window.location = response.route;
     });
   });
 
-  $('.rejoin.button').click(() => {
-    window.location = `/home/rejoin?id=${encodeURIComponent(groupId)}`;
+  $('.reenter.button').click(() => {
+    window.location = `/home/reenter?id=${encodeURIComponent(groupId)}`;
   });
 
   $('.dashboard.button').click(() => {
@@ -23,22 +23,18 @@ $(() => {
 </script>
 
 <div id="group-page">
-  <div class="box">
-
-    <table class="edged-panel">
-      <tr>
-        <td>
-          <img src="/avatars/image/all" class="avatars"/>
-        </td>
-        <td>
-          <div class="group-id"><%= @group_id %></div>
-          <div class="phonetic-id"><%= phonetic(@group_id) %></div>
-          <div class="join button">join the exercise</div>
-          <div class="dashboard button">open a dashboard</div>
-          <div class="rejoin button">rejoin the exercise</div>
-        </td>
-      </tr>
-    </table>
-
-  </div>
+  <table class="edged-panel">
+    <tr>
+      <td>
+        <img src="/avatars/image/all" class="avatars"/>
+      </td>
+      <td>
+        <div class="group-id"><%= @group_id %></div>
+        <div class="phonetic-id"><%= phonetic(@group_id) %></div>
+        <div class="enter button">enter the exercise</div>
+        <div class="dashboard button">open a dashboard</div>
+        <div class="reenter button">re-enter the exercise</div>
+      </td>
+    </tr>
+  </table>
 </div>

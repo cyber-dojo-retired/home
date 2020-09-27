@@ -29,21 +29,29 @@ class App < AppBase
 
   # - - - - - - - - - - - - - - - - - - - - -
 
-  get '/create', provides:[:html] do
+  get '/create_how_many', provides:[:html] do
     respond_to do |format|
       format.html do
-        erb :'create/show'
+        erb :'create_how_many/show'
+      end
+    end
+  end
+
+  get '/create_what_kind', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        erb :'create_what_kind/show'
       end
     end
   end
 
   # - - - - - - - - - - - - - - - - - - - - -
 
-  get '/join', provides:[:html] do
+  get '/enter', provides:[:html] do
     respond_to do |format|
       format.html do
         @id = params['id'] || ''
-        erb :'join/show'
+        erb :'enter/show'
       end
     end
   end
@@ -63,7 +71,7 @@ class App < AppBase
     end
   end
 
-  post '/join.json', provides:[:json] do
+  post '/enter.json', provides:[:json] do
     respond_to do |format|
       format.json do
         group_id = json_body['id']
@@ -87,13 +95,13 @@ class App < AppBase
     end
   end
 
-  get '/rejoin', provides:[:html] do
+  get '/reenter', provides:[:html] do
     respond_to do |format|
       format.html do
         @group_id = params['id']
         @avatars = model.group_avatars(@group_id).to_h
         @avatars_names = avatars.names
-        erb :'group/rejoin'
+        erb :'group/reenter'
       end
     end
   end

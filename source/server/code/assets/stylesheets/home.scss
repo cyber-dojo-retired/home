@@ -1,28 +1,14 @@
 
-.box
-{
-  @include centered();
-  width:700px;
-}
-
-//- - - - - - - - - - - - - - - - - - - -
-
 #home-page
 {
-  margin-top:0px;
   @include non-code-font();
 
   .heading
   {
-    margin-top:15px;
     padding: { top:5px; bottom:5px; }
     height:170px;
-    width:634px;
-    position:relative; left:17px;
-    display:block;
     .logo
     {
-      @include centered();
       img
       {
           width:140px;
@@ -43,38 +29,89 @@
       font-size:36px;
       position:relative;
       top:-48px;
-      left:65px;
+      left:140px;
       color:lighten($text-color, 5%);
     }
   }
 
+  form#donate
+  {
+    display:inline;
+    position:relative;
+    top:3px;
+    cursor:pointer;
+    input[type=image] { width:52px; height:15px; }
+  }
+
   //------------------------------------------
 
-  #MOVED {
-  .create, .enter-id
-  {
-    vertical-align:top;
-    margin-top:5px;
-    padding:13px;
+  .heading, .buttons, .questions { width:625px; }
 
+
+  .buttons
+  {
+    .button.create, .button.enter
+    {
+      width:598px;
+      font-size:50px;
+      text-align:center;
+    }
   }
-  .create { margin: { left:0px; right:5px; } }
-  .group-or-individual { margin: { top:10px; bottom:15px; } }
-  .enter-id { margin: { left:5px; right:0px; } }
-  .create label
+
+  .questions
   {
     @include plaintext-font();
-    font-size:18px;
+    font-size:15px;
+    img
+    {
+      background:lighten($darker-color, 15%);
+      @include rounded-corner(6px);
+      margin: { top:0px; bottom:0px; left:3px; right:3px; }
+      filter:grayscale(100%);
+    }
+    &.donate.button { font-size:20px; width:125px; }
+    img.technology { width:74px; height:74px; }
+    img.trustee { width:120px; height:120px; }
+    .name { font-size:10px; text-align:center; }
+    .bio { font-size:11px; width:120px; text-align:center; }
+    table { margin: { top:12px; bottom:12px; } }
   }
+
+  .question
+  {
+    font-size:16px;
+    margin: { top:0px; bottom:10px; }
+  }
+
+  .answer
+  {
+    font-size:14px;
+    margin-left:30px;
+    padding-bottom:13px;
+    margin: { top:0px; bottom:0px; }
+  }
+
+  .divider
+  {
+    margin: { top:0px; bottom:13px; }
+    width:600px;
+    border-bottom: 1px dashed lighten($darker-color, 25%);
+  }
+}
+
+//------------------------------------------
+
+#MOVED {
+
   .enter-id
   {
+    margin: { left:5px; right:0px; }
     width:260px;
     height:152px;
     margin: { left:5px; right:5px; }
     input
     {
       @include centered();
-      @include non-code-font();
       @include rounded-corner(6px);
       background:lighten($green, 20%);
       color:$darker-color;
@@ -100,70 +137,33 @@
     margin: { left:9px; top:7px; bottom:7px; }
     text-align:left;
   }
+} // MOVED
+
+//------------------------------------------
+
+.title
+{
+  @include non-code-font();
+  font-size:30px;
 }
 
-  //------------------------------------------
+.how-many label, .what-kind label
+{
+  @include non-code-font();
+  font-size:30px;
+}
 
-  form#donate
-  {
-    display:inline;
-    position:relative;
-    top:3px;
-    cursor:pointer;
-    input[type=image] { width:52px; height:15px; }
-  }
+//------------------------------------------
 
-  //------------------------------------------
-
-  .questions
-  {
-    @include centered();
-    @include plaintext-font();
-    width:621px;
-    font-size:15px;
-    padding:20px;
-    margin: { bottom:15px; }
-    img
-    {
-      background:lighten($darker-color, 15%);
-      @include rounded-corner(6px);
-      margin: { top:0px; bottom:0px; left:3px; right:3px; }
-      filter:grayscale(100%);
-    }
-    img.technology { width:74px; height:74px; }
-    img.trustee { width:120px; height:120px; }
-    .name { font-size:10px; text-align:center; }
-    .bio { font-size:11px; width:120px; text-align:center; }
-    table { margin: { top:12px; bottom:12px; } }
-  }
-
-  .question, .answer { text-align:left; }
-
-  .question
-  {
-    font-size:16px;
-    margin: { top:0px; bottom:10px; }
-  }
-
-  .answer
-  {
-    font-size:14px;
-    margin-left:30px;
-    padding-bottom:13px;
-    margin: { top:0px; bottom:0px; }
-  }
-
-  .divider
-  {
-    margin: { top:0px; bottom:13px; }
-    width:600px;
-    border-bottom: 1px dashed lighten($darker-color, 25%);
-  }
+.how-many, .what-kind, .enter-id
+{
+  width:400px;
 }
 
 .phonetic-id
 {
   @include non-code-font();
+  @include centered();
   font-size:26px;
   margin-bottom:10px;
 }
@@ -173,4 +173,20 @@
   @include non-code-font();
   margin-left:10px;
   font-size:90px;
+}
+
+//------------------------------------------
+
+#avatar-page, #full-page, #reenter-page
+{
+  @include non-code-font();
+}
+
+.ok.button { font-size:40px; }
+
+.blurb { font-size:27px; }
+
+#avatar-page
+{
+  .avatar-name { font-size:60px; }
 }

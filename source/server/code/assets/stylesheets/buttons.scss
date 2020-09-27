@@ -1,21 +1,6 @@
 
 .button
 {
-  @include non-code-font();
-  display: table;
-  color:$darker-color;
-  text-align:left;
-  line-height:95%;
-  padding:9px;
-  margin:7px;
-
-  &.create, &.created
-  {
-    width:598px;
-    font-size:50px;
-    text-align:center;
-  }
-
   &.regular, &.custom
   {
     width:288px;
@@ -23,23 +8,17 @@
   }
   &.regular { font-size:32px; }
   &.custom { font-size:23px; }
+}
 
-  &.donate
-  {
-    @include centered();
-    @include non-code-font();
-    font-size:20px;
-    width:125px;
-  }
-
-  &.Xjoin, &.rejoin, &.dashboard
+.button
+{
+  &.enter, &.reenter, &.dashboard
   {
     @include centered();
     width:190px;
   }
-  &.Xjoin { font-size:32px; }
-  &.rejoin, &.dashboard { font-size:16px;  }
-  &.ok { font-size:23px; }
+  &.enter { font-size:32px; }
+  &.reenter, &.dashboard { font-size:16px;  }
 }
 
 .enter-id .ok.button
@@ -49,31 +28,3 @@
   position:relative;
   top:9px;
 }
-
-#avatar-page, #full-page, #rejoin-page
-{
-  @include non-code-font();
-}
-
-#avatar-page
-{
-  .blurb { font-size:27px; }
-  .avatar-name { font-size:60px; }
-  .ok.button
-  {
-    @include centered();
-    font-size:40px;
-  }
-}
-
-#full-page
-{
-  .blurb { font-size:27px; }
-  .ok.button
-  {
-    @include centered();
-    font-size:40px;
-  }
-}
-
-#rejoin-page .blurb { font-size:27px; }

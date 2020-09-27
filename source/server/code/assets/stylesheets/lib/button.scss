@@ -1,15 +1,20 @@
 
 .button
 {
-  display: block;
+  @include non-code-font();
+  display: table;
   @include rounded-corner(6px);
+  color:$darker-color;
   background: darken($lighter-color, 12%);
-
   cursor: pointer;
   padding: { left: 0.5em; right: 0.5em; bottom: 0.1em; }
   text-decoration: none;
-  font-weight: normal;
+  text-align:left;
+  line-height:95%;
   border: 1px solid $darker-color;
+  font-weight: normal;
+  padding:9px;
+  margin:7px;
 
   &:hover { border: 1px dotted lighten($darker-color, 20%); }
   &[disabled]
