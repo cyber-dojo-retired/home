@@ -27,6 +27,29 @@ class App < AppBase
     end
   end
 
+  # - - - - - - - - - - - - - - - - - - - - -
+
+  get '/create', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        erb :'create/show'
+      end
+    end
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - -
+
+  get '/join', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        @id = params['id'] || ''
+        erb :'join/show'
+      end
+    end
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - -
+
   get_delegate(:id_type, Home)
 
   # - - - - - - - - - - - - - - - - - - - - -

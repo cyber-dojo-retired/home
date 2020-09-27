@@ -9,6 +9,13 @@
   padding:9px;
   margin:7px;
 
+  &.create, &.created
+  {
+    width:598px;
+    font-size:50px;
+    text-align:center;
+  }
+
   &.regular, &.custom
   {
     width:288px;
@@ -25,12 +32,12 @@
     width:125px;
   }
 
-  &.join, &.rejoin, &.dashboard
+  &.Xjoin, &.rejoin, &.dashboard
   {
     @include centered();
     width:190px;
   }
-  &.join { font-size:32px; }
+  &.Xjoin { font-size:32px; }
   &.rejoin, &.dashboard { font-size:16px;  }
   &.ok { font-size:23px; }
 }
