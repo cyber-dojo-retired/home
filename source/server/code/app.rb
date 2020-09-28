@@ -66,7 +66,7 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @group_id = params['id']
-        erb :'group/show'
+        erb :group
       end
     end
   end
@@ -90,7 +90,7 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @group_id = params['id']
-        erb :'group/full'
+        erb :full
       end
     end
   end
@@ -101,7 +101,7 @@ class App < AppBase
         @group_id = params['id']
         @avatars = model.group_avatars(@group_id).to_h
         @avatars_names = avatars.names
-        erb :'group/reenter'
+        erb :reenter
       end
     end
   end
@@ -116,7 +116,7 @@ class App < AppBase
         @group_id = manifest['group_id']
         @index = manifest['group_index'].to_i
         @avatar_name = avatars.names[@index]
-        erb :'avatar/show'
+        erb :avatar
       end
     end
   end
