@@ -34,6 +34,8 @@
     }
   }
 
+  .create.button { margin-bottom:10px; }
+
   form#donate
   {
     display:inline;
@@ -115,7 +117,7 @@
 
 //------------------------------------------
 
-.how-many, .what-kind, .enter-id
+.what-kind, .standard-or-custom, .enter-id
 {
   width:400px;
 }
@@ -125,7 +127,7 @@
   @include non-code-font();
   @include centered();
   font-size:26px;
-  margin-bottom:10px;
+  margin-bottom:25px;
 }
 
 .group-id, .kata-id
@@ -140,13 +142,19 @@
 #avatar-page, #full-page, #reenter-page
 {
   @include non-code-font();
+  .ok.button { font-size:40px; }
 }
 
 .next.button { font-size:40px; }
 
-.blurb { font-size:27px; }
-
 #avatar-page
 {
-  .avatar-name { font-size:60px; }
+  .avatar-name { font-size:60px; @include centered(); }
+  .blurb { font-size:27px; @include centered(); }
+  .ok.button { font-size:40px; @include centered(); }
+}
+
+#reenter-page
+{
+  .blurb { font-size:27px; @include centered(); }
 }
