@@ -3,11 +3,8 @@
 {
   @include non-code-font();
 
-  .title { margin-bottom:10px; }
-
   .enter-id
   {
-    width:555px;
     margin: { left:5px; right:5px; }
     input
     {
@@ -24,8 +21,6 @@
       &.invalid { color:darken($red, 10%); }
     }
   }
-
-  .next.button { font-size:40px; }
 
   #wait-spinner
   {

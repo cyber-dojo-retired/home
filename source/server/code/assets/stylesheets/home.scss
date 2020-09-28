@@ -103,40 +103,26 @@
 
 //------------------------------------------
 
-.title
-{
-  @include non-code-font();
-  font-size:30px;
-}
-
-.how-many label, .what-kind label
-{
-  @include non-code-font();
-  font-size:30px;
-}
-
-//------------------------------------------
-
-.what-kind, .standard-or-custom, .enter-id
-{
-  width:400px;
-}
-
-//------------------------------------------
-
-#group-page, #avatar-page, #full-page, #reenter-page
+#what-kind-page, #standard-or-custom-page,
+#group-page, #enter-page, #avatar-page, #reenter-page, #full-page
 {
   @include non-code-font();
   @include centered();
-  .edged-panel { width:770px; text-align:center; }
+  .edged-panel { width:715px; text-align:center; }
+  .title { font-size:30px; margin-bottom:10px; }
+  label { @include non-code-font(); font-size:30px; }
   .group-id, .kata-id { font-size:90px; }
   .phonetic-id { font-size:26px; }
   .lhs-column { width:400px; }
   .rhs-column { width:315px; vertical-align:top; }
   .avatar-name { font-size:55px; }
   .blurb { font-size:23px; }
-  .ok.button { font-size:40px; @include centered(); }
-  .next.button { font-size:40px; @include centered(); }
+  .enter.button { font-size:40px; }
+  .ok.button { font-size:40px; @include centered(); width:75px; }
+  .next.button { font-size:40px; @include centered(); width:115px; }
 }
 
-.next.button { font-size:40px; @include centered(); }
+#what-kind-page, #standard-or-custom-page, #enter-page
+{
+  .edged-panel { width:600px; }
+}
