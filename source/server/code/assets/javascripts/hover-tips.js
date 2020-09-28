@@ -1,4 +1,3 @@
-const cd = {};
 
 cd.setupHoverTips = function(nodes) {
   nodes.each(function() {
