@@ -101,46 +101,6 @@
 
 //------------------------------------------
 
-#MOVED {
-
-  .enter-id
-  {
-    margin: { left:5px; right:0px; }
-    width:260px;
-    height:152px;
-    margin: { left:5px; right:5px; }
-    input
-    {
-      @include centered();
-      @include rounded-corner(6px);
-      background:lighten($green, 20%);
-      color:$darker-color;
-      width:185px;
-      font-size:36px;
-      margin: { left:3px; bottom:4px; }
-      padding-left:5px;
-      text-align:left;
-      position:relative; top:10px;
-      &.invalid { color:darken($red, 10%); }
-    }
-    .blurb
-    {
-      font-size:18px;
-      text-align:center;
-      margin: { left:11px; right:11px; top:7px; }
-    }
-  }
-
-  .blurb
-  {
-    @include plaintext-font();
-    margin: { left:9px; top:7px; bottom:7px; }
-    text-align:left;
-  }
-} // MOVED
-
-//------------------------------------------
-
 .title
 {
   @include non-code-font();

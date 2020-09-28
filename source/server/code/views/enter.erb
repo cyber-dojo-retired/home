@@ -4,7 +4,7 @@ $(() => {
 
   const $idInput = $('input#id');
   const $waitSpinner = $('#wait-spinner');
-  const $okButton = $('.ok.button');
+  const $nextButton = $('.next.button');
   let id = $idInput.val();
   let idType = undefined;
 
@@ -15,18 +15,18 @@ $(() => {
   };
 
   addEnableDisable($idInput);
-  addEnableDisable($okButton);
+  addEnableDisable($nextButton);
 
-  const setupOkButton = () => {
+  const setupNextButton = () => {
     id = $idInput.val();
     if (id.length < 6) {
       $idInput.removeClass('invalid');
-      $okButton.disable();
+      $nextButton.disable();
       return;
     }
     else if (id.length > 6) {
       $idInput.addClass('invalid');
-      $okButton.disable();
+      $nextButton.disable();
       return;
     }
     $waitSpinner.fadeIn('fast', () => {
@@ -36,10 +36,10 @@ $(() => {
         $waitSpinner.fadeOut('fast', () => {
           if (idType) {
             $idInput.removeClass('invalid');
-            $okButton.enable();
+            $nextButton.enable();
           } else {
             $idInput.addClass('invalid');
-            $okButton.disable();
+            $nextButton.disable();
           }
         });
       });
@@ -50,14 +50,14 @@ $(() => {
     if ($idInput.val() === id) {
       return;
     } else {
-      setupOkButton();
+      setupNextButton();
     }
   };
 
   $idInput.keyup(() => idInputChange()).focus();
 
-  $okButton.click(() => {
-    if ($okButton.isDisabled()) { return; }
+  $nextButton.click(() => {
+    if ($nextButton.isDisabled()) { return; }
     const urlId = encodeURIComponent(id);
     if (idType === 'group') {
       window.location = `/home/group?id=${urlId}`;
@@ -67,20 +67,24 @@ $(() => {
     }
   });
 
-  setupOkButton();
+  setupNextButton();
 
 });
 </script>
 
-<div class="title">
-  what is the six character ID of the exercise?
+<div id="enter-page">
+  <div class="edged-panel enter-id">
+    <div class="title">
+      what is the six character ID of the exercise?
+    </div>
+    <table>
+      <tr>
+        <td><input type="text" id="id" value="<%= @id %>"></input></td>
+        <td><div class="next button" disabled="disabled">next</div></td>
+      </tr>
+    </table>
+    <img src="/images/rotate-cyber-dojo.gif"
+         id="wait-spinner"
+         style="display:none;">
+  </div>
 </div>
-<table>
-  <tr>
-    <td><input type="text" id="id" value="<%= @id %>"></input></td>
-    <td><div class="ok button">ok</div></td>
-  </tr>
-</table>
-<img src="/images/rotate-cyber-dojo.gif"
-     id="wait-spinner"
-     style="display:none;">

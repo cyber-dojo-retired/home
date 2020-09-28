@@ -1,0 +1,46 @@
+
+#enter-page
+{
+  @include non-code-font();
+
+  .title { margin-bottom:10px; }
+
+  .enter-id
+  {
+    margin: { left:5px; right:0px; }
+    width:335px;
+    height:147px;
+    margin: { left:5px; right:5px; }
+    input
+    {
+      @include centered();
+      @include rounded-corner(6px);
+      @include non-code-font();
+      background:lighten($green, 20%);
+      color:$darker-color;
+      width:185px;
+      font-size:36px;
+      margin: { left:3px; bottom:4px; }
+      padding-left:5px;
+      text-align:left;
+      &.invalid { color:darken($red, 10%); }
+    }
+  }
+
+  .next.button
+  {
+    font-size:27px;
+    position:relative;
+    top:-2px;
+  }
+
+  #wait-spinner
+  {
+     z-index: 1000;
+    position: relative;
+         top: -59px;
+        left: 226px;
+       width: 45px;
+      height: 45px;
+  }
+}

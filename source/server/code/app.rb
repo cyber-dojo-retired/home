@@ -51,7 +51,7 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @id = params['id'] || ''
-        erb :'enter/show'
+        erb :enter
       end
     end
   end
