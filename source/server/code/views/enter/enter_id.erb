@@ -9,6 +9,7 @@ $(() => {
   let idType = undefined;
 
   const addEnableDisable = ($element) => {
+    $element.isDisabled = () => $element.attr('disabled');
     $element.disable = () => $element.attr('disabled',  true);
     $element.enable  = () => $element.attr('disabled', false);
   };
@@ -56,6 +57,7 @@ $(() => {
   $idInput.keyup(() => idInputChange()).focus();
 
   $okButton.click(() => {
+    if ($okButton.isDisabled()) { return; }
     const urlId = encodeURIComponent(id);
     if (idType === 'group') {
       window.location = `/home/group?id=${urlId}`;

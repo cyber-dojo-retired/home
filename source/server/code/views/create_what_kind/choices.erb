@@ -2,9 +2,7 @@
 'use strict';
 $(() => {
 
-  //$('input#standard').prop('checked', true);
-  $('input#standard').click(() => cd.okButton.enable());
-  $('input#custom').click(() => cd.okButton.enable());
+  $('input#standard, input#custom').click(() => cd.nextButton.enable());
 
 });
 </script>

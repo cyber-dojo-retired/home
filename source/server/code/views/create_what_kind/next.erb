@@ -7,12 +7,13 @@ $(() => {
     return urlParams.get(name);
   };
 
-  cd.okButton = $('.ok.button');
-  cd.okButton.enable = () => cd.okButton.attr('disabled', false);
-  cd.okButton.disable = () => cd.okButton.attr('disabled', true);
-  cd.okButton.disable();
+  cd.nextButton = $('.next.button');
+  cd.nextButton.enable = () => cd.nextButton.attr('disabled', false);
+  cd.nextButton.disable = () => cd.nextButton.attr('disabled', true);
+  cd.nextButton.isDisabled = () => cd.nextButton.attr('disabled');
 
-  cd.okButton.click(() => {
+  cd.nextButton.click(() => {
+    if (cd.nextButton.isDisabled()) { return; }
     const howMany = getParam('how_many');
     const whatKind = $('#custom').is(':checked') ? 'custom' : 'exercise';
     const path = `${howMany}_${whatKind}_choose`;
@@ -22,6 +23,6 @@ $(() => {
 });
 </script>
 
-<div class="ok button">
-  ok
+<div class="next button" disabled="disabled">
+  next
 </div>
