@@ -16,8 +16,8 @@ $(() => {
 <div id="avatar-page">
   <table class="edged-panel">
     <tr>
-      <td>
-        <table>
+      <td class="lhs-column">
+        <table cellspacing="0" cellpadding="2">
           <% 8.times do %>
           <tr>
             <% 8.times do %>
@@ -29,7 +29,7 @@ $(() => {
           <% end %>
         </table>
       </td>
-      <td>
+      <td class="rhs-column">
         <div class="group-id"><%= @group_id %></div>
         <div class="blurb">your avatar is the</div>
         <div class="avatar-name"><%= @avatar_name %></div>

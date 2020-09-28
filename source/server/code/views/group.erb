@@ -25,15 +25,14 @@ $(() => {
 <div id="group-page">
   <table class="edged-panel">
     <tr>
-      <td>
+      <td class="lhs-column">
         <img src="/avatars/image/all" class="avatars"/>
       </td>
-      <td>
+      <td class="rhs-column">
         <div class="group-id"><%= @group_id %></div>
-        <div class="phonetic-id"><%= phonetic(@group_id) %></div>
         <div class="enter button">enter the exercise</div>
-        <div class="dashboard button">open exercise dashboard</div>
         <div class="reenter button">re-enter the exercise</div>
+        <div class="dashboard button">open exercise dashboard</div>
       </td>
     </tr>
   </table>

@@ -34,7 +34,7 @@
     }
   }
 
-  .create.button { margin-bottom:10px; }
+  .create.button { margin-bottom:15px; }
 
   form#donate
   {
@@ -122,39 +122,21 @@
   width:400px;
 }
 
-.phonetic-id
+//------------------------------------------
+
+#group-page, #avatar-page, #full-page, #reenter-page
 {
   @include non-code-font();
   @include centered();
-  font-size:26px;
-  margin-bottom:25px;
-}
-
-.group-id, .kata-id
-{
-  @include non-code-font();
-  margin-left:10px;
-  font-size:90px;
-}
-
-//------------------------------------------
-
-#avatar-page, #full-page, #reenter-page
-{
-  @include non-code-font();
-  .ok.button { font-size:40px; }
-}
-
-.next.button { font-size:40px; }
-
-#avatar-page
-{
-  .avatar-name { font-size:60px; @include centered(); }
-  .blurb { font-size:27px; @include centered(); }
+  .edged-panel { width:770px; text-align:center; }
+  .group-id, .kata-id { font-size:90px; }
+  .phonetic-id { font-size:26px; }
+  .lhs-column { width:400px; }
+  .rhs-column { width:315px; vertical-align:top; }
+  .avatar-name { font-size:55px; }
+  .blurb { font-size:23px; }
   .ok.button { font-size:40px; @include centered(); }
+  .next.button { font-size:40px; @include centered(); }
 }
 
-#reenter-page
-{
-  .blurb { font-size:27px; @include centered(); }
-}
+.next.button { font-size:40px; @include centered(); }

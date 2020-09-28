@@ -16,42 +16,38 @@ $(() => {
 </script>
 
 <div id="reenter-page">
-  <div class="box">
-
-    <table class="edged-panel">
-      <tr>
-        <td>
-          <table cellspacing="0" cellpadding="2">
-            <% 8.times do |y| %>
-            <tr>
-              <% 8.times do |x| %>
-              <td>
-                <% index = y*8 + x %>
-                <% kata_id = @avatars[index] %>
-                <% avatar_name = @avatars_names[index] %>
-                <% if kata_id %>
-                  <div data-tip="<%= avatar_name %>">
-                    <img data-id="<%= kata_id %>"
-                         src="/avatars/image/<%= index %>"
-                         class="small colour reenter avatar"/>
-                  </div>
-                <% else %>
-                  <img src="/avatars/image/<%= index %>"
-                       class="small grey avatar"/>
-                <% end %>
-              </td>
+  <table class="edged-panel">
+    <tr>
+      <td class="lhs-column">
+        <table>
+          <% 8.times do |y| %>
+          <tr>
+            <% 8.times do |x| %>
+            <td>
+              <% index = y*8 + x %>
+              <% kata_id = @avatars[index] %>
+              <% avatar_name = @avatars_names[index] %>
+              <% if kata_id %>
+                <div data-tip="<%= avatar_name %>">
+                  <img data-id="<%= kata_id %>"
+                       src="/avatars/image/<%= index %>"
+                       class="small colour reenter avatar"/>
+                </div>
+              <% else %>
+                <img src="/avatars/image/<%= index %>"
+                     class="small grey avatar"/>
               <% end %>
-            </tr>
+            </td>
             <% end %>
-          </table>
-        </td>
-        <td>
-          <div class="group-id"><%= @group_id %></div>
-          <div class="blurb">to re-enter</div>
-          <div class="blurb">click your avatar</div>
-        </td>
-      </tr>
-    </table>
-
-  </div>
+          </tr>
+          <% end %>
+        </table>
+      </td>
+      <td class="rhs-column">
+        <div class="group-id"><%= @group_id %></div>
+        <div class="blurb">to re-enter, click your</div>
+        <div class="avatar-name">avatar</div>
+      </td>
+    </tr>
+  </table>
 </div>
