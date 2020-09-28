@@ -17,14 +17,14 @@ $(() => {
   addEnableDisable($idInput);
   addEnableDisable($nextButton);
 
-  const setupNextButton = () => {
+  const setNextButtonState = () => {
     id = $idInput.val();
     if (id.length < 6) {
       $idInput.removeClass('invalid');
       $nextButton.disable();
       return;
     }
-    else if (id.length > 6) {
+    if (id.length > 6) {
       $idInput.addClass('invalid');
       $nextButton.disable();
       return;
@@ -50,14 +50,16 @@ $(() => {
     if ($idInput.val() === id) {
       return;
     } else {
-      setupNextButton();
+      setNextButtonState();
     }
   };
 
   $idInput.keyup(() => idInputChange()).focus();
 
   $nextButton.click(() => {
-    if ($nextButton.isDisabled()) { return; }
+    if ($nextButton.isDisabled()) {
+      return;
+    }
     const urlId = encodeURIComponent(id);
     if (idType === 'group') {
       window.location = `/home/group?id=${urlId}`;
@@ -67,29 +69,23 @@ $(() => {
     }
   });
 
-  setupNextButton();
-
+  setNextButtonState();
 
 });
 </script>
-
-<% if false %>
-<div class="phonetic-id"><%= phonetic(@group_id) %></div>
-<% end %>
 
 <div id="enter-page">
   <div class="edged-panel enter-id">
     <div class="title">
       what is the six character ID of the exercise?
     </div>
-    <table>
-      <tr>
-        <td><input type="text" id="id" value="<%= @id %>"></input></td>
-        <td><div class="next button" disabled="disabled">next</div></td>
-      </tr>
-    </table>
+    <input type="text" id="id" value="<%= @id %>"></input>
     <img src="/images/rotate-cyber-dojo.gif"
          id="wait-spinner"
          style="display:none;">
+    <% if false %>
+    <div class="phonetic-id"><%= phonetic(@group_id) %></div>
+    <% end %>
+    <div class="next button" disabled="disabled">next</div>
   </div>
 </div>

@@ -2,26 +2,28 @@
 'use strict';
 $(() => {
 
-  $('input#standard, input#custom').click(() => nextButton.enable());
+  $('input#standard, input#custom').click(() => $nextButton.enable());
 
-  const getParam = (name) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-  };
+  const $nextButton = $('.next.button');
 
-  const nextButton = $('.next.button');
+  $nextButton.enable = () => $nextButton.attr('disabled', false);
+  $nextButton.disable = () => $nextButton.attr('disabled', true);
+  $nextButton.isDisabled = () => $nextButton.attr('disabled');
 
-  nextButton.enable = () => nextButton.attr('disabled', false);
-  nextButton.disable = () => nextButton.attr('disabled', true);
-  nextButton.isDisabled = () => nextButton.attr('disabled');
-
-  nextButton.click(() => {
-    if (nextButton.isDisabled()) { return; }
+  $nextButton.click(() => {
+    if ($nextButton.isDisabled()) {
+      return;
+    }
     const whatKind = getParam('what_kind');
     const s = $('#custom').is(':checked') ? 'custom' : 'exercise';
     const path = `${whatKind}_${s}_choose`;
     window.location = `/creator/${path}`;
   });
+
+  const getParam = (name) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  };
 
 });
 </script>

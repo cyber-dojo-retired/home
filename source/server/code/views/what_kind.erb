@@ -2,16 +2,18 @@
 'use strict';
 $(() => {
 
-  $('input#group, input#individual').click(() => nextButton.enable());
+  $('input#group, input#individual').click(() => $nextButton.enable());
 
-  const nextButton = $('.next.button');
+  const $nextButton = $('.next.button');
 
-  nextButton.enable = () => nextButton.attr('disabled', false);
-  nextButton.disable = () => nextButton.attr('disabled', true);
-  nextButton.isDisabled = () => nextButton.attr('disabled');
+  $nextButton.enable = () => $nextButton.attr('disabled', false);
+  $nextButton.disable = () => $nextButton.attr('disabled', true);
+  $nextButton.isDisabled = () => $nextButton.attr('disabled');
 
-  nextButton.click(() => {
-    if (nextButton.isDisabled()) { return; }
+  $nextButton.click(() => {
+    if ($nextButton.isDisabled()) {
+      return;
+    }
     const whatKind = $('#group').is(':checked') ? 'group' : 'kata';
     window.location = `/home/standard_or_custom?what_kind=${whatKind}`;
   });

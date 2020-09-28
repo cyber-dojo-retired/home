@@ -2,7 +2,7 @@
 .edged-panel
 {
   @include rounded-corner(5px);
-  display:inline-block;
+  display:inline-block; // for centering
   background:lighten($darker-color, 7%);
   border:1px solid darken(gray,5%);
   margin: { top:7px; bottom:7px; left:auto; right:auto; }
