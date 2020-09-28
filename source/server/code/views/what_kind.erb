@@ -1,0 +1,32 @@
+<script>
+'use strict';
+$(() => {
+
+  $('input#group, input#individual').click(() => nextButton.enable());
+
+  const nextButton = $('.next.button');
+
+  nextButton.enable = () => nextButton.attr('disabled', false);
+  nextButton.disable = () => nextButton.attr('disabled', true);
+  nextButton.isDisabled = () => nextButton.attr('disabled');
+
+  nextButton.click(() => {
+    if (nextButton.isDisabled()) { return; }
+    const whatKind = $('#group').is(':checked') ? 'group' : 'kata';
+    window.location = `/home/standard_or_custom?what_kind=${whatKind}`;
+  });
+
+});
+</script>
+
+<div id="create-page">
+  <div class="edged-panel how-many">
+    <div class="title">what kind of exercise do you want to create?</div>
+    <input type="radio" id="group" name="count" value="group">
+    <label for="group">we're in a group</label>
+    <br/>
+    <input type="radio" id="individual" name="count" value="individual">
+    <label for="individual">i'm on my own</label>
+    <div class="next button" disabled="disabled">next</div>
+  </div>
+</div>

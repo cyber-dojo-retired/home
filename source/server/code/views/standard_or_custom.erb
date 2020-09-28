@@ -1,0 +1,39 @@
+<script>
+'use strict';
+$(() => {
+
+  $('input#standard, input#custom').click(() => nextButton.enable());
+
+  const getParam = (name) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  };
+
+  const nextButton = $('.next.button');
+
+  nextButton.enable = () => nextButton.attr('disabled', false);
+  nextButton.disable = () => nextButton.attr('disabled', true);
+  nextButton.isDisabled = () => nextButton.attr('disabled');
+
+  nextButton.click(() => {
+    if (nextButton.isDisabled()) { return; }
+    const whatKind = getParam('what_kind');
+    const s = $('#custom').is(':checked') ? 'custom' : 'exercise';
+    const path = `${whatKind}_${s}_choose`;
+    window.location = `/creator/${path}`;
+  });
+
+});
+</script>
+
+<div id="create-page">
+  <div class="edged-panel what-kind">
+    <div class="title">what kind of exercise?</div>
+    <input type="radio" id="standard" name="kind" value="standard">
+    <label for="standard">standard (empty, 2 steps)</label>
+    <br/>
+    <input type="radio" id="custom" name="kind" value="custom">
+    <label for="custom">custom (not empty, 1 step)</label>
+    <div class="next button" disabled="disabled">next</div>
+  </div>
+</div>
