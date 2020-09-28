@@ -22,7 +22,7 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @id = params['id'] || ''
-        erb :'home/show'
+        erb :home
       end
     end
   end
