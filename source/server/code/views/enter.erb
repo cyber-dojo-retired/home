@@ -2,31 +2,107 @@
 'use strict';
 $(() => {
 
+  const phonetic = {
+    '0' : 'zero',
+    '1' : 'one',
+    '2' : 'two',
+    '3' : 'three',
+    '4' : 'four',
+    '5' : 'five',
+    '6' : 'six',
+    '7' : 'seven',
+    '8' : 'eight',
+    '9' : 'nine',
+
+    'A' : 'ALPHA',
+    'B' : 'BRAVO',
+    'C' : 'CHARLIE',
+    'D' : 'DELTA',
+    'E' : 'ECHO',
+    'F' : 'FOXTROT',
+    'G' : 'GOLF',
+    'H' : 'HOTEL',
+    'I' : 'INDIA',
+    'J' : 'JULIETT',
+    'K' : 'KILO',
+    'L' : 'LIMA',
+    'M' : 'MIKE',
+    'N' : 'NOVEMBER',
+    'O' : 'OSCAR',
+    'P' : 'PAPPA',
+    'Q' : 'QUEBEC',
+    'R' : 'ROMEO',
+    'S' : 'SIERRA',
+    'T' : 'TANGO',
+    'U' : 'UNIFORM',
+    'V' : 'VICTOR',
+    'W' : 'WHISKEY',
+    'X' : 'XRAY',
+    'Y' : 'YANKEE',
+    'Z' : 'ZULU',
+
+
+    'a' : 'alpha',
+    'b' : 'bravo',
+    'c' : 'charlie',
+    'd' : 'delta',
+    'e' : 'echo',
+    'f' : 'foxtrot',
+    'g' : 'golf',
+    'h' : 'hotel',
+    'i' : 'india',
+    'j' : 'juliett',
+    'k' : 'kilo',
+    'l' : 'lima',
+    'm' : 'mike',
+    'n' : 'november',
+    'o' : 'oscar',
+    'p' : 'pappa',
+    'q' : 'quebec',
+    'r' : 'romeo',
+    's' : 'sierra',
+    't' : 'tango',
+    'u' : 'uniform',
+    'v' : 'victor',
+    'w' : 'whiskey',
+    'x' : 'xray',
+    'y' : 'yankee',
+    'z' : 'zulu'
+  };
+
   const $idInput = $('input#id');
-  const $waitSpinner = $('#wait-spinner');
+  const $waitSpinner = $('.wait-spinner');
+  const $phoneticId = $('.phonetic-id');
   const $nextButton = $('.next.button');
   let id = $idInput.val();
   let idType = undefined;
 
-  const addEnableDisable = ($element) => {
-    $element.isDisabled = () => $element.attr('disabled');
-    $element.disable = () => $element.attr('disabled',  true);
-    $element.enable  = () => $element.attr('disabled', false);
-  };
+  $idInput.isDisabled = () => $idInput.attr('disabled');
+  $idInput.disable = () => $idInput.attr('disabled',  true);
+  $idInput.enable  = () => $idInput.attr('disabled', false);
 
-  addEnableDisable($idInput);
-  addEnableDisable($nextButton);
+  const showPhoneticId = () => {
+    let html = '';
+    for (let i = 0; i < id.length; i++) {
+      html += phonetic[id.charAt(i)];
+      html += '<br/>';
+    }
+    //alert(html);
+    $phoneticId.show().html(html);
+  };
 
   const setNextButtonState = () => {
     id = $idInput.val();
     if (id.length < 6) {
       $idInput.removeClass('invalid');
-      $nextButton.disable();
+      $phoneticId.hide();
+      $nextButton.hide();
       return;
     }
     if (id.length > 6) {
       $idInput.addClass('invalid');
-      $nextButton.disable();
+      $phoneticId.hide();
+      $nextButton.hide();
       return;
     }
     $waitSpinner.fadeIn('fast', () => {
@@ -36,10 +112,12 @@ $(() => {
         $waitSpinner.fadeOut('fast', () => {
           if (idType) {
             $idInput.removeClass('invalid');
-            $nextButton.enable();
+            showPhoneticId();
+            $nextButton.show();
           } else {
             $idInput.addClass('invalid');
-            $nextButton.disable();
+            $phoneticId.hide();
+            $nextButton.hide();
           }
         });
       });
@@ -57,9 +135,6 @@ $(() => {
   $idInput.keyup(() => idInputChange()).focus();
 
   $nextButton.click(() => {
-    if ($nextButton.isDisabled()) {
-      return;
-    }
     const urlId = encodeURIComponent(id);
     if (idType === 'group') {
       window.location = `/home/group?id=${urlId}`;
@@ -76,16 +151,10 @@ $(() => {
 
 <div id="enter-page">
   <div class="edged-panel enter-id">
-    <div class="title">
-      what is the six character ID of the exercise?
-    </div>
+    <div class="title">what is the six character ID of the exercise?</div>
     <input type="text" id="id" value="<%= @id %>"></input>
-    <img src="/images/rotate-cyber-dojo.gif"
-         id="wait-spinner"
-         style="display:none;">
-    <% if false %>
-    <div class="phonetic-id"><%= phonetic(@group_id) %></div>
-    <% end %>
-    <div class="next button" disabled="disabled">next</div>
+    <img src="/images/rotate-cyber-dojo.gif" class="wait-spinner">
+    <div class="phonetic-id"></div>
+    <div class="next button" style="display:none;">next</div>
   </div>
 </div>
