@@ -2,33 +2,16 @@
 'use strict';
 $(() => {
 
-  $('input#group, input#individual').click(() => $nextButton.enable());
-
-  const $nextButton = $('.next.button');
-
-  $nextButton.enable = () => $nextButton.attr('disabled', false);
-  $nextButton.disable = () => $nextButton.attr('disabled', true);
-  $nextButton.isDisabled = () => $nextButton.attr('disabled');
-
-  $nextButton.click(() => {
-    if ($nextButton.isDisabled()) {
-      return;
-    }
-    const whatKind = $('#group').is(':checked') ? 'group' : 'kata';
-    window.location = `/creator/${whatKind}_exercise_choose`;
-  });
+  $('.group.button').click(() => window.location = `/creator/group_exercise_choose`);
+  $('.individual.button').click(() => window.location = `/creator/kata_exercise_choose`);
 
 });
 </script>
 
-<div id="what-kind-page">
-  <div class="edged-panel what-kind">
+<div id="create-page">
+  <div class="edged-panel create">
     <div class="title">create a new exercise</div>
-    <input type="radio" id="group" name="count" value="group">
-    <label for="group">we're in a group</label>
-    <br/>
-    <input type="radio" id="individual" name="count" value="individual">
-    <label for="individual">i'm on my own</label>
-    <div class="next button" disabled="disabled">next</div>
+    <div class="group button">we're in a group</div>
+    <div class="individual button">i'm on my own</div>
   </div>
 </div>
