@@ -20,6 +20,7 @@ build_tagged_images()
   echo
   echo "CYBER_DOJO_HOME_TAG=${CYBER_DOJO_HOME_TAG}"
   echo "CYBER_DOJO_HOME_SHA=${CYBER_DOJO_HOME_SHA}"
+  echo
 }
 
 # - - - - - - - - - - - - - - - - - - - - - -
