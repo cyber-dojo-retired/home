@@ -29,18 +29,10 @@ class App < AppBase
 
   # - - - - - - - - - - - - - - - - - - - - -
 
-  get '/what_kind', provides:[:html] do
+  get '/create', provides:[:html] do
     respond_to do |format|
       format.html do
-        erb :what_kind
-      end
-    end
-  end
-
-  get '/standard_or_custom', provides:[:html] do
-    respond_to do |format|
-      format.html do
-        erb :standard_or_custom
+        erb :create
       end
     end
   end

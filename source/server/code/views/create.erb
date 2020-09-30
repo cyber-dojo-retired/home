@@ -15,7 +15,7 @@ $(() => {
       return;
     }
     const whatKind = $('#group').is(':checked') ? 'group' : 'kata';
-    window.location = `/home/standard_or_custom?what_kind=${whatKind}`;
+    window.location = `/creator/${whatKind}_exercise_choose`;
   });
 
 });
@@ -23,7 +23,7 @@ $(() => {
 
 <div id="what-kind-page">
   <div class="edged-panel what-kind">
-    <div class="title">what kind of exercise do you want to create?</div>
+    <div class="title">create a new exercise</div>
     <input type="radio" id="group" name="count" value="group">
     <label for="group">we're in a group</label>
     <br/>
