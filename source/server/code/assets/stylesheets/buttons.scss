@@ -1,17 +1,6 @@
 
 .button
 {
-  &.regular, &.custom
-  {
-    width:288px;
-    padding: { left:15px; right:15px; }
-  }
-  &.regular { font-size:32px; }
-  &.custom { font-size:23px; }
-}
-
-.button
-{
   &.enter, &.reenter, &.dashboard
   {
     @include centered();
