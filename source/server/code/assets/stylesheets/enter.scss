@@ -2,7 +2,7 @@
 #enter-page
 {
   @include non-code-font();
-
+  .title { text-align:center; }
   .enter-id
   {
     margin: { left:5px; right:5px; }
@@ -30,5 +30,4 @@
       height:60px;
   }
   .phonetic-id { font-size:30px;  @include centered(); }
-
 }
