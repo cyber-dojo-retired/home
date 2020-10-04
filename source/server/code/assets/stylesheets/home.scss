@@ -104,12 +104,7 @@
 
 //------------------------------------------
 
-#create-page
-{
-  .title { margin-left:9px; }
-}
-
-#create-page, #group-page, #enter-page, #avatar-page, #reenter-page, #full-page
+#group-page, #enter-page, #avatar-page, #reenter-page, #full-page
 {
   @include non-code-font();
   @include centered();
@@ -120,21 +115,12 @@
   .rhs-column { width:315px; vertical-align:top; }
   .avatar-name { font-size:52px; }
   .blurb { font-size:23px; }
-  .button { &.enter, &.ok, &.next, &.group, &.individual { font-size:40px; } }
-  .button
-  {
-    &.group, &.individual
-    {
-      width:560px;
-      text-align:left;
-      padding-left:15px;
-    }
-  }
+  .button { &.enter, &.ok, &.next { font-size:40px; } }
   .ok.button { @include centered(); width:75px; }
   .next.button { @include centered(); width:115px; }
 }
 
-#create-page, #enter-page
+#enter-page
 {
   .edged-panel { width:600px; text-align:left; }
 }
