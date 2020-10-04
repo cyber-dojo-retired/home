@@ -2,8 +2,10 @@
 'use strict';
 $(() => {
 
-  $('.create.button').click(() => window.location = '/creator/choose_type');
-  $('.enter.button').click(() => window.location = '/home/enter');
+  $('.create.button').click(() => goto('/creator/choose_type'));
+  $('.enter.button').click(() => goto('/home/enter'));
+
+  const goto = (url) => window.location = url;
 
 });
 </script>
@@ -21,12 +23,8 @@ $(() => {
     </div>
   </div>
   <div class="edged-panel buttons">
-    <div class="create button">
-      create a new exercise
-    </div>
-    <div class="enter button">
-       enter an existing exercise
-    </div>
+    <div class="create button">create a new exercise</div>
+    <div class="enter button">enter an existing exercise</div>
   </div>
 
   <div class="edged-panel questions">
@@ -227,7 +225,7 @@ $(() => {
       Why does cyber-dojo use animal avatars?
     </div>
     <div class="answer">
-      To provide anonymity during reviews. Some people are shyer than others.
+      To provide anonymity during reviews.
     </div>
 
     <div class="divider"></div>
