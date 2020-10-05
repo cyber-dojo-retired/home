@@ -20,6 +20,7 @@ build_tagged_images()
   echo
   echo "CYBER_DOJO_HOME_TAG=${CYBER_DOJO_HOME_TAG}"
   echo "CYBER_DOJO_HOME_SHA=${CYBER_DOJO_HOME_SHA}"
+  echo
 }
 
 # - - - - - - - - - - - - - - - - - - - - - -
@@ -30,7 +31,9 @@ remove_all_but_latest()
   for image_name in `echo "${docker_image_ls}" | grep "${name}:"`
   do
     if [ "${image_name}" != "${name}:latest" ]; then
-      docker image rm "${image_name}"
+      if [ "${image_name}" != "${name}:<none>" ]; then
+        docker image rm "${image_name}"
+      fi
     fi
   done
 }

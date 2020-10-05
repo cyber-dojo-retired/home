@@ -1,16 +1,15 @@
 
 body
 {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  font-size: 0.9em;
-  color: $lighter-color;
-  background: $darker-color;
-  padding: 0px;
-  margin: 0px;
+  width:100%;
+  height:100%;
+  color:$lighter-color;
+  background:$darker-color;
+  padding:0px;
+  @include centered();
   display: block;
-  background-image: url('/avatars/image/all_gray');
-  background-repeat: repeat;
-  background-size: 450px 450px;
+  margin: { top:8px; bottom:8px; left:0px; right:0px; }
+  background-image:url('/avatars/image/all_gray');
+  background-repeat:repeat;
+  background-size:450px 450px;
 }

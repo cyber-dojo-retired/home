@@ -11,7 +11,7 @@ class Home
     if model.group_exists?(id)
       'group'
     elsif model.kata_exists?(id)
-      'individual'
+      'single'
     else
       nil
     end

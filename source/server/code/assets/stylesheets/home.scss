@@ -1,28 +1,14 @@
 
-.box
-{
-  @include centered();
-  width:700px;
-}
-
-//- - - - - - - - - - - - - - - - - - - -
-
 #home-page
 {
-  margin-top:0px;
   @include non-code-font();
 
   .heading
   {
-    margin-bottom:7px;
     padding: { top:5px; bottom:5px; }
     height:170px;
-    width:631px;
-    position:relative; left:17px;
-    display:block;
     .logo
     {
-      @include centered();
       img
       {
           width:140px;
@@ -31,76 +17,24 @@
       }
       .cyber-dojo
       {
-        font-size:105px;
+        font-size:104px;
         position:relative;
-        top:-17px;
+        top:-17px;left:5px;
         color:$text-color;
       }
     }
 
     .a-place-to-practise-programming
     {
-      font-size:36px;
+      font-size:35px;
       position:relative;
       top:-48px;
-      left:65px;
+      left:153px;
       color:lighten($text-color, 5%);
     }
   }
 
-  //------------------------------------------
-
-  .create, .enter-id
-  {
-    vertical-align:top;
-    margin-top:5px;
-    padding:13px;
-
-  }
-  .create { margin: { left:0px; right:5px; } }
-  .group-or-individual { margin: { top:10px; bottom:15px; } }
-  .enter-id { margin: { left:5px; right:0px; } }
-  .create label
-  {
-    @include plaintext-font();
-    font-size:18px;
-  }
-  .enter-id
-  {
-    width:260px;
-    height:152px;
-    margin: { left:5px; right:5px; }
-    input
-    {
-      @include centered();
-      @include non-code-font();
-      @include rounded-corner(6px);
-      background:lighten($green, 20%);
-      color:$darker-color;
-      width:185px;
-      font-size:36px;
-      margin: { left:3px; bottom:4px; }
-      padding-left:5px;
-      text-align:left;
-      position:relative; top:10px;
-      &.invalid { color:darken($red, 10%); }
-    }
-    .blurb
-    {
-      font-size:18px;
-      text-align:center;
-      margin: { left:11px; right:11px; top:7px; }
-    }
-  }
-
-  .blurb
-  {
-    @include plaintext-font();
-    margin: { left:9px; top:7px; bottom:7px; }
-    text-align:left;
-  }
-
-  //------------------------------------------
+  .create.button { margin-bottom:15px; }
 
   form#donate
   {
@@ -113,15 +47,24 @@
 
   //------------------------------------------
 
+  .heading, .buttons, .questions { width:625px; }
+
+  .buttons
+  {
+    .button.create, .button.enter
+    {
+      width:595px;
+      font-size:32px;
+      text-align:left;
+      padding-left:15px;
+      margin-left:2px;
+    }
+  }
+
   .questions
   {
-    @include centered();
     @include plaintext-font();
-    width:621px;
-    position:relative; left:-3px;
     font-size:15px;
-    padding:20px;
-    margin: { top:7px; bottom: 15px; }
     img
     {
       background:lighten($darker-color, 15%);
@@ -129,6 +72,7 @@
       margin: { top:0px; bottom:0px; left:3px; right:3px; }
       filter:grayscale(100%);
     }
+    &.donate.button { font-size:20px; width:125px; }
     img.technology { width:74px; height:74px; }
     img.trustee { width:120px; height:120px; }
     .name { font-size:10px; text-align:center; }
@@ -136,11 +80,10 @@
     table { margin: { top:12px; bottom:12px; } }
   }
 
-  .question, .answer { text-align:left; }
-
   .question
   {
     font-size:16px;
+    padding-left:5px;
     margin: { top:0px; bottom:10px; }
   }
 
@@ -160,16 +103,24 @@
   }
 }
 
-.phonetic-id
-{
-  @include non-code-font();
-  font-size:26px;
-  margin-bottom:10px;
-}
+//------------------------------------------
 
-.group-id, .kata-id
+#enter-page, #avatar-page, #reenter-page, #full-page
 {
   @include non-code-font();
-  margin-left:10px;
-  font-size:90px;
+  .title { font-size:58px; margin: { left:10px; bottom:10px; } }
+  .sub-title { font-size:27px; margin: { left:10px; bottom:10px; } }
+  table { margin: { left:10px; bottom:10px; } }
+  .group-id, .kata-id { font-size:90px; }
+  .avatar-name { font-size:33px; margin: { left:10px; bottom:10px; } }
+  .button { &.enter, &.ok { font-size:40px; } }
+  .ok.button {
+    width:47px;
+    padding-left:15px;
+    margin: { left:10px; top:20px; }
+  }
 }
+#enter-page   .edged-panel { width:660px; }
+#avatar-page  .edged-panel { width:336px; }
+#reenter-page .edged-panel { width:420px; }
+#full-page    .edged-panel { width:336px; }

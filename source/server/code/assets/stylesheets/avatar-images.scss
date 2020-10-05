@@ -3,8 +3,9 @@
 
 img.avatars
 {
-  width:380px;
-  height:380px;
+  width:314px;
+  height:314px;
+  margin-left:10px;
 }
 
 img.avatar
@@ -20,8 +21,8 @@ img.avatar
   &.small
   {
     @include rounded-corner(2px);
-    width:44px;
-    height:44px;
+    width:35px;
+    height:35px;
     display:block;
   }
   &.grey
@@ -31,5 +32,7 @@ img.avatar
   }
   &.colour { cursor:pointer; }
 }
+
+#reenter-page img.avatar.small { width:45px; height:45px; }
 
 #full-page .colour { cursor:default }

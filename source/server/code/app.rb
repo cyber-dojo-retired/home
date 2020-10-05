@@ -22,10 +22,33 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @id = params['id'] || ''
-        erb :'home/show'
+        erb :home
       end
     end
   end
+
+  # - - - - - - - - - - - - - - - - - - - - -
+
+  get '/create', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        erb :create
+      end
+    end
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - -
+
+  get '/enter', provides:[:html] do
+    respond_to do |format|
+      format.html do
+        @id = params['id'] || ''
+        erb :enter
+      end
+    end
+  end
+
+  # - - - - - - - - - - - - - - - - - - - - -
 
   get_delegate(:id_type, Home)
 
@@ -35,12 +58,12 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @group_id = params['id']
-        erb :'group/show'
+        erb :group
       end
     end
   end
 
-  post '/join.json', provides:[:json] do
+  post '/enter.json', provides:[:json] do
     respond_to do |format|
       format.json do
         group_id = json_body['id']
@@ -59,18 +82,18 @@ class App < AppBase
     respond_to do |format|
       format.html do
         @group_id = params['id']
-        erb :'group/full'
+        erb :full
       end
     end
   end
 
-  get '/rejoin', provides:[:html] do
+  get '/reenter', provides:[:html] do
     respond_to do |format|
       format.html do
-        @group_id = params['id']
-        @avatars = model.group_avatars(@group_id).to_h
+        group_id = params['id']
+        @avatars = model.group_avatars(group_id).to_h
         @avatars_names = avatars.names
-        erb :'group/rejoin'
+        erb :reenter
       end
     end
   end
@@ -85,7 +108,7 @@ class App < AppBase
         @group_id = manifest['group_id']
         @index = manifest['group_index'].to_i
         @avatar_name = avatars.names[@index]
-        erb :'avatar/show'
+        erb :avatar
       end
     end
   end

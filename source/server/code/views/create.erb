@@ -1,0 +1,17 @@
+<script>
+'use strict';
+$(() => {
+
+  $('.group.button').click(() => window.location = `/creator/group_exercise_choose`);
+  $('.individual.button').click(() => window.location = `/creator/kata_exercise_choose`);
+
+});
+</script>
+
+<div id="create-page">
+  <div class="edged-panel create">
+    <div class="title">create a new exercise</div>
+    <div class="group button">we're in a group</div>
+    <div class="individual button">i'm on my own</div>
+  </div>
+</div>
