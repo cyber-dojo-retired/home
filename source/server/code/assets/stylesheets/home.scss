@@ -107,9 +107,9 @@
 #group-page, #enter-page, #avatar-page, #reenter-page, #full-page
 {
   @include non-code-font();
-  @include centered();
-  .edged-panel { width:730px; text-align:center; }
-  .title { font-size:30px; margin-bottom:10px; }
+  .edged-panel { width:835px; }
+  .title { font-size:58px; margin-bottom:10px; }
+  .sub-title { font-size:30px; }
   .group-id, .kata-id { font-size:90px; }
   .lhs-column { width:400px; }
   .rhs-column { width:315px; vertical-align:top; }
@@ -118,9 +118,4 @@
   .button { &.enter, &.ok, &.next { font-size:40px; } }
   .ok.button { @include centered(); width:75px; }
   .next.button { @include centered(); width:115px; }
-}
-
-#enter-page
-{
-  .edged-panel { width:600px; text-align:left; }
 }

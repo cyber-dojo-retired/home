@@ -2,14 +2,12 @@
 #enter-page
 {
   @include non-code-font();
-  .title { text-align:center; }
   .enter-id
   {
     margin: { left:5px; right:5px; }
     input
     {
       @include non-code-font();
-      @include centered();
       @include rounded-corner(6px);
       margin: { top:20px; bottom:10px; }
       font-size:50px;
@@ -29,5 +27,16 @@
        width:60px;
       height:60px;
   }
-  .phonetic-id { font-size:30px;  @include centered(); }
+  .phonetic-id { font-size:30px; margin-bottom:10px; }
+  .button
+  {
+    &.enter.group, &.reenter.group, &.open.dashboard, &.enter.single
+    {
+      width:815px;
+    }
+    &.reenter.group, &.open.dashboard
+    {
+      font-size:25px;
+    }
+  }
 }

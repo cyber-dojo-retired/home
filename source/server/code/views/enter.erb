@@ -73,7 +73,12 @@ $(() => {
   const $idInput = $('input#id');
   const $waitSpinner = $('.wait-spinner');
   const $phoneticId = $('.phonetic-id');
-  const $nextButton = $('.next.button');
+
+  const $enterGroupButton = $('.enter.group.button');
+  const $reenterGroupButton = $('.reenter.group.button');
+  const $openDashboardButton = $('.open.dashboard.button');
+  const $openSingleButton = $('.enter.single.button');
+
   let id = $idInput.val();
   let idType = undefined;
 
@@ -85,24 +90,23 @@ $(() => {
     let html = '';
     for (let i = 0; i < id.length; i++) {
       html += phonetic[id.charAt(i)];
-      html += '<br/>';
+      html += '&nbsp;&nbsp;';
     }
-    //alert(html);
     $phoneticId.show().html(html);
   };
 
-  const setNextButtonState = () => {
+  const setButtonStates = () => {
     id = $idInput.val();
     if (id.length < 6) {
       $idInput.removeClass('invalid');
       $phoneticId.hide();
-      $nextButton.hide();
+      hideAllButtons();
       return;
     }
     if (id.length > 6) {
       $idInput.addClass('invalid');
       $phoneticId.hide();
-      $nextButton.hide();
+      hideAllButtons();
       return;
     }
     $waitSpinner.fadeIn('fast', () => {
@@ -113,48 +117,81 @@ $(() => {
           if (idType) {
             $idInput.removeClass('invalid');
             showPhoneticId();
-            $nextButton.show();
+            if (idType === 'group') {
+              showGroupButtons();
+            } else {
+              showSingleButton();
+            }
           } else {
             $idInput.addClass('invalid');
             $phoneticId.hide();
-            $nextButton.hide();
+            hideAllButtons();
           }
         });
       });
     });
   };
 
+  const hideAllButtons = () => {
+    $enterGroupButton.hide();
+    $reenterGroupButton.hide();
+    $openDashboardButton.hide();
+    $openSingleButton.hide();
+  };
+
+  const showGroupButtons = () => {
+    $enterGroupButton.show();
+    $reenterGroupButton.show();
+    $openDashboardButton.show();
+  };
+
+  const showSingleButton = () => {
+    $openSingleButton.show();
+  };
+
   const idInputChange = () => {
     if ($idInput.val() === id) {
       return;
     } else {
-      setNextButtonState();
+      setButtonStates();
     }
   };
 
+  const urlId = () => encodeURIComponent(id);
+
+  const goto = (url) => window.location = url;
+
   $idInput.keyup(() => idInputChange()).focus();
 
-  $nextButton.click(() => {
-    const urlId = encodeURIComponent(id);
-    if (idType === 'group') {
-      window.location = `/home/group?id=${urlId}`;
-    } else if (idType === 'individual') {
-      window.location = `/home/index?id=${urlId}`;
-      window.open(`/kata/edit/${urlId}`);
-    }
+  $enterGroupButton.click(() => {
+    const json = JSON.stringify({"id":id});
+    $.post(`/home/enter.json`, json, (response) => goto(response.route));
   });
 
-  setNextButtonState();
+  $reenterGroupButton.click(() => goto(`/home/reenter?id=${urlId()}`));
+
+  $openDashboardButton.click(() => goto(`/dashboard/show/${urlId()}`));
+
+  $openSingleButton.click(() => {
+    goto(`/home/index?id=${urlId()}`);
+    window.open(`/kata/edit/${urlId()}`);
+  });
+
+  setButtonStates();
 
 });
 </script>
 
 <div id="enter-page">
   <div class="edged-panel enter-id">
-    <div class="title">the ID of the exercise is...</div>
+    <div class="title">enter an existing exercise</div>
+    <div class="sub-title">the ID of the exercise is...</div>
     <input type="text" id="id" placeholder="??????" value="<%= @id %>"></input>
     <img src="/images/rotate-cyber-dojo.gif" class="wait-spinner">
     <div class="phonetic-id"></div>
-    <div class="next button" style="display:none;">next</div>
+    <div class="enter group button" style="display:none;">enter group exercise as a new avatar</div>
+    <div class="reenter group button" style="display:none;">enter group exercise as an existing avatar</div>
+    <div class="open dashboard button" style="display:none;">open group dashboard</div>
+    <div class="enter single button" style="display:none;">enter single exercise</div>
   </div>
 </div>

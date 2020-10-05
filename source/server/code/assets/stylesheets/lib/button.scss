@@ -14,7 +14,8 @@
   border: 1px solid $darker-color;
   font-weight: normal;
   padding:9px;
-  margin:7px;
+  //margin:7px;
+  margin-bottom:10px;
 
   &:hover { border: 1px dotted lighten($darker-color, 20%); }
   &[disabled]
@@ -24,3 +25,5 @@
     &:hover { border: 1px solid $darker-color; }
   }
 }
+
+#home-page .enter.button { margin-bottom:0px; }
