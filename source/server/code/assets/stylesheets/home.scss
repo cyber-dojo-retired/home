@@ -56,7 +56,7 @@
       width:575px;
       font-size:32px;
       text-align:left;
-      padding-left:25px;
+      padding-left:15px;
     }
   }
 
@@ -115,7 +115,7 @@
   .rhs-column { width:315px; vertical-align:top; }
   .avatar-name { font-size:52px; }
   .blurb { font-size:23px; }
-  
+
   .button { &.enter, &.ok, &.next { font-size:40px; } }
   .ok.button { @include centered(); width:75px; }
   .next.button { @include centered(); width:115px; }

@@ -74,10 +74,13 @@ $(() => {
   const $waitSpinner = $('.wait-spinner');
   const $phoneticId = $('.phonetic-id');
 
+  const $openSingleButton = $('.enter.single.button');
+
   const $enterGroupButton = $('.enter.group.button');
   const $reenterGroupButton = $('.reenter.group.button');
   const $openDashboardButton = $('.open.dashboard.button');
-  const $openSingleButton = $('.enter.single.button');
+
+  const $allGroupButtons = $enterGroupButton.add($reenterGroupButton).add($openDashboardButton);
 
   let id = $idInput.val();
   let idType = undefined;
@@ -100,13 +103,15 @@ $(() => {
     if (id.length < 6) {
       $idInput.removeClass('invalid');
       $phoneticId.hide();
-      hideAllButtons();
+      $openSingleButton.hide();
+      $allGroupButtons.hide();
       return;
     }
     if (id.length > 6) {
       $idInput.addClass('invalid');
       $phoneticId.hide();
-      hideAllButtons();
+      $openSingleButton.hide();
+      $allGroupButtons.hide();
       return;
     }
     $waitSpinner.fadeIn('fast', () => {
@@ -118,35 +123,20 @@ $(() => {
             $idInput.removeClass('invalid');
             showPhoneticId();
             if (idType === 'group') {
-              showGroupButtons();
-            } else {
-              showSingleButton();
+              $allGroupButtons.show();
+            }
+            if (idType === 'single') {
+              $openSingleButton.show();
             }
           } else {
             $idInput.addClass('invalid');
             $phoneticId.hide();
-            hideAllButtons();
+            $openSingleButton.hide();
+            $allGroupButtons.hide();
           }
         });
       });
     });
-  };
-
-  const hideAllButtons = () => {
-    $enterGroupButton.hide();
-    $reenterGroupButton.hide();
-    $openDashboardButton.hide();
-    $openSingleButton.hide();
-  };
-
-  const showGroupButtons = () => {
-    $enterGroupButton.show();
-    $reenterGroupButton.show();
-    $openDashboardButton.show();
-  };
-
-  const showSingleButton = () => {
-    $openSingleButton.show();
   };
 
   const idInputChange = () => {
@@ -189,8 +179,8 @@ $(() => {
     <input type="text" id="id" placeholder="??????" value="<%= @id %>"></input>
     <img src="/images/rotate-cyber-dojo.gif" class="wait-spinner">
     <div class="phonetic-id"></div>
-    <div class="enter group button" style="display:none;">enter group exercise as a new avatar</div>
-    <div class="reenter group button" style="display:none;">enter group exercise as an existing avatar</div>
+    <div class="enter group button" style="display:none;">enter group exercise as <u>new</u> avatar</div>
+    <div class="reenter group button" style="display:none;">enter group exercise as <u>existing</u> avatar</div>
     <div class="open dashboard button" style="display:none;">open group dashboard</div>
     <div class="enter single button" style="display:none;">enter single exercise</div>
   </div>
