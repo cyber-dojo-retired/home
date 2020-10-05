@@ -2,7 +2,8 @@
 'use strict';
 $(() => {
 
-  $('.create.button').click(() => goto('/creator/choose_type'));
+  $('.create.group.button').click(() => goto('/creator/choose_problem?type=group'));
+  $('.create.single.button').click(() => goto('/creator/choose_problem?type=single'));
   $('.enter.button').click(() => goto('/home/enter'));
 
   const goto = (url) => window.location = url;
@@ -23,8 +24,9 @@ $(() => {
     </div>
   </div>
   <div class="edged-panel buttons">
-    <div class="create button">create a new exercise</div>
-    <div class="enter button">enter an existing exercise</div>
+    <div class="create group button">create a new <u>group</u> exercise</div>
+    <div class="create single button">create a new <u>single</u> exercise</div>
+    <div class="enter button">enter any existing exercise</div>
   </div>
 
   <div class="edged-panel questions">
