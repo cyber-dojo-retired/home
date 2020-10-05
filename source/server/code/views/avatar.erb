@@ -16,9 +16,7 @@ $(() => {
 <div id="avatar-page">
   <div class="edged-panel">
 
-    <div class="title">your avatar is the...</div>
-    <div class="avatar-name"><%= @avatar_name %></div>
-
+    <div class="title">your avatar is</div>
     <table>
       <% 8.times do %>
       <tr>
@@ -30,7 +28,7 @@ $(() => {
       </tr>
       <% end %>
     </table>
-
+    <div class="avatar-name">the <%= @avatar_name %></div>
     <div class="ok button">ok</div>
 
   </div>

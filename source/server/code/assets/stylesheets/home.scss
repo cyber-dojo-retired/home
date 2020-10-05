@@ -112,7 +112,7 @@
   .sub-title { font-size:27px; margin: { left:10px; bottom:10px; } }
   table { margin: { left:10px; bottom:10px; } }
   .group-id, .kata-id { font-size:90px; }
-  .avatar-name { font-size:40px; margin: { left:10px; bottom:10px; } }
+  .avatar-name { font-size:33px; margin: { left:10px; bottom:10px; } }
   .button { &.enter, &.ok { font-size:40px; } }
   .ok.button {
     width:47px;
@@ -121,6 +121,6 @@
   }
 }
 #enter-page   .edged-panel { width:660px; }
-#avatar-page  .edged-panel { width:470px; }
+#avatar-page  .edged-panel { width:336px; }
 #reenter-page .edged-panel { width:420px; }
 #full-page    .edged-panel { width:336px; }
