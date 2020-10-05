@@ -57,6 +57,7 @@
       font-size:32px;
       text-align:left;
       padding-left:15px;
+      margin-left:2px;
     }
   }
 
@@ -107,16 +108,19 @@
 #enter-page, #avatar-page, #reenter-page, #full-page
 {
   @include non-code-font();
-  .edged-panel { width:660px; }
-  .title { font-size:58px; margin-bottom:10px; }
-  .sub-title { font-size:30px; }
+  .title { font-size:58px; margin: { left:10px; bottom:10px; } }
+  .sub-title { font-size:27px; margin: { left:10px; bottom:10px; } }
+  table { margin: { left:10px; bottom:10px; } }
   .group-id, .kata-id { font-size:90px; }
-  .lhs-column { width:400px; }
-  .rhs-column { width:315px; vertical-align:top; }
-  .avatar-name { font-size:52px; }
-  .blurb { font-size:23px; }
-
-  .button { &.enter, &.ok, &.next { font-size:40px; } }
-  .ok.button { @include centered(); width:75px; }
-  .next.button { @include centered(); width:115px; }
+  .avatar-name { font-size:40px; margin: { left:10px; bottom:10px; } }
+  .button { &.enter, &.ok { font-size:40px; } }
+  .ok.button {
+    width:47px;
+    padding-left:15px;
+    margin: { left:10px; top:20px; }
+  }
 }
+#enter-page   .edged-panel { width:660px; }
+#avatar-page  .edged-panel { width:470px; }
+#reenter-page .edged-panel { width:420px; }
+#full-page    .edged-panel { width:336px; }

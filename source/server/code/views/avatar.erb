@@ -6,35 +6,32 @@ $(() => {
   const kataId = "<%= @kata_id %>";
 
   $('.ok.button').click(() => {
-    window.open(`/kata/edit/${kataId}`);
     window.location = `/home/index?id=${groupId}`;
+    window.open(`/kata/edit/${kataId}`);
   });
 
 });
 </script>
 
 <div id="avatar-page">
-  <table class="edged-panel">
-    <tr>
-      <td class="lhs-column">
-        <table cellspacing="0" cellpadding="2">
-          <% 8.times do %>
-          <tr>
-            <% 8.times do %>
-            <td>
-              <img class="small colour avatar" src="/avatars/image/<%= @index %>"/>
-            </td>
-            <% end %>
-          </tr>
-          <% end %>
-        </table>
-      </td>
-      <td class="rhs-column">
-        <div class="group-id"><%= @group_id %></div>
-        <div class="blurb">your avatar is the</div>
-        <div class="avatar-name"><%= @avatar_name %></div>
-        <div class="ok button">ok</div>
-      </td>
-    </tr>
-  </table>
+  <div class="edged-panel">
+
+    <div class="title">your avatar is the...</div>
+    <div class="avatar-name"><%= @avatar_name %></div>
+
+    <table>
+      <% 8.times do %>
+      <tr>
+        <% 8.times do %>
+        <td>
+          <img class="small colour avatar" src="/avatars/image/<%= @index %>"/>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+
+    <div class="ok button">ok</div>
+
+  </div>
 </div>

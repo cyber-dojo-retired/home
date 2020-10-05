@@ -5,27 +5,18 @@ $(() => {
   const groupId = "<%= @group_id %>";
 
   $('.ok.button').click(() => {
-    window.location = `/home/index?id=${groupId}`;
+    window.location = `/home/enter?id=${groupId}`;
   });
 
 });
 </script>
 
 <div id="full-page">
-  <div class="box">
+  <div class="edged-panel">
 
-    <table class="edged-panel">
-      <tr>
-        <td>
-          <img src="/avatars/image/all" class="avatars"/>
-        </td>
-        <td>
-          <div class="group-id"><%= @group_id %></div>
-          <div class="blurb">Sorry. It's full!</div>
-          <div class="ok button">ok</div>
-        </td>
-      </tr>
-    </table>
+    <div class="title">sorry, it's full</div>
+    <img src="/avatars/image/all" class="avatars"/>
+    <div class="ok button">ok</div>
 
   </div>
 </div>

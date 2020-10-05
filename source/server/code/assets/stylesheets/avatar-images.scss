@@ -3,8 +3,9 @@
 
 img.avatars
 {
-  width:386px;
-  height:386px;
+  width:314px;
+  height:314px;
+  margin-left:10px;
 }
 
 img.avatar
@@ -20,8 +21,8 @@ img.avatar
   &.small
   {
     @include rounded-corner(2px);
-    width:44px;
-    height:44px;
+    width:35px;
+    height:35px;
     display:block;
   }
   &.grey

@@ -9,9 +9,9 @@
     {
       @include non-code-font();
       @include rounded-corner(6px);
-      margin: { top:20px; bottom:10px; }
-      font-size:50px;
-      width:266px;
+      margin: { left:10px; bottom:10px; }
+      font-size:41px;
+      width:220px;
       padding-left:10px;
       background:lighten($green, 20%);
       color:$darker-color;
@@ -22,22 +22,21 @@
   {
     display:none;
     position:absolute;
-         top:179px;
-        left:510px;
-       width:60px;
-      height:60px;
+         top:161px;
+        left:554px;
+       width:56px;
+      height:56px;
   }
-  .phonetic-id { font-size:30px; margin-bottom:10px; }
+  .phonetic-id { font-size:26px; margin: { left:10px; bottom:10px; } }
   .button
   {
     &.enter.group, &.reenter.group, &.open.dashboard, &.enter.single
     {
-      width:630px;
+      width:615px;
       padding-left:15px;
+      margin-left:10px;
     }
-    &.reenter.group, &.open.dashboard
-    {
-      font-size:25px;
-    }
+    &.enter.group { font-size:30px; }
+    &.reenter.group, &.open.dashboard { font-size:19px; }
   }
 }
