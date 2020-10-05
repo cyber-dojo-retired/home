@@ -104,7 +104,7 @@
 
 //------------------------------------------
 
-#group-page, #enter-page, #avatar-page, #reenter-page, #full-page
+#enter-page, #avatar-page, #reenter-page, #full-page
 {
   @include non-code-font();
   .edged-panel { width:835px; }
@@ -115,6 +115,7 @@
   .rhs-column { width:315px; vertical-align:top; }
   .avatar-name { font-size:52px; }
   .blurb { font-size:23px; }
+  
   .button { &.enter, &.ok, &.next { font-size:40px; } }
   .ok.button { @include centered(); width:75px; }
   .next.button { @include centered(); width:115px; }
