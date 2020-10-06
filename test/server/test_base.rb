@@ -1,10 +1,12 @@
 # frozen_string_literal: true
+require_relative 'capture_stdout_stderr'
 require_relative '../id58_test_base'
 require_source 'app'
 require_source 'externals'
 
 class TestBase < Id58TestBase
 
+  include CaptureStdoutStderr
   include Rack::Test::Methods # [1]
 
   def app # [1]
