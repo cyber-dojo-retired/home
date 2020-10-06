@@ -19,10 +19,6 @@ class ExternalModel
     @http.get(__method__, { id:id })
   end
 
-  def group_manifest(id)
-    @http.get(__method__, { id:id })
-  end
-
   def group_join(id)
     @http.post(__method__, { id:id })
   end
@@ -30,7 +26,7 @@ class ExternalModel
   def group_avatars(id)
     @http.get(__method__, { id:id })
   end
-  
+
   # - - - - - - - - - - - - - - - - - - -
 
   def kata_exists?(id)
