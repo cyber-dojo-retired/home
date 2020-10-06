@@ -44,6 +44,15 @@ class TestBase < Id58TestBase
     block.call(json_response)
   end
 
+  def assert_post_200_json(path, args, &block)
+    stdout,stderr = capture_io { json_post '/'+path, args }
+    assert status?(200), status
+    assert json_content?, content_type
+    assert_equal '', stderr, :stderr
+    assert_equal '', stdout, :stdout
+    block.call(json_response)
+  end
+
   # - - - - - - - - - - - - - - -
 
   def status?(code)
@@ -78,9 +87,18 @@ class TestBase < Id58TestBase
 
   # - - - - - - - - - - - - - - -
 
+  def json_post(path, data)
+    post path, data.to_json, JSON_REQUEST_HEADERS
+  end
+
   def json_response
     JSON.parse(last_response.body)
   end
+
+  JSON_REQUEST_HEADERS = {
+    'CONTENT_TYPE' => 'application/json', # sent request
+    'HTTP_ACCEPT' => 'application/json'   # received response
+  }
 
   # - - - - - - - - - - - - - - -
 
@@ -102,6 +120,16 @@ class TestBase < Id58TestBase
       self
     end
     attr_reader :body
+  end
+
+  # - - - - - - - - - - - - - - -
+
+  def kata_exists?(id)
+    model.kata_exists?(id)
+  end
+
+  def model
+    @externals.model
   end
 
 end
