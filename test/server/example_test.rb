@@ -14,7 +14,7 @@ class ExampleTest < TestBase
   #- - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   test 'AC6', %w( example ) do
-    stdout,stderr = capture_stdout_stderr {
+    stdout,stderr = capture_io {
       $stdout.puts('hello')
       assert_equal 42, 42
     }
