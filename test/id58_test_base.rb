@@ -119,12 +119,16 @@ class Id58TestBase < MiniTest::Test
 
   # - - - - - - - - - - - - - - - - - - - - - -
 
+  # :nocov:
   def id58
     @id58
   end
+  # :nocov:
 
+  # :nocov:
   def name58
     @name58
   end
+  # :nocov:
 
 end
