@@ -16,6 +16,8 @@ class TestBase < Id58TestBase
     @externals ||= Externals.new
   end
 
+  # - - - - - - - - - - - - - - -
+
   def assert_get_200_json(path, &block)
     stdout,stderr = capture_io { get '/'+path }
     assert status?(200), status
@@ -32,6 +34,17 @@ class TestBase < Id58TestBase
     assert_equal '', stderr, :stderr
     assert_equal '', stdout, :sdout
   end
+
+  def assert_get_500_json(path, &block)
+    stdout,stderr = capture_io { get '/'+path }
+    assert status?(500), status
+    assert json_content?, content_type
+    assert_equal '', stderr, :stderr
+    assert_equal stdout, last_response.body+"\n", :stdout
+    block.call(json_response)
+  end
+
+  # - - - - - - - - - - - - - - -
 
   def status?(code)
     status === code
@@ -63,8 +76,32 @@ class TestBase < Id58TestBase
     last_response.headers['Content-Type']
   end
 
+  # - - - - - - - - - - - - - - -
+
   def json_response
     JSON.parse(last_response.body)
+  end
+
+  # - - - - - - - - - - - - - - -
+
+  def stub_model_http(body)
+    externals.instance_exec { @model_http = HttpAdapterStub.new(body) }
+  end
+
+  class HttpAdapterStub
+    def initialize(body)
+      @body = body
+    end
+    def get(_uri)
+      OpenStruct.new
+    end
+    #def post(_uri)
+    #  OpenStruct.new
+    #end
+    def start(_hostname, _port, _req)
+      self
+    end
+    attr_reader :body
   end
 
 end
