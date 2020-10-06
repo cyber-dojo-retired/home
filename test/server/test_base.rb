@@ -15,10 +15,16 @@ class TestBase < Id58TestBase
     @externals ||= Externals.new
   end
 
-  # - - - - - - - - - - - - - - -
+  def assert_get_200_html(path)
+    stdout,stderr = capture_io { get '/'+path }
+    assert status?(200), :status_200
+    assert html_content?, :html_content
+    assert_equal '', stderr, :stderr
+    assert_equal '', stdout, :sdout
+  end
 
-  def status?(expected)
-    status === expected
+  def status?(code)
+    status === code
   end
 
   def status
