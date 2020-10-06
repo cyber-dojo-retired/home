@@ -29,16 +29,6 @@ class App < AppBase
 
   # - - - - - - - - - - - - - - - - - - - - -
 
-  get '/create', provides:[:html] do
-    respond_to do |format|
-      format.html do
-        erb :create
-      end
-    end
-  end
-
-  # - - - - - - - - - - - - - - - - - - - - -
-
   get '/enter', provides:[:html] do
     respond_to do |format|
       format.html do
@@ -53,15 +43,6 @@ class App < AppBase
   get_delegate(:id_type, Home)
 
   # - - - - - - - - - - - - - - - - - - - - -
-
-  get '/group', provides:[:html] do
-    respond_to do |format|
-      format.html do
-        @group_id = params['id']
-        erb :group
-      end
-    end
-  end
 
   post '/enter.json', provides:[:json] do
     respond_to do |format|
