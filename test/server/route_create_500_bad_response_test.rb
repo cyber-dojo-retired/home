@@ -51,13 +51,53 @@ class RouteCreate500BadResponseTest < TestBase
     assert_get_500_json_exception('{"wibble":42}', 'ready?')
   end
 
+  # - - - - - - - - - - - - - - - - -
+
+  test 'QN8', %w(
+  |when an http-proxy
+  |has a 500 error
+  |there is useful diagnostic info
+  ) do
+    externals.instance_exec {
+      @model_http = HttpAdapterStartRaiser.new
+    }
+    stdout,stderr = capture_io { get '/ready?' }
+    assert status?(500)
+    assert json_content?, content_type
+    assert_equal '', stderr, :stderr
+    assert_equal stdout, last_response.body+"\n", :stdout
+    ex = json_response['exception']
+    assert_equal '/ready', ex['request']['path'], json_response
+    assert_equal '', ex['request']['body'], json_response
+    refute_nil ex['backtrace'], json_response
+    assert ex['message'].include?("undefined method `get'"), json_response
+  end
+
   private
 
   def assert_get_500_json_exception(response, path)
-    stub_model_http(response)
+    externals.instance_exec { @model_http = HttpAdapterStub.new(response) }
     assert_get_500_json(path) do |response|
       assert_equal [ 'exception' ], response.keys.sort, last_response.body
     end
+  end
+
+  # - - - - - - - - - - - - - - -
+
+  class HttpAdapterStartRaiser
+  end
+
+  class HttpAdapterStub
+    def initialize(body)
+      @body = body
+    end
+    def get(_uri)
+      OpenStruct.new
+    end
+    def start(_hostname, _port, _req)
+      self
+    end
+    attr_reader :body
   end
 
 end
