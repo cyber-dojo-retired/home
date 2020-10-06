@@ -1,6 +1,6 @@
 require_relative 'test_base'
 
-class ExampleTest < TestBase
+class ViewsTest < TestBase
 
   def self.id58_prefix
     '449'

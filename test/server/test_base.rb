@@ -2,6 +2,7 @@
 require_relative '../id58_test_base'
 require_source 'app'
 require_source 'externals'
+require 'json'
 
 class TestBase < Id58TestBase
 
@@ -15,10 +16,19 @@ class TestBase < Id58TestBase
     @externals ||= Externals.new
   end
 
+  def assert_get_200_json(path, &block)
+    stdout,stderr = capture_io { get '/'+path }
+    assert status?(200), status
+    assert json_content?, content_type
+    assert_equal '', stderr, :stderr
+    assert_equal '', stdout, :sdout
+    block.call(json_response)
+  end
+
   def assert_get_200_html(path)
     stdout,stderr = capture_io { get '/'+path }
-    assert status?(200), :status_200
-    assert html_content?, :html_content
+    assert status?(200), status
+    assert html_content?, content_type
     assert_equal '', stderr, :stderr
     assert_equal '', stdout, :sdout
   end
@@ -51,6 +61,10 @@ class TestBase < Id58TestBase
 
   def content_type
     last_response.headers['Content-Type']
+  end
+
+  def json_response
+    JSON.parse(last_response.body)
   end
 
 end
